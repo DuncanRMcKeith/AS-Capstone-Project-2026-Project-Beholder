@@ -1,5 +1,7 @@
 is_global = true
 build_property.TargetFramework = net8.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v8.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
@@ -9,41 +11,49 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CapstoneProject
 build_property.RootNamespace = CapstoneProject
-build_property.ProjectDir = C:\Users\dunca\OneDrive\Desktop\AS-Capstone-Project-2026-Project-Beholder\CapstoneProject\
+build_property.ProjectDir = C:\AS-Capstone-Project-2026-Project-Beholder\CapstoneProject\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\dunca\OneDrive\Desktop\AS-Capstone-Project-2026-Project-Beholder\CapstoneProject
+build_property.MSBuildProjectDirectory = C:\AS-Capstone-Project-2026-Project-Beholder\CapstoneProject
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/dunca/OneDrive/Desktop/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/Error.cshtml]
+[C:/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/Announcements.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5ub3VuY2VtZW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/Character.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hhcmFjdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dunca/OneDrive/Desktop/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/Index.cshtml]
+[C:/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dunca/OneDrive/Desktop/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/Profile.cshtml]
+[C:/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dunca/OneDrive/Desktop/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dunca/OneDrive/Desktop/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/_ViewImports.cshtml]
+[C:/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dunca/OneDrive/Desktop/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/_ViewStart.cshtml]
+[C:/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dunca/OneDrive/Desktop/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/Shared/_Layout.cshtml]
+[C:/AS-Capstone-Project-2026-Project-Beholder/CapstoneProject/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-p9auoagkmu
