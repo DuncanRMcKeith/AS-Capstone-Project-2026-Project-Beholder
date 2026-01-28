@@ -1,22 +1,64 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    background-color: #1c1c1c; /* global background */
+    color: #DAA520; /* global text color */
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+a {
+    color: #DAA520; /* link color */
+}
+/* Focus states (updated to highlight color) */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem #F0F0F0, /* highlight inner ring */
+    0 0 0 0.25rem #DAA520; /* gold outer ring for visibility */
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #1c1c1c; /* ensure body matches html */
+    color: #DAA520; /* ensure text inherits correctly */
+}
+.custom-navbar .nav-link:visited {
+    color: #DAA520 !important;
+}
+
+/* Hover state */
+.custom-navbar .nav-link:hover {
+    color: #F0F0F0 !important;
+}
+
+/* Active link */
+.custom-navbar .nav-link.active {
+    color: #F0F0F0 !important;
+}
+/* Force nav link text to gold */
+.custom-navbar .nav-link,
+.custom-navbar .nav-link:visited {
+    color: #DAA520 !important;
+}
+
+    /* Hover state */
+    .custom-navbar .nav-link:hover {
+        color: #F0F0F0 !important;
+    }
+.custom-navbar .navbar-brand:hover {
+    color: #F0F0F0 !important;
+}
+    /* Active link */
+.custom-navbar .nav-link.active {
+    color: #F0F0F0 !important;
 }

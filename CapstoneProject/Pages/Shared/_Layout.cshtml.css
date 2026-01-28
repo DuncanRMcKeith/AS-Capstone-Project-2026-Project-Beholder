@@ -1,48 +1,95 @@
 ﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+/* Brand */
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+    color: #DAA520; /* text color */
 }
 
+/* Links */
 a {
-  color: #0077cc;
+    color: #DAA520;
 }
 
+/* Primary Button */
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #1c1c1c; /* dark text on gold button for contrast */
+    background-color: #DAA520; /* text color becomes button bg */
+    border-color: #F0F0F0; /* highlight border */
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+/* Active Nav Pills */
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: #1c1c1c; /* readable on gold */
+    background-color: #DAA520;
+    border-color: #F0F0F0;
 }
 
+/* Borders / Highlights */
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #F0F0F0;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #F0F0F0;
 }
 
+/* Shadows (kept subtle) */
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(240, 240, 240, .05);
 }
 
+/* Policy Button */
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
+    color: #DAA520;
+    background-color: #1c1c1c;
+    border: 1px solid #F0F0F0;
 }
 
+/* Footer */
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+    color: #DAA520;
+    background-color: #1c1c1c;
+}
+/* Force nav link text to gold */
+/* Force nav link text to gold */
+.custom-navbar .nav-link,
+.custom-navbar .nav-link:visited {
+    color: #DAA520 !important;
+}
+
+    /* Hover state */
+    .custom-navbar .nav-link:hover {
+        color: #F0F0F0 !important;
+    }
+
+    /* Active link */
+    .custom-navbar .nav-link.active {
+        color: #F0F0F0 !important;
+    }
+    /* Force nav link text to gold */
+.custom-navbar .nav-link,
+.custom-navbar .nav-link:visited {
+  color: #DAA520 !important;
+}
+
+/* Hover state */
+.custom-navbar .nav-link:hover {
+  color: #F0F0F0 !important;
+}
+
+/* Active link */
+.custom-navbar .nav-link.active {
+  color: #F0F0F0 !important;
 }
