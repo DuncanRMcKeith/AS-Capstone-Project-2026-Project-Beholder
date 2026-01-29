@@ -1,5 +1,45 @@
 ﻿@page
 @model CapstoneProject.Pages.Index1Model
 @{
+	ViewData["Title"] = "Profile";
 }
-<p>Profile Page coming soon</p>
+
+<div class="profile-top">
+	<img class="profile-pic" src="https://placehold.co/150x150" alt="Profile picture"/>
+	<p class=text-center>Username goes here</p>
+	<p class=text-center>Bio goes here</p>
+
+	<br />
+	<button class="edit-profile">Edit Profile</button>
+</div>
+
+<div class="profile-characters">
+	<nav class="navbar navbar-expand-sm navbar-toggleable-sm custom-navbar border-bottom box-shadow mb-3">
+		<ul class="navbar-nav flex-grow-1">
+			<li class="nav-item">
+				<a class="nav-link" asp-area="" asp-page="#">1</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" asp-area="" asp-page="#">2</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" asp-area="" asp-page="#">3</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" asp-area="" asp-page="#">4</a>
+			</li>
+		</ul>
+	</nav>
+
+</div>
+
+<div class="commsAndBadges">
+	<div class="comms text-center">
+		Active Communities
+	</div>
+
+	<div class="badges text-center">
+		Badges
+	</div>
+
+</div>
