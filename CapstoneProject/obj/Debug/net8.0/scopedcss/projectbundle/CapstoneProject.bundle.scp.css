@@ -55,8 +55,8 @@ button.accept-policy[b-p9auoagkmu] {
 
 /* Footer */
 .footer[b-p9auoagkmu] {
-    position: absolute;
-    bottom: 0;
+    position: static;
+    bottom: auto;
     width: 100%;
     white-space: nowrap;
     line-height: 60px;
