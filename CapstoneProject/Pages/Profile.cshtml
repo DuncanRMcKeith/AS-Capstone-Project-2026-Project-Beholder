@@ -3,19 +3,31 @@
 @{
 	ViewData["Title"] = "Profile";
 }
+<head>
+	<link href="./css/profile.css" rel="stylesheet" />
+	<script src="https://kit.fontawesome.com/9a2eb0f57a.js" crossorigin="anonymous"></script>
+
+</head>
+
+<div class="container">
+
 
 <div class="profile-top">
 	<img class="profile-pic" src="https://placehold.co/150x150" alt="Profile picture"/>
-	<p class=text-center>Username goes here</p>
-	<p class=text-center>Bio goes here</p>
 
-	<br />
-	<button class="edit-profile">Edit Profile</button>
+	<div class="profile-text">
+		<p class="text-center"><h1>Dbaaaj</h1></p>
+		<p class="text-center">Hello! i'm Dbaaaj, a beginner DND player. welcome to my profile</p>
+	</div>
 </div>
+	<br />
+	<button class="edit-profile">Edit Profile <i class="fa-solid fa-wrench"></i></button>
+
 
 <div class="profile-characters">
-	<nav class="navbar navbar-expand-sm navbar-toggleable-sm custom-navbar border-bottom box-shadow mb-3">
-		<ul class="navbar-nav flex-grow-1">
+	<h2 class="text-center">Characters</h2>
+	<nav class="border-bottom box-shadow mb-3">
+		<ul>
 			<li class="nav-item">
 				<a class="nav-link" asp-area="" asp-page="#">1</a>
 			</li>
@@ -25,21 +37,43 @@
 			<li class="nav-item">
 				<a class="nav-link" asp-area="" asp-page="#">3</a>
 			</li>
-			<li class="nav-item">
+			<li class="nav-item active">
 				<a class="nav-link" asp-area="" asp-page="#">4</a>
 			</li>
 		</ul>
 	</nav>
 
+	<div class="character-display">
+		<div class="character-text">
+			<h2>JOHN DND</h2>
+			<p>level 5 barbarian</p>
+			<p>Additional notes go here</p>
+			<button class="edit-profile">Edit Character</button>
+		</div>
+		<img src="https://placehold.co/250x250" />
+
+		<ul>
+			<li>STR: 5</li>
+			<li>DEX: 5</li>
+			<li>CON: 5</li>
+			<li>INT: 5</li>
+			<li>WIS: 5</li>
+			<li>CHA: 5</li>
+		</ul>
+	</div>
+
+
+
 </div>
 
-<div class="commsAndBadges">
+<div class="comms-badges">
 	<div class="comms text-center">
-		Active Communities
+		<p>Active Communities</p>
 	</div>
 
 	<div class="badges text-center">
-		Badges
+		<p>Badges</p>
 	</div>
 
+	</div>
 </div>
