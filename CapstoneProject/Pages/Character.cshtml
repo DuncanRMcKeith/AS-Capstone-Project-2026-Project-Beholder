@@ -2,4 +2,126 @@
 @model CapstoneProject.Pages.CharacterModel
 @{
 }
-<p>Character Page coming soon</p>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    body {
+        padding: 18px;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .page {
+        min-height: 100vh;
+        border: 2px solid;
+        padding: 18px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header {
+        border: 1px solid;
+        text-align: center;
+        padding: 10px 0;
+        font-size: 20px;
+        margin-bottom: 18px;
+    }
+
+    .main {
+        flex: 1;
+        border: 1px solid;
+        padding: 26px;
+        box-sizing: border-box;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 26px;
+    }
+
+    .left {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .box {
+        border: 1px solid;
+        padding: 12px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .notes {
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .image {
+        width: 100%;
+        height: 220px;
+        border: 1px solid;
+        box-sizing: border-box;
+    }
+
+    .dice {
+        width: 100%;
+        height: 120px;
+        border: 1px solid;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    .footer {
+        margin-top: auto;
+        border: 1px solid;
+        text-align: center;
+        padding: 10px 0;
+        box-sizing: border-box;
+    }
+</style>
+
+<div class="page">
+    <div class="header">Character</div>
+
+    <div class="main">
+        <div class="grid">
+            <div class="left">
+                <div class="box">Character Name</div>
+                <div class="box">Stats</div>
+                <div class="box">Stats</div>
+                <div class="box">Stats</div>
+                <div class="box notes">Notes</div>
+            </div>
+
+            <div class="right">
+                <div class="image"></div>
+                <button>Roll</button>
+                <div class="dice">Dice Roll</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <button>Edit</button>
+        <button>Save</button>
+        <button>Delete</button>
+    </div>
+</div>
