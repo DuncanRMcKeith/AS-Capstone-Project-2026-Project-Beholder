@@ -3,14 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -27,6 +19,14 @@
       "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
@@ -38,17 +38,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Index.cshtml",
               "RelativeDocumentMoniker": "Pages\\Index.cshtml",
               "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Index.cshtml",
               "RelativeToolTip": "Pages\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-01-28T18:06:09.032Z",
               "IsPinned": true,
@@ -56,7 +56,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Index.cshtml.cs",
               "RelativeDocumentMoniker": "Pages\\Index.cshtml.cs",
@@ -70,7 +70,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Profile.cshtml",
               "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Profile.cshtml",
               "RelativeDocumentMoniker": "Pages\\Profile.cshtml",
@@ -83,7 +83,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "_Layout.cshtml.css",
               "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml.css",
               "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml.css",
@@ -96,26 +96,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "wwwroot\\css\\site.css",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAmwD8AAAABAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\wwwroot\\css\\site.css*",
+              "RelativeToolTip": "wwwroot\\css\\site.css*",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAD8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2026-01-28T17:52:22.202Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAEwBoAAABYAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAEwBsAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-01-28T18:39:09.037Z",
               "EditorCaption": ""
@@ -130,8 +130,7 @@
               "RelativeToolTip": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-28T18:31:09.118Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-28T18:31:09.118Z"
             }
           ]
         }

@@ -62,3 +62,16 @@ body {
 .custom-navbar .nav-link.active {
     color: #F0F0F0 !important;
 }
+.OwnerImages {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* spreads them across the line */
+    align-items: center;
+    gap: 20px; /* space between images */
+}
+
+    .OwnerImages img {
+        width: 150px; /* adjust as needed */
+        height: auto;
+        object-fit: cover;
+    }
