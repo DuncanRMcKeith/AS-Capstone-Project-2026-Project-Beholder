@@ -1,33 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\",
+  "WorkspaceRootPath": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\kjgue\\documents\\github\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\community.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\community.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\kjgue\\documents\\github\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\kjgue\\documents\\github\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\kjgue\\documents\\github\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\kjgue\\documents\\github\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\kjgue\\documents\\github\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\kjgue\\documents\\github\\as-capstone-project-2026-project-beholder\\capstoneproject\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\kjgue\\documents\\github\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
@@ -38,15 +42,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Index.cshtml",
               "RelativeDocumentMoniker": "Pages\\Index.cshtml",
-              "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Index.cshtml",
+              "ToolTip": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Index.cshtml",
               "RelativeToolTip": "Pages\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -56,25 +60,37 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Index.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Index.cshtml.cs",
               "RelativeDocumentMoniker": "Pages\\Index.cshtml.cs",
-              "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Index.cshtml.cs",
+              "ToolTip": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Index.cshtml.cs",
               "RelativeToolTip": "Pages\\Index.cshtml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-28T18:06:36.96Z",
-              "IsPinned": true,
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Community.cshtml",
+              "DocumentMoniker": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Community.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Community.cshtml",
+              "ToolTip": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Community.cshtml",
+              "RelativeToolTip": "Pages\\Community.cshtml",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAGwAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-02T22:19:47.777Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Profile.cshtml",
-              "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Profile.cshtml",
+              "DocumentMoniker": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Profile.cshtml",
               "RelativeDocumentMoniker": "Pages\\Profile.cshtml",
-              "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Profile.cshtml",
+              "ToolTip": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Profile.cshtml",
               "RelativeToolTip": "Pages\\Profile.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -83,55 +99,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "_Layout.cshtml.css",
-              "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml.css",
+              "DocumentMoniker": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml.css",
               "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml.css",
-              "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml.css",
+              "ToolTip": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml.css",
               "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-01-28T18:01:53.54Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-28T18:01:53.54Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\wwwroot\\css\\site.css",
+              "DocumentMoniker": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\wwwroot\\css\\site.css",
               "RelativeToolTip": "wwwroot\\css\\site.css",
               "ViewState": "AgIAAC8AAAAAAAAAAAAmwD8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-01-28T17:52:22.202Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-28T17:52:22.202Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAEwBoAAABYAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-01-28T18:39:09.037Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "_ValidationScriptsPartial.cshtml",
-              "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
               "RelativeDocumentMoniker": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
               "RelativeToolTip": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-28T18:31:09.118Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-28T18:31:09.118Z"
             }
           ]
         }
