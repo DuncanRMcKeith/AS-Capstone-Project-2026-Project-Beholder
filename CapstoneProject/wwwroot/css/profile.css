@@ -59,6 +59,7 @@
     align-items: center;
     padding: 5px;
     list-style: none;
+    margin-bottom: 0px
     
 }
 
@@ -95,36 +96,28 @@
 
 }
 
-/*.character-display {
-    width: 100%;
-    background-color: #585858;
-    padding: 10px 25px;
-    display: flex;
-    border-radius: 0px 0px 15px 15px;
-    justify-content: stretch;
-    align-items: center;
-    margin: 0 auto;
-    gap: 25%;
-}*/
 .character-display {
     display: flex;
-    justify-content: space-around; /* keeps spacing between text, image, stats */
-    align-items: center; /* vertically centers all children */
+    justify-content: space-around;
+    align-items: center;
     background-color: #585858;
     border-radius: 0px 0px 15px 15px;
     padding: 10px 20px;
     width: 100%;
-    max-width: 75%;
     margin: 0 auto;
+    padding-right: 35px;
 }
 
-.character-display img {
-    height: 250px;
-    width: 250px;
-    display: block;
+
+
+.char-image img {
+    height: auto;
+    width: auto;
     border-radius: 15px;
 }
 
 .character-display ul {
+    margin-left: 65px;
     list-style: none;
+    overflow: hidden;
 }
