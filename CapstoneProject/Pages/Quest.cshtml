@@ -1,0 +1,61 @@
+﻿@page
+@model CapstoneProject.Pages.Index1Model
+@{
+
+    <div class="questPage">
+        <h2>Quests</h2>
+
+        <!-- Search + Filters -->
+        <div class="quest-filters">
+            <input type="text" placeholder="Search quests..." />
+
+            <select>
+                <option value="">All Categories</option>
+                <option value="combat">Combat</option>
+                <option value="roleplay">Roleplay</option>
+                <option value="exploration">Exploration</option>
+            </select>
+
+            <select>
+                <option value="">Any Level</option>
+                <option value="1-4">Levels 1–4</option>
+                <option value="5-10">Levels 5–10</option>
+                <option value="11-16">Levels 11–16</option>
+                <option value="17-20">Levels 17–20</option>
+            </select>
+
+            <button class="search-btn">Search</button>
+        </div>
+
+        <!-- Table Placeholder -->
+        <table class="quest-table">
+            <thead>
+                <tr>
+                    <th>Quest Name</th>
+                    <th>DM</th>
+                    <th>Level Range</th>
+                    <th>Players Needed</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Placeholder Quest</td>
+                    <td>DM Placeholder</td>
+                    <td>1–4</td>
+                    <td>2</td>
+                    <td>Open</td>
+                </tr>
+
+                <tr>
+                    <td>Another Placeholder Quest</td>
+                    <td>DM Example</td>
+                    <td>5–10</td>
+                    <td>3</td>
+                    <td>Open</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}

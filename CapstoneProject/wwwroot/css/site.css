@@ -69,9 +69,16 @@ body {
     align-items: center;
     gap: 20px; /* space between images */
 }
-
-    .OwnerImages img {
+.OwnerImages img {
         width: 150px; /* adjust as needed */
         height: auto;
-        object-fit: cover;
-    }
+        object-fit: cover;}
+.mission-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* limit to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* adds "..." at the end */
+    max-width: 120  0px; /* set your allotted width */
+    text-align: center;
+}
