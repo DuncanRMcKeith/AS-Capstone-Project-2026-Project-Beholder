@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "dq+K1/zSDUQ=",
   "success": true,
   "projectFilePath": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj",
+=======
+  "dgSpecHash": "z/tAsKb+cgg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj",
+>>>>>>> Kyle's_branch
   "expectedPackageFiles": [],
   "logs": []
 }
