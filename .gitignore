@@ -381,3 +381,7 @@ obj/
 **/bin/
 CapstoneProject/.vs/CapstoneProject/v17/DocumentLayout.backup.json
 CapstoneProject/.vs/CapstoneProject/v17/DocumentLayout.json
+CapstoneProject/obj/Debug/net8.0/CapstoneProject.AssemblyInfo.cs
+CapstoneProject/obj/Debug/net8.0/CapstoneProject.AssemblyInfoInputs.cache
+CapstoneProject/obj/Debug/net8.0/CapstoneProject.GeneratedMSBuildEditorConfig.editorconfig
+CapstoneProject/obj/Debug/net8.0/rpswa.dswa.cache.json
