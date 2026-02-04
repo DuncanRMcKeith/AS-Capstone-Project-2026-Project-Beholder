@@ -1,0 +1,237 @@
+﻿@page
+@model CapstoneProject.Pages.CharacterModel
+@{
+}
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    body {
+        padding: 18px;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .page {
+        min-height: 100vh;
+        border: 2px solid;
+        padding: 18px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header {
+        border: 1px solid;
+        text-align: center;
+        padding: 10px 0;
+        font-size: 20px;
+        margin-bottom: 18px;
+    }
+
+    .main {
+        flex: 1;
+        border: 1px solid;
+        padding: 26px;
+        box-sizing: border-box;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 26px;
+    }
+
+    .left {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .box {
+        border: 1px solid;
+        padding: 12px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .notes {
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .image {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border: 1px solid;
+        box-sizing: border-box;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .box.image-upload {
+        width: 100%;
+    }
+
+    .dice {
+        width: 100%;
+        height: 120px;
+        border: 1px solid;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    .box.notes {
+        min-height: 0;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .box.notes textarea {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        display: block;
+    }
+
+    .footer {
+        margin-top: auto;
+        border: 1px solid;
+        text-align: center;
+        padding: 10px 0;
+        box-sizing: border-box;
+    }
+</style>
+
+<div class="header">Character</div>
+<!-- Grid for chracter stats -->
+    <form method="post">
+    <div class="main">
+        <div class="grid">
+            <div class="left">
+
+                <div class="box">
+                    Character Name
+                    <input asp-for="Input.Name"
+                           placeholder="Enter your character's name"
+                           class="form-control" />
+                </div>
+
+                <div class="box">
+                    Strength
+                    <input asp-for="Input.Strength"
+                           type="number"
+                           class="form-control" />
+                           <button>Random</button>
+                </div>
+
+                <div class="box">
+                    Dexterity
+                    <input asp-for="Input.Dexterity"
+                           type="number"
+                           class="form-control" />
+                           <button>Random</button>
+                </div>
+
+                <div class="box">
+                    Constitution
+                    <input asp-for="Input.Constitution"
+                           type="number"
+                           class="form-control" />
+                           <button>Random</button>
+                </div>
+
+                <div class="box">
+                    Intelligence
+                    <input asp-for="Input.Intelligence"
+                           type="number"
+                           class="form-control" />
+                           <button>Random</button>
+                </div>
+
+                <div class="box">
+                    Wisdom
+                    <input asp-for="Input.Wisdom"
+                           type="number"
+                           class="form-control" />
+                           <button>Random</button>
+                </div>
+
+                <div class="box">
+                    Charisma
+                    <input asp-for="Input.Charisma"
+                           type="number"
+                           class="form-control" />
+                           <button>Random</button>
+                </div>
+
+                <div class="box notes">
+                    <textarea asp-for="Input.Notes"
+                              placeholder="Notes..."
+                              class="form-control"
+                              rows="5"></textarea>
+                </div>
+
+            </div>
+
+            
+            <div class="right">
+                <!-- Upload character image -->
+                <div class="box image-upload">
+                    <div class="image">
+                        <img id="CharacterPreview" alt="Character" />
+                    </div>
+
+                    <input id="CharacterImage" type="file" accept="image/*">
+                </div>
+
+                <script>
+                    document.getElementById('CharacterImage').addEventListener('change', function () {
+                      const file = this.files && this.files[0];
+                      if (!file) return;
+
+                      const img = document.getElementById('CharacterPreview');
+                      img.src = URL.createObjectURL(file);
+                      img.style.display = 'block';
+                      this.style.display = 'none';
+                    });
+                </script>
+
+                <!-- Dice roll API section -->
+                <div>
+                    <p>You will roll D6 four times, drop the lowest result and add the remaining three.</p>
+                </div>
+                <div class="dice">Dice Roll</div>
+                <button>Roll</button>
+
+            </div>
+
+        </div>
+    </div>
+    </form>
+            
+    <div class="footer">
+        <button>Cancel</button>
+        <button>Upload</button>
+    </div>
