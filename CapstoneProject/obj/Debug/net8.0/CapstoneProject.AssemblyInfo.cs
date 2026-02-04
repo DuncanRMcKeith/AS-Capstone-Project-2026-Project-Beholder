@@ -14,15 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CapstoneProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+00b69989361724e7d5e9a637c70ef0a9175b55ae")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc11b0d6bbdaf64d118f25dadc4022627c746595")]
->>>>>>> Rob_Branch
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53e1a8c1840cb8331ed295e4885c3afe40304c4d")]
->>>>>>> Kyle's_branch
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+83309f779f2251affae8107c982696c311d3cd43")]
 [assembly: System.Reflection.AssemblyProductAttribute("CapstoneProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CapstoneProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

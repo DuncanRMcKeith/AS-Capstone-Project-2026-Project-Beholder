@@ -1,41 +1,23 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj": {}
+    "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj": {}
   },
   "projects": {
-    "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj": {
+    "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj",
+        "projectUniqueName": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj",
         "projectName": "CapstoneProject",
-        "projectPath": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj",
-        "packagesPath": "C:\\Users\\blyer\\.nuget\\packages\\",
-        "outputPath": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\obj\\",
-=======
-    "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj",
-        "projectName": "CapstoneProject",
-        "projectPath": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj",
-        "packagesPath": "C:\\Users\\kjgue\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\obj\\",
->>>>>>> Kyle's_branch
+        "projectPath": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj",
+        "packagesPath": "C:\\Users\\dunca\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-<<<<<<< HEAD
-          "C:\\Users\\blyer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "C:\\Users\\kjgue\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> Kyle's_branch
+          "C:\\Users\\dunca\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -62,7 +45,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -86,11 +69,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
->>>>>>> Kyle's_branch
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

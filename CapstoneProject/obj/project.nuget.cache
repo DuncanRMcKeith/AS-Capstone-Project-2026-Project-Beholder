@@ -1,14 +1,18 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "dq+K1/zSDUQ=",
+  "dgSpecHash": "dEAcugdQ3sY=",
   "success": true,
-  "projectFilePath": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj",
-=======
-  "dgSpecHash": "z/tAsKb+cgg=",
-  "success": true,
-  "projectFilePath": "C:\\Users\\kjgue\\Documents\\GitHub\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj",
->>>>>>> Kyle's_branch
+  "projectFilePath": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Problem reading the cache file C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\CapstoneProject.csproj",
+      "targetGraphs": []
+    }
+  ]
 }
