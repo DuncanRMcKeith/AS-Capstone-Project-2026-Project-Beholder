@@ -1,6 +1,7 @@
 ﻿/* Bordered form */
 form {
     border: 3px solid #f1f1f1;
+    border-radius: 15px;
 }
 
 
@@ -61,10 +62,11 @@ span.psw {
     padding-top: 16px;
 }
 
-span.signup {
-    align-content: center;
+span.login {
+    float: right;
     padding-top: 16px;
 }
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {

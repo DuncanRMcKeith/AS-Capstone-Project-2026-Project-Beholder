@@ -1,11 +1,12 @@
 ﻿@page
-@model CapstoneProject.Pages.LoginModel
+@model CapstoneProject.Pages.SignupModel
 @{
-	ViewData["Title"] = "Login";
+	ViewData["Title"] = "Sign Up";
 }
 
+
 <head>
-	<link rel="stylesheet" href="~/css/login.css" />
+	<link rel="stylesheet" href="~/css/signup.css" />
 </head>
 
 
@@ -18,19 +19,19 @@
 		<label for="uname"><b>Username</b></label>
 		<input type="text" placeholder="Enter Username" name="uname" required/>
 
+		<label for="email"><b>Email Address</b></label>
+		<input type="text" placeholder="Enter Email Address" name="email" required />
+
 		<label for="psw"><b>Password</b></label>
 		<input type="password" placeholder="Enter Password" name="psw" required/>
 
-
-		<button type="submit">Login</button>
+		<button type="submit">Submit</button>
 	</div>
 
 	<div class="container">
 		<button class="cancelbtn">Cancel</button>
-		<span class="signup"><a href="/signup">Create Account</a></span>
-		<span class="psw"><a href="#">Forgot password?</a></span>
+		<span class="login">Already have an account? <a href="login">Log in</a></span>
 	</div>
 
 
 </form>
-

@@ -372,3 +372,12 @@ CapstoneProject/obj/Debug/net8.0/rpswa.dswa.cache.json
 CapstoneProject/obj/project.assets.json
 CapstoneProject/obj/project.nuget.cache
 CapstoneProject/obj/project.nuget.cache
+
+
+.vs/
+bin/
+obj/
+**/obj/
+**/bin/
+CapstoneProject/.vs/CapstoneProject/v17/DocumentLayout.backup.json
+CapstoneProject/.vs/CapstoneProject/v17/DocumentLayout.json
