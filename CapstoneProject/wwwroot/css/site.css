@@ -62,3 +62,23 @@ body {
 .custom-navbar .nav-link.active {
     color: #F0F0F0 !important;
 }
+.OwnerImages {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* spreads them across the line */
+    align-items: center;
+    gap: 20px; /* space between images */
+}
+.OwnerImages img {
+        width: 150px; /* adjust as needed */
+        height: auto;
+        object-fit: cover;}
+.mission-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* limit to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* adds "..." at the end */
+    max-width: 120  0px; /* set your allotted width */
+    text-align: center;
+}
