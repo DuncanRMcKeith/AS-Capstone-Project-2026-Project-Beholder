@@ -1,17 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\",
+  "WorkspaceRootPath": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\character.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\character.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\as-capstone-project-2026-project-beholder\\capstoneproject\\wwwroot\\js\\diceroll_javascript.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:wwwroot\\js\\diceroll_javascript.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,46 +18,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_Layout.cshtml.css",
-              "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml.css",
-              "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml.css",
-              "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml.css*",
-              "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml.css*",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAADkAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-02-04T17:49:31.197Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-04T17:49:13.263Z",
+              "Title": "DiceRoll_JavaScript.js",
+              "DocumentMoniker": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\wwwroot\\js\\DiceRoll_JavaScript.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\DiceRoll_JavaScript.js",
+              "ToolTip": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\wwwroot\\js\\DiceRoll_JavaScript.js",
+              "RelativeToolTip": "wwwroot\\js\\DiceRoll_JavaScript.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-02-04T19:22:14.376Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": ".gitignore",
-              "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\.gitignore",
-              "RelativeDocumentMoniker": "..\\.gitignore",
-              "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\.gitignore",
-              "RelativeToolTip": "..\\.gitignore",
-              "ViewState": "AgIAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-02-04T17:44:17.074Z",
+              "DocumentIndex": 0,
+              "Title": "Character.cshtml",
+              "DocumentMoniker": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Character.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Character.cshtml",
+              "ToolTip": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Character.cshtml",
+              "RelativeToolTip": "Pages\\Character.cshtml",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAAAJkAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-04T19:21:12.297Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             }
           ]
         }
