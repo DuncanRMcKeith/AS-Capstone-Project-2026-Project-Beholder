@@ -362,3 +362,13 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 CapstoneProject/.vs/CapstoneProject/v17/DocumentLayout.json
+CapstoneProject/obj/CapstoneProject.csproj.nuget.dgspec.json
+CapstoneProject/obj/CapstoneProject.csproj.nuget.dgspec.json
+CapstoneProject/obj/CapstoneProject.csproj.nuget.g.props
+CapstoneProject/obj/Debug/net8.0/CapstoneProject.AssemblyInfo.cs
+CapstoneProject/obj/Debug/net8.0/CapstoneProject.AssemblyInfoInputs.cache
+CapstoneProject/obj/Debug/net8.0/CapstoneProject.GeneratedMSBuildEditorConfig.editorconfig
+CapstoneProject/obj/Debug/net8.0/rpswa.dswa.cache.json
+CapstoneProject/obj/project.assets.json
+CapstoneProject/obj/project.nuget.cache
+CapstoneProject/obj/project.nuget.cache
