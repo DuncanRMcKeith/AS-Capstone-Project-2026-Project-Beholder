@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\users\\dunca\\onedrive\\desktop\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -33,8 +37,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-05T16:44:04.171Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -43,14 +60,14 @@
               "RelativeDocumentMoniker": "Pages\\Login.cshtml.cs",
               "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Login.cshtml.cs",
               "RelativeToolTip": "Pages\\Login.cshtml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAA6wB4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-04T18:56:21.545Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Login.cshtml",
               "RelativeDocumentMoniker": "Pages\\Login.cshtml",
@@ -63,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Signup.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Signup.cshtml.cs",
               "RelativeDocumentMoniker": "Pages\\Signup.cshtml.cs",
@@ -76,40 +93,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "_Layout.cshtml.css",
               "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml.css",
               "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml.css",
               "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml.css",
               "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml.css",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAADkAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAIBJwDkAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2026-02-04T17:49:31.197Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-04T17:49:13.263Z"
+              "WhenOpened": "2026-02-04T17:49:13.263Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": ".gitignore",
               "DocumentMoniker": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\.gitignore",
               "RelativeDocumentMoniker": "..\\.gitignore",
               "ToolTip": "C:\\Users\\dunca\\OneDrive\\Desktop\\AS-Capstone-Project-2026-Project-Beholder\\.gitignore",
               "RelativeToolTip": "..\\.gitignore",
-              "ViewState": "AgIAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-02-04T17:44:17.074Z"
+              "WhenOpened": "2026-02-04T17:44:17.074Z",
+              "EditorCaption": ""
             }
           ]
         }
