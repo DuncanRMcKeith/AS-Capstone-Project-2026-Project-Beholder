@@ -130,9 +130,9 @@
 </style>
 
 <div class="header">Character</div>
-<!-- Grid for chracter stats -->
+
 <!-- Left Side of Screen -->
-    <form method="post">
+<form id="CharacterForm" method="post" enctype="multipart/form-data">
     <div class="main">
         <div class="grid">
             <div class="left">
@@ -146,44 +146,32 @@
 
                 <div class="box">
                     Strength
-                    <input asp-for="Input.Strength"
-                           type="number"
-                           class="form-control" />
+                    <input asp-for="Input.Strength" type="number" class="form-control" />
                 </div>
 
                 <div class="box">
                     Dexterity
-                    <input asp-for="Input.Dexterity"
-                           type="number"
-                           class="form-control" />
+                    <input asp-for="Input.Dexterity" type="number" class="form-control" />
                 </div>
 
                 <div class="box">
                     Constitution
-                    <input asp-for="Input.Constitution"
-                           type="number"
-                           class="form-control" />
+                    <input asp-for="Input.Constitution" type="number" class="form-control" />
                 </div>
 
                 <div class="box">
                     Intelligence
-                    <input asp-for="Input.Intelligence"
-                           type="number"
-                           class="form-control" />
+                    <input asp-for="Input.Intelligence" type="number" class="form-control" />
                 </div>
 
                 <div class="box">
                     Wisdom
-                    <input asp-for="Input.Wisdom"
-                           type="number"
-                           class="form-control" />
+                    <input asp-for="Input.Wisdom" type="number" class="form-control" />
                 </div>
 
                 <div class="box">
                     Charisma
-                    <input asp-for="Input.Charisma"
-                           type="number"
-                           class="form-control" />
+                    <input asp-for="Input.Charisma" type="number" class="form-control" />
                 </div>
 
                 <div class="box notes">
@@ -194,20 +182,18 @@
                 </div>
 
             </div>
-
             <!-- Right Side of Screen -->
-
             <div class="right">
-                <!-- Upload character image -->
+
+                <!-- Image upload -->
                 <div class="box image-upload">
                     <div class="image">
                         <img id="CharacterPreview" alt="Character" />
                     </div>
 
-                    <input id="CharacterImage" type="file" accept="image/*">
+                    <input id="CharacterImage" name="CharacterImage" type="file" accept="image/*">
                 </div>
 
-                <!-- Upload and store character image -->
                 <script>
                     document.getElementById('CharacterImage').addEventListener('change', function () {
                       const file = this.files && this.files[0];
@@ -220,30 +206,27 @@
                     });
                 </script>
 
-                <!-- Dice roll Instructions -->
-                <div>
-                    <p>You will roll D6 four times, drop the lowest result and add the remaining three.</p>
+                <link rel="stylesheet" href="~/css/DiceRoll.css" asp-append-version="true" />
+                <!-- Dice Roll -->
+                <div id="diceRow">
+                    <div class="die"></div>
+                    <div class="die"></div>
+                    <div class="die"></div>
+                    <div class="die"></div>
                 </div>
 
-                <!-- Dice roll using DiceRoll_JavaScript.JS -->
-                <div id="diceContainer" class="dice-row">
-                    <div class="dice-cube"></div>
-                    <div class="dice-cube"></div>
-                    <div class="dice-cube"></div>
-                    <div class="dice-cube"></div>
-                </div>
+                <div id="resultBox">Total:</div>
 
-                <button id="rollBtn"  type="button">Roll Dice</button>
+                <button id="rollBtn" type="button">Roll Dice</button>
 
-                <link rel="stylesheet" href="~/css/DiceRoll.css" />
                 <script src="~/js/DiceRoll.js" asp-append-version="true"></script>
             </div>
         </div>
     </div>
+</form>
 
-    </form>
-            
-    <div class="footer">
-        <button>Cancel</button>
-        <button>Upload</button>
-    </div>
+<div class="footer">
+
+    <button type="button">Cancel</button>
+    <button type="submit" form="CharacterForm">Upload</button>
+</div>

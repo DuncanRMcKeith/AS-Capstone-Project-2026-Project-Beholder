@@ -1,41 +1,63 @@
 ﻿document.addEventListener("DOMContentLoaded", () => {
-    const cubes = document.querySelectorAll(".dice-cube");
+
+    const dice = document.querySelectorAll(".die");
     const btn = document.getElementById("rollBtn");
-    if (!cubes.length || !btn) return;
+    const resultBox = document.getElementById("resultBox");
 
-    cubes.forEach(c => c.innerHTML = buildDiceFaces());
-    btn.addEventListener("click", () => cubes.forEach(c => rollDice(c)));
+    dice.forEach(d => createFace(d));
+
+    btn.addEventListener("click", () => {
+
+        const interval = setInterval(() => {
+            dice.forEach(d => setFace(d, roll()));
+        }, 70);
+
+        setTimeout(() => {
+            clearInterval(interval);
+
+            let values = [];
+
+            dice.forEach((d, i) => {
+                setTimeout(() => {
+                    const value = roll();
+                    setFace(d, value);
+                    values.push(value);
+
+                    if (values.length === dice.length) {
+                        const total = values.reduce((a, b) => a + b, 0);
+                        const lowest = Math.min(...values);
+                        resultBox.textContent = "Total: " + (total - lowest);
+                    }
+
+                }, i * 180);
+            });
+
+        }, 700);
+
+    });
+
 });
-
-function buildDiceFaces() {
-    const names = ["one", "two", "three", "four", "five", "six"];
-    return names.map(name => `
-    <div class="dice-face ${name}">
-      ${[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => `<span class="pip p${n}"></span>`).join("")}
-    </div>
-  `).join("");
+function roll() {
+    return Math.floor(Math.random() * 6) + 1;
 }
-
-function rollDice(cube) {
-    const value = Math.floor(Math.random() * 6) + 1;
-
-    const spinX = 360 * (Math.floor(Math.random() * 3) + 2);
-    const spinY = 360 * (Math.floor(Math.random() * 3) + 2);
-
-    cube.style.transform = `rotateX(${spinX}deg) rotateY(${spinY}deg)`;
-
-    cube.addEventListener("transitionend", () => {
-        cube.style.transform = getFaceTransform(value);
-    }, { once: true });
-}
-
-function getFaceTransform(value) {
-    switch (value) {
-        case 1: return "rotateX(0deg) rotateY(0deg)";
-        case 2: return "rotateX(0deg) rotateY(-90deg)";
-        case 3: return "rotateX(0deg) rotateY(180deg)";
-        case 4: return "rotateX(0deg) rotateY(90deg)";
-        case 5: return "rotateX(-90deg) rotateY(0deg)";
-        case 6: return "rotateX(90deg) rotateY(0deg)";
+function createFace(die) {
+    die.innerHTML = "";
+    for (let i = 0; i < 9; i++) {
+        const dot = document.createElement("div");
+        dot.className = "pip";
+        die.appendChild(dot);
     }
+}
+function setFace(die, value) {
+    const map = {
+        1: [4],
+        2: [0, 8],
+        3: [0, 4, 8],
+        4: [0, 2, 6, 8],
+        5: [0, 2, 4, 6, 8],
+        6: [0, 2, 3, 5, 6, 8]
+    };
+
+    die.querySelectorAll(".pip").forEach(p => p.classList.remove("show"));
+    map[value].forEach(i => die.children[i].classList.add("show"));
 }

@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Data.SqlClient;
 
 namespace CapstoneProject.Pages
 {
@@ -20,7 +22,6 @@ namespace CapstoneProject.Pages
             public int Intelligence { get; set; } = 0;
             public int Wisdom { get; set; } = 0;
             public int Charisma { get; set; } = 0;
-
             public string Notes { get; set; } = "";
         }
     }
