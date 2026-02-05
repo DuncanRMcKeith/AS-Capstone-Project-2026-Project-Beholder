@@ -1,0 +1,96 @@
+﻿
+/* container gives perspective (3D depth) */
+#diceContainer {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    perspective: 800px;
+}
+
+/* the cube element */
+.dice-cube {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform-origin: center;
+    transition: transform 900ms cubic-bezier(.2,.7,.2,1);
+}
+
+    /* each face */
+    .dice-cube .dice-face {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+        border: 2px solid #111;
+        border-radius: 14px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        padding: 10px;
+        box-sizing: border-box;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        overflow: hidden;
+    }
+
+    /* dots */
+    .dice-cube .pip {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #111;
+        align-self: center;
+        justify-self: center;
+        opacity: 0;
+    }
+
+.dice-face.one {
+    transform: rotateY( 0deg) translateZ(35px);
+}
+
+.dice-face.two {
+    transform: rotateY( 90deg) translateZ(35px);
+}
+
+.dice-face.three {
+    transform: rotateY(180deg) translateZ(35px);
+}
+
+.dice-face.four {
+    transform: rotateY(-90deg) translateZ(35px);
+}
+
+.dice-face.five {
+    transform: rotateX( 90deg) translateZ(35px);
+}
+
+.dice-face.six {
+    transform: rotateX(-90deg) translateZ(35px);
+}
+
+/* your pip rules need .dice-face now */
+.dice-face.one .pip.p5 {
+    opacity: 1;
+}
+
+.dice-face.two .pip.p1, .dice-face.two .pip.p9 {
+    opacity: 1;
+}
+
+.dice-face.three .pip.p1, .dice-face.three .pip.p5, .dice-face.three .pip.p9 {
+    opacity: 1;
+}
+
+.dice-face.four .pip.p1, .dice-face.four .pip.p3, .dice-face.four .pip.p7, .dice-face.four .pip.p9 {
+    opacity: 1;
+}
+
+.dice-face.five .pip.p1, .dice-face.five .pip.p3, .dice-face.five .pip.p5, .dice-face.five .pip.p7, .dice-face.five .pip.p9 {
+    opacity: 1;
+}
+
+.dice-face.six .pip.p1, .dice-face.six .pip.p3, .dice-face.six .pip.p4, .dice-face.six .pip.p6, .dice-face.six .pip.p7, .dice-face.six .pip.p9 {
+    opacity: 1;
+}

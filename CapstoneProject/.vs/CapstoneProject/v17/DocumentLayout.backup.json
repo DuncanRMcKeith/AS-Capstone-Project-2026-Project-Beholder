@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\as-capstone-project-2026-project-beholder\\capstoneproject\\wwwroot\\js\\diceroll.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:wwwroot\\js\\diceroll.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\as-capstone-project-2026-project-beholder\\capstoneproject\\pages\\character.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:pages\\character.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\as-capstone-project-2026-project-beholder\\capstoneproject\\wwwroot\\js\\diceroll_javascript.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:wwwroot\\js\\diceroll_javascript.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|c:\\as-capstone-project-2026-project-beholder\\capstoneproject\\wwwroot\\css\\diceroll.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{49FD3F04-85E8-4487-9AE3-FF984AB34CD4}|CapstoneProject.csproj|solutionrelative:wwwroot\\css\\diceroll.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,25 +34,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DiceRoll_JavaScript.js",
-              "DocumentMoniker": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\wwwroot\\js\\DiceRoll_JavaScript.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\DiceRoll_JavaScript.js",
-              "ToolTip": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\wwwroot\\js\\DiceRoll_JavaScript.js",
-              "RelativeToolTip": "wwwroot\\js\\DiceRoll_JavaScript.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-02-04T19:22:14.376Z"
+              "DocumentIndex": 2,
+              "Title": "DiceRoll.css",
+              "DocumentMoniker": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\wwwroot\\css\\DiceRoll.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\DiceRoll.css",
+              "ToolTip": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\wwwroot\\css\\DiceRoll.css",
+              "RelativeToolTip": "wwwroot\\css\\DiceRoll.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-02-05T16:56:14.546Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "DiceRoll.js",
+              "DocumentMoniker": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\wwwroot\\js\\DiceRoll.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\DiceRoll.js",
+              "ToolTip": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\wwwroot\\js\\DiceRoll.js",
+              "RelativeToolTip": "wwwroot\\js\\DiceRoll.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-02-04T19:22:14.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Character.cshtml",
               "DocumentMoniker": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Character.cshtml",
               "RelativeDocumentMoniker": "Pages\\Character.cshtml",
-              "ToolTip": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Character.cshtml*",
-              "RelativeToolTip": "Pages\\Character.cshtml*",
-              "ViewState": "AgIAALQAAAAAAAAAAAAAAJEAAAAyAAAAAAAAAA==",
+              "ToolTip": "C:\\AS-Capstone-Project-2026-Project-Beholder\\CapstoneProject\\Pages\\Character.cshtml",
+              "RelativeToolTip": "Pages\\Character.cshtml",
+              "ViewState": "AgIAANsAAAAAAAAAAAAAAOgAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-02-04T19:21:12.297Z",
               "EditorCaption": ""

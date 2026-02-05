@@ -92,14 +92,19 @@
         width: 100%;
     }
 
-    .dice {
-        width: 100%;
+    #diceContainer {
+        margin-top: 20px;
+    }
+
+    #dice {
+        width: 120px;
         height: 120px;
-        border: 1px solid;
+        border: 3px solid black;
+        font-size: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-sizing: border-box;
+        background: white;
     }
 
     .box.notes {
@@ -221,9 +226,17 @@
                 </div>
 
                 <!-- Dice roll using DiceRoll_JavaScript.JS -->
-                <div class="dice">Dice Roll</div>
-                <button>Roll</button>
+                <div id="diceContainer" class="dice-row">
+                    <div class="dice-cube"></div>
+                    <div class="dice-cube"></div>
+                    <div class="dice-cube"></div>
+                    <div class="dice-cube"></div>
+                </div>
 
+                <button id="rollBtn"  type="button">Roll Dice</button>
+
+                <link rel="stylesheet" href="~/css/DiceRoll.css" />
+                <script src="~/js/DiceRoll.js" asp-append-version="true"></script>
             </div>
         </div>
     </div>
