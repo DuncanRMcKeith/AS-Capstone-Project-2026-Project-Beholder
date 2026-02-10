@@ -138,9 +138,35 @@
             <div class="left">
 
                 <div class="box">
-                    Character Name
-                    <input asp-for="Input.Name"
-                           placeholder="Enter your character's name"
+                    Character First Name
+                    <input asp-for="Input.FName"
+                           placeholder="Enter your character's first name"
+                           class="form-control" />
+                </div>
+
+                <div class="box">
+                    Character Last Name
+                    <input asp-for="Input.LName"
+                           placeholder="Enter your character's last name"
+                           class="form-control" />
+                </div>
+
+                <div class="box">
+                    Title
+                    <input asp-for="Input.Title"
+                           placeholder="Enter your character's title"
+                           class="form-control" />
+                </div>
+
+                <div class="box">
+                    Level
+                    <input asp-for="Input.Level" type="number" class="form-control" />
+                </div>
+
+                <div class="box">
+                    Character Class
+                    <input asp-for="Input.CharacterClass"
+                           placeholder="Enter your character's class"
                            class="form-control" />
                 </div>
 
@@ -193,7 +219,7 @@
 
                     <input id="CharacterImage" name="CharacterImage" type="file" accept="image/*">
                 </div>
-
+                
                 <script>
                     document.getElementById('CharacterImage').addEventListener('change', function () {
                       const file = this.files && this.files[0];
@@ -223,10 +249,10 @@
             </div>
         </div>
     </div>
+    <!-- Form Buttons -->
+    <div class="footer">
+        <button type="button" onclick="history.back()">Cancel</button>
+        <button type="submit">Upload</button>
+    </div>
+
 </form>
-
-<div class="footer">
-
-    <button type="button">Cancel</button>
-    <button type="submit" form="CharacterForm">Upload</button>
-</div>
