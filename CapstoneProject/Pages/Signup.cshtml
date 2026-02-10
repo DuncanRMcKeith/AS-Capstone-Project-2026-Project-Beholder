@@ -16,14 +16,14 @@
 	</div>
 
 	<div class="container">
-		<label for="uname"><b>Username</b></label>
-		<input type="text" placeholder="Enter Username" name="uname" required/>
+		<label asp-for="user.Username"><b>Username</b></label>
+		<input type="text" placeholder="Enter Username" asp-for="user.Username"/>
 
-		<label for="email"><b>Email Address</b></label>
-		<input type="text" placeholder="Enter Email Address" name="email" required />
+		<label asp-for="user.Email"><b>Email Address</b></label>
+		<input type="text" placeholder="Enter Email Address" asp-for="user.Email"/>
 
-		<label for="psw"><b>Password</b></label>
-		<input type="password" placeholder="Enter Password" name="psw" required/>
+		<label asp-for="user.Password"><b>Password</b></label>
+		<input type="password" placeholder="Enter Password" asp-for="user.Password"/>
 
 		<button type="submit">Submit</button>
 	</div>
@@ -35,3 +35,18 @@
 
 
 </form>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (Model.user != null && Model.user.Feedback != null)
+{
+	<h1>Results</h1>
+	<p>@Model.user.Feedback</p>
+	 <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Login Failed',
+            text: '@Model.user.Feedback'
+        });
+    </script>
+}
