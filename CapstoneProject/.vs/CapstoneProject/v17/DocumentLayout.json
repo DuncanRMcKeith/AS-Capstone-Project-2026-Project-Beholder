@@ -58,8 +58,7 @@
               "RelativeToolTip": "Pages\\Character.cshtml",
               "ViewState": "AgIAAHsAAAAAAAAAAAAAAKYAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-04T19:21:12.297Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-04T19:21:12.297Z"
             },
             {
               "$type": "Document",
@@ -71,8 +70,7 @@
               "RelativeToolTip": "Models\\CharacterModelcs.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T23:05:27.042Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T23:05:27.042Z"
             },
             {
               "$type": "Document",
@@ -97,8 +95,7 @@
               "RelativeToolTip": "Pages\\Announcements.cshtml",
               "ViewState": "AgIAAEcAAAAAAAAAAAAAAFQAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-05T20:10:08.825Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-05T20:10:08.825Z"
             },
             {
               "$type": "Document",
@@ -110,8 +107,7 @@
               "RelativeToolTip": "wwwroot\\css\\DiceRoll.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-02-05T16:56:14.546Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-05T16:56:14.546Z"
             },
             {
               "$type": "Document",
@@ -123,8 +119,7 @@
               "RelativeToolTip": "wwwroot\\js\\DiceRoll.js",
               "ViewState": "AgIAACQAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-02-04T19:22:14.376Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-04T19:22:14.376Z"
             },
             {
               "$type": "Document",
@@ -136,8 +131,7 @@
               "RelativeToolTip": "Pages\\Announcements.cshtml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T20:10:08.638Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-05T20:10:08.638Z"
             }
           ]
         }

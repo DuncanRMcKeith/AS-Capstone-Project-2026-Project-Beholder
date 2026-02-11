@@ -7,7 +7,6 @@
     dice.forEach(d => createFace(d));
 
     btn.addEventListener("click", () => {
-
         const interval = setInterval(() => {
             dice.forEach(d => setFace(d, roll()));
         }, 70);
@@ -33,9 +32,7 @@
             });
 
         }, 700);
-
-    });
-
+    })
 });
 function roll() {
     return Math.floor(Math.random() * 6) + 1;
