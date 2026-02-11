@@ -26,6 +26,6 @@ namespace CapstoneProject.Models
         [ValidateNever]
         public string Feedback { get; set; }
 
-        public string Profile_Description { get; set; } = "This user has not added a project description yet.";
+        public string User_Description { get; set; } = "This user has not added a project description yet.";
     }
 }

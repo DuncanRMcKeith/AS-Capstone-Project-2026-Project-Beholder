@@ -16,8 +16,12 @@
 	<img class="profile-pic" src="https://placehold.co/150x150" alt="Profile picture"/>
 
 	<div class="profile-text">
-		<p class="text-center" id="Username"><h1>Dbaaaj</h1></p>
-		<p class="text-center" id = "Profile-Description">Hello! i'm Dbaaaj, a beginner DND player. welcome to my profile</p>
+			<h1 class="text-center">@Model.CurrentUser.Username</h1>
+
+			<p class="text-center" id="User-Description">
+				@Model.CurrentUser.User_Description
+			</p>
+
 	</div>
 </div>
 	<br />

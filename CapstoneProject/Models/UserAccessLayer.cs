@@ -51,5 +51,44 @@ namespace CapstoneProject.Models
             }
 
         }
+        public UserModel GetUserByUsername(string username)
+        {
+            UserModel user = null;
+            
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT * FROM Users WHERE Username = @username";
+                try
+                {
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.AddWithValue("@username", username);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                user = new UserModel
+                                {
+                                    User_ID = Convert.ToInt32(reader["User_ID"]),
+                                    Username = reader["Username"].ToString(),
+                                    Email = reader["Email"].ToString(),
+                                    Password = reader["Password"].ToString(),
+                                    User_Description = reader["User_Description"].ToString()
+                                };
+                            }
+                        }
+                        connection.Close();
+                    }
+                }
+                catch (Exception err)
+                {
+                    Console.WriteLine("ERROR: " + err.Message);
+
+                }
+            }
+            return user;
+        }
     }
 }
