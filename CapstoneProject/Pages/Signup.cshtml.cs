@@ -1,21 +1,27 @@
 using CapstoneProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Data.SqlClient;
 
 namespace CapstoneProject.Pages
 {
+
+    
+
     public class SignupModel : PageModel
     {
-        [BindProperty]
-        public UserModel? user { get; set; }
+        private readonly UserAccessLayer _userAccessLayer;
 
-        public readonly IConfiguration _configuration;
-
-        public SignupModel(IConfiguration configuration)
+        public SignupModel(UserAccessLayer userAccessLayer)
         {
-            _configuration = configuration;
-
+            _userAccessLayer = userAccessLayer;
         }
+
+
+        [BindProperty]
+        public UserModel? user { get; set; } = new UserModel();
+
+
 
 
         public void OnGet()
@@ -35,13 +41,44 @@ namespace CapstoneProject.Pages
             }
             else
             {
-                //bueno
-                if(user != null)
+                try
                 {
-                    UserAccessLayer factory = new UserAccessLayer(_configuration);
-                    factory.create(user);
+                    _userAccessLayer.create(user);
+                    temp = Page();
+                    //temp = RedirectToPage("Login");
+                    TempData["Signedup"] = "User has signed up";
+                }     
+                catch (SqlException ex)
+                {
+                    if(ex.Number == 2627 || ex.Number == 2601) //2627 and 2601 are errors generated when the UNIQUE quality in an SQL table isn't met
+                    {
+                        string msg = ex.Message;
+
+                        //check to see if its the username or the email thats throwing a tantrum
+
+                        if (msg.Contains("UQ_Users_Email"))
+                        {
+                            ModelState.AddModelError("", "Email is already taken.");
+                            temp = Page();
+                        }
+
+                        else if (msg.Contains("UQ__Users__Username"))
+                        {
+                            ModelState.AddModelError("", "Username is already taken.");
+                            temp = Page();
+                        }
+
+                        else
+                        {
+                            temp = Page();
+                            ModelState.AddModelError("", "An unexpected error has occured, please try again");
+                        }
+                    }
+                    else
+                    {
+                        throw; // smth else went wrong
+                    }
                 }
-                temp = Page();
             }
             return temp;
 

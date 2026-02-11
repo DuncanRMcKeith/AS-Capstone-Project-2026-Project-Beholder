@@ -13,6 +13,7 @@
 <form method="post">
 	<div class="imgcontainer text-center">
 		<h1>Welcome!</h1>
+		<h2>Sign Up</h2>
 	</div>
 
 	<div class="container">
@@ -25,28 +26,62 @@
 		<label asp-for="user.Password"><b>Password</b></label>
 		<input type="password" placeholder="Enter Password" asp-for="user.Password"/>
 
+		<span asp-validation-summary="All"></span>
+
 		<button type="submit">Submit</button>
 	</div>
 
-	<div class="container">
-		<button class="cancelbtn">Cancel</button>
-		<span class="login">Already have an account? <a href="login">Log in</a></span>
-	</div>
+	
 
 
 </form>
+<div class="container">
+	<button class="cancelbtn" onclick="window.location.href='/'">Cancel</button>
+	<span class="login">Already have an account? <a href="login">Log in</a></span>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-@if (Model.user != null && Model.user.Feedback != null)
-{
-	<h1>Results</h1>
-	<p>@Model.user.Feedback</p>
-	 <script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Login Failed',
-            text: '@Model.user.Feedback'
-        });
-    </script>
+@section Scripts {
+	<script>
+		@if (!ModelState.IsValid)
+		{
+			<text>
+			Swal.fire({
+			background: '#663e3e',
+			color: '#F0F0F0',
+			icon: 'error',
+			iconColor: '#FF4500D',
+			confirmButtonColor: '#004D61',
+			title: 'Login Failed',
+			text: '@string.Join(" ", ViewData.ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage))'
+			});
+			</text>
+		}
+
+		@if (TempData["Signedup"] != null)
+		{
+			<text>
+			Swal.fire({
+			background: '#3E5641',
+			color: '#FFFFFF',
+			title: "Success!",
+			icon: "success",
+			
+			html: `
+			Your account has been successfully created! click the button below to log in
+			`,
+			showCloseButton: false,
+			focusConfirm: true,
+			confirmButtonColor: '#004D61',
+			confirmButtonText: `
+			Log In
+			`
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				window.location.replace('/login');;
+			  } 
+			});</text>
+		}
+	</script>
 }
