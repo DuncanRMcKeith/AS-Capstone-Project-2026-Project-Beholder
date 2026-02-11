@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using MySql.Data.MySqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace CapstoneProject.Pages
 {
@@ -14,10 +14,10 @@ namespace CapstoneProject.Pages
         }
 
         [BindProperty]
-        public string Username { get; set; }
+        public string uname { get; set; }
 
         [BindProperty]
-        public string Password { get; set; }
+        public string psw { get; set; }
 
         public string ErrorMessage { get; set; }
 
@@ -27,13 +27,13 @@ namespace CapstoneProject.Pages
 
         public IActionResult OnPost()
         {
-            using var conn = new MySqlConnection(_connectionString);
+            using var conn = new SqlConnection(_connectionString);
             conn.Open();
 
-            string sql = "SELECT password FROM users WHERE username = @username";
+            string sql = "SELECT Password FROM Users WHERE Username = @username";
 
-            using var cmd = new MySqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@username", Username);
+            using var cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@username", uname);
 
             var result = cmd.ExecuteScalar();
 
@@ -45,14 +45,14 @@ namespace CapstoneProject.Pages
 
             string storedPassword = result.ToString();
 
-            if (storedPassword != Password)
+            if (storedPassword != psw)
             {
                 ErrorMessage = "Incorrect password";
                 return Page();
             }
 
             HttpContext.Session.SetString("LoggedIn", "true");
-            HttpContext.Session.SetString("Username", Username);
+            HttpContext.Session.SetString("Username", uname);
 
             return RedirectToPage("/Index");
         }

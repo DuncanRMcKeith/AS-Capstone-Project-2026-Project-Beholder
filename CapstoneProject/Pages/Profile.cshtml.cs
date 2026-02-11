@@ -5,8 +5,14 @@ namespace CapstoneProject.Pages
 {
     public class Index1Model : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            var loggedIn = HttpContext.Session.GetString("LoggedIn");
+
+            if (loggedIn != "true")
+                return RedirectToPage("/Index");
+
+            return Page();
         }
     }
 }
