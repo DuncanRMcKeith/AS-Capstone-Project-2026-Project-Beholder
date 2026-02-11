@@ -362,3 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 CapstoneProject/.vs/CapstoneProject/v17/DocumentLayout.json
+CapstoneProject/.vs/CapstoneProject/v17/DocumentLayout.backup.json
+CapstoneProject/.vs/CapstoneProject/v17/DocumentLayout.json
