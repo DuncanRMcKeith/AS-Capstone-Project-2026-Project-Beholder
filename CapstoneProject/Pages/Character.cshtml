@@ -92,14 +92,19 @@
         width: 100%;
     }
 
-    .dice {
-        width: 100%;
+    #diceContainer {
+        margin-top: 20px;
+    }
+
+    #dice {
+        width: 120px;
         height: 120px;
-        border: 1px solid;
+        border: 3px solid black;
+        font-size: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-sizing: border-box;
+        background: white;
     }
 
     .box.notes {
@@ -125,65 +130,74 @@
 </style>
 
 <div class="header">Character</div>
-<!-- Grid for chracter stats -->
-    <form method="post">
+
+<!-- Left Side of Screen -->
+<form id="CharacterForm" method="post" enctype="multipart/form-data">
     <div class="main">
         <div class="grid">
             <div class="left">
 
                 <div class="box">
-                    Character Name
-                    <input asp-for="Input.Name"
-                           placeholder="Enter your character's name"
+                    Character First Name
+                    <input asp-for="Input.FName"
+                           placeholder="Enter your character's first name"
+                           class="form-control" />
+                </div>
+
+                <div class="box">
+                    Character Last Name
+                    <input asp-for="Input.LName"
+                           placeholder="Enter your character's last name"
+                           class="form-control" />
+                </div>
+
+                <div class="box">
+                    Title
+                    <input asp-for="Input.Title"
+                           placeholder="Enter your character's title"
+                           class="form-control" />
+                </div>
+
+                <div class="box">
+                    Level
+                    <input asp-for="Input.Level" type="number" class="form-control" />
+                </div>
+
+                <div class="box">
+                    Character Class
+                    <input asp-for="Input.CharacterClass"
+                           placeholder="Enter your character's class"
                            class="form-control" />
                 </div>
 
                 <div class="box">
                     Strength
-                    <input asp-for="Input.Strength"
-                           type="number"
-                           class="form-control" />
-                           <button>Random</button>
+                    <input asp-for="Input.Strength" type="number" class="form-control" />
                 </div>
 
                 <div class="box">
                     Dexterity
-                    <input asp-for="Input.Dexterity"
-                           type="number"
-                           class="form-control" />
-                           <button>Random</button>
+                    <input asp-for="Input.Dexterity" type="number" class="form-control" />
                 </div>
 
                 <div class="box">
                     Constitution
-                    <input asp-for="Input.Constitution"
-                           type="number"
-                           class="form-control" />
-                           <button>Random</button>
+                    <input asp-for="Input.Constitution" type="number" class="form-control" />
                 </div>
 
                 <div class="box">
                     Intelligence
-                    <input asp-for="Input.Intelligence"
-                           type="number"
-                           class="form-control" />
-                           <button>Random</button>
+                    <input asp-for="Input.Intelligence" type="number" class="form-control" />
                 </div>
 
                 <div class="box">
                     Wisdom
-                    <input asp-for="Input.Wisdom"
-                           type="number"
-                           class="form-control" />
-                           <button>Random</button>
+                    <input asp-for="Input.Wisdom" type="number" class="form-control" />
                 </div>
 
                 <div class="box">
                     Charisma
-                    <input asp-for="Input.Charisma"
-                           type="number"
-                           class="form-control" />
-                           <button>Random</button>
+                    <input asp-for="Input.Charisma" type="number" class="form-control" />
                 </div>
 
                 <div class="box notes">
@@ -194,18 +208,18 @@
                 </div>
 
             </div>
-
-            
+            <!-- Right Side of Screen -->
             <div class="right">
-                <!-- Upload character image -->
+
+                <!-- Image upload -->
                 <div class="box image-upload">
                     <div class="image">
                         <img id="CharacterPreview" alt="Character" />
                     </div>
 
-                    <input id="CharacterImage" type="file" accept="image/*">
+                    <input id="CharacterImage" name="CharacterImage" type="file" accept="image/*">
                 </div>
-
+                
                 <script>
                     document.getElementById('CharacterImage').addEventListener('change', function () {
                       const file = this.files && this.files[0];
@@ -218,20 +232,27 @@
                     });
                 </script>
 
-                <!-- Dice roll API section -->
-                <div>
-                    <p>You will roll D6 four times, drop the lowest result and add the remaining three.</p>
+                <link rel="stylesheet" href="~/css/DiceRoll.css" asp-append-version="true" />
+                <!-- Dice Roll -->
+                <div id="diceRow">
+                    <div class="die"></div>
+                    <div class="die"></div>
+                    <div class="die"></div>
+                    <div class="die"></div>
                 </div>
-                <div class="dice">Dice Roll</div>
-                <button>Roll</button>
 
+                <div id="resultBox">Total:</div>
+
+                <button id="rollBtn" type="button">Roll Dice</button>
+
+                <script src="~/js/DiceRoll.js" asp-append-version="true"></script>
             </div>
-
         </div>
     </div>
-    </form>
-            
+    <!-- Form Buttons -->
     <div class="footer">
-        <button>Cancel</button>
-        <button>Upload</button>
+        <button type="button" onclick="history.back()">Cancel</button>
+        <button type="submit">Upload</button>
     </div>
+
+</form>
