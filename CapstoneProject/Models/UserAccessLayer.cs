@@ -58,7 +58,7 @@ namespace CapstoneProject.Models
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string sql = "INSERT INTO Users (Username, Email, Password, ProfilePicture, Created_Date, User_Description) VALUES (@user, @email, @password, 'default.png', GETDATE()), 'Hello!'";
+                string sql = "INSERT INTO Users (Username, Email, Password, ProfilePicture, Created_Date) VALUES (@user, @email, @password, 'default.png', GETDATE())";
 
 
                 

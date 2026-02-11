@@ -1,0 +1,18 @@
+﻿namespace CapstoneProject.Models
+{
+    public class CharacterModel
+    {
+        public string FName { get; set; } = "";
+        public string LName { get; set; } = "";
+        public string Title { get; set; } = "";
+        public int Level { get; set; } = 0;
+        public string CharacterClass { get; set; } = "";
+        public int Strength { get; set; } = 0;
+        public int Dexterity { get; set; } = 0;
+        public int Constitution { get; set; } = 0;
+        public int Intelligence { get; set; } = 0;
+        public int Wisdom { get; set; } = 0;
+        public int Charisma { get; set; } = 0;
+        public string Notes { get; set; } = "";
+    }
+}
