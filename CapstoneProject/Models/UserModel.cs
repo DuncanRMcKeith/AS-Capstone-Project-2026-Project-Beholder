@@ -23,9 +23,9 @@ namespace CapstoneProject.Models
         [StringLength(100, MinimumLength = 8, ErrorMessage = "Password must be at least 8 characters long.")]
         [Display(Name = "Password")]
         public string Password { get; set; }
-
         [ValidateNever]
         public string Feedback { get; set; }
 
+        public string Profile_Description { get; set; } = "This user has not added a project description yet.";
     }
 }
