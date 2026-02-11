@@ -1,6 +1,7 @@
 ﻿/* Bordered form */
 form {
     border: 3px solid #f1f1f1;
+    border-radius: 15px;
 }
 
 
@@ -16,13 +17,14 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
-    background-color: #04AA6D;
+    background-color: #004D61;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 100%;
+    border-radius: 10px;
 }
 
     /* Add a hover effect for buttons */
@@ -34,7 +36,7 @@ button {
 .cancelbtn {
     width: auto;
     padding: 10px 18px;
-    background-color: #f44336;
+    background-color: #DAA520;
 }
 
 /* Center the avatar image inside this container */
@@ -60,6 +62,10 @@ span.psw {
     padding-top: 16px;
 }
 
+span.signup {
+    align-content: center;
+    padding-top: 16px;
+}
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {

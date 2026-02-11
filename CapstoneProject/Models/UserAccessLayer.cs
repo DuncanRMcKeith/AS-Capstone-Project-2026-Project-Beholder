@@ -7,6 +7,7 @@ using CapstoneProject.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 
 namespace CapstoneProject.Models
 {
@@ -24,37 +25,64 @@ namespace CapstoneProject.Models
 
         public void create(UserModel user)
         {
+
+            //PASSWORD HASHING
+            var hasher = new PasswordHasher<UserModel>();
+
+            //hash password
+            user.Password = hasher.HashPassword(user, user.Password);
+
+
+            /*
+             Stuff to decrypt the password
+
+            var hasher = new PasswordHasher<UserModel>();
+
+            var result = hasher.VerifyHashedPassword(
+                userFromDb,                 // the DB user
+                userFromDb.Password,        // hashed password from DB
+                loginInputPassword          // plain text password from login form
+            );
+
+            if (result == PasswordVerificationResult.Success)
+            {
+                // Password correct
+            }
+            else
+            {
+                // Invalid login
+            }
+             
+             
+             */
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string sql = "INSERT INTO Users (Username, Email, Password, ProfilePicture, Created_Date) VALUES (@user, @email, @password, 'default.png', GETDATE())";
+                string sql = "INSERT INTO Users (Username, Email, Password, ProfilePicture, Created_Date, User_Description) VALUES (@user, @email, @password, 'default.png', GETDATE()), 'Hello!'";
 
 
-                try
-                {
+                
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.CommandType = CommandType.Text;
                         command.Parameters.AddWithValue("@user", user.Username);
-                        command.Parameters.AddWithValue("@email", user.Email);
+                        command.Parameters.AddWithValue("@email", user.Email.Trim().ToLower());
                         command.Parameters.AddWithValue("@password", user.Password);
 
                         connection.Open();
-                        user.Feedback = command.ExecuteNonQuery().ToString() + "Success!";
+                        command.ExecuteNonQuery();
                         connection.Close();
 
                     }
-                }
-                catch (Exception err)
-                {
-                    user.Feedback = "ERROR: " + err.Message;
-                }
             }
 
         }
+
+
         public UserModel GetUserByUsername(string username)
         {
             UserModel user = null;
-            
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string sql = "SELECT * FROM Users WHERE Username = @username";
@@ -69,13 +97,13 @@ namespace CapstoneProject.Models
                         {
                             if (reader.Read())
                             {
-                                user = new UserModel
+                                user = new UserModel();
                                 {
-                                    User_ID = Convert.ToInt32(reader["User_ID"]),
-                                    Username = reader["Username"].ToString(),
-                                    Email = reader["Email"].ToString(),
-                                    Password = reader["Password"].ToString(),
-                                    User_Description = reader["User_Description"].ToString()
+                                    user.User_ID = Convert.ToInt32(reader["User_ID"]);
+                                    user.Username = reader["Username"].ToString();
+                                    user.Email = reader["Email"].ToString();
+                                    user.Password = reader["Password"].ToString();
+                                    user.User_Description = reader["User_Description"].ToString();
                                 };
                             }
                         }
@@ -85,7 +113,6 @@ namespace CapstoneProject.Models
                 catch (Exception err)
                 {
                     Console.WriteLine("ERROR: " + err.Message);
-
                 }
             }
             return user;
