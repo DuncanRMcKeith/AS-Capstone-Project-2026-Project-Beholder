@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Identity;
+using CapstoneProject.Models;
 
 namespace CapstoneProject.Pages
 {
@@ -27,6 +29,9 @@ namespace CapstoneProject.Pages
 
         public IActionResult OnPost()
         {
+
+            IActionResult temp;
+
             using var conn = new SqlConnection(_connectionString);
             conn.Open();
 
@@ -39,22 +44,38 @@ namespace CapstoneProject.Pages
 
             if (result == null)
             {
-                ErrorMessage = "User not found";
-                return Page();
+                ModelState.AddModelError("", "Username or password is incorrect");
+                temp = Page();
             }
 
             string storedPassword = result.ToString();
 
-            if (storedPassword != psw)
+            var hasher = new PasswordHasher<UserModel>();
+
+            var verificationResult = hasher.VerifyHashedPassword(
+                null,
+                storedPassword,
+                psw
+                );
+
+            if (verificationResult != PasswordVerificationResult.Success)
             {
-                ErrorMessage = "Incorrect password";
-                return Page();
+                TempData["Login"] = "fail";
+                ModelState.AddModelError("", "Username or password is incorrect");
+                temp = Page();
+                
             }
 
-            HttpContext.Session.SetString("LoggedIn", "true");
-            HttpContext.Session.SetString("Username", uname);
+            else
+            {
+                HttpContext.Session.SetString("LoggedIn", "true");
+                HttpContext.Session.SetString("Username", uname);
 
-            return RedirectToPage("/Index");
+                temp = RedirectToPage("/Index");
+            }
+                
+
+            return temp;
         }
     }
 }
