@@ -46,7 +46,7 @@ namespace CapstoneProject.Pages
             CurrentUser = _userAccess.GetUserByUsername(username);
 
             // Pre-fill the edit model with the current description
-            EditUser = new EditUserModel
+            EditUser = new UserModel
             {
                 User_Description = CurrentUser.User_Description
             };
