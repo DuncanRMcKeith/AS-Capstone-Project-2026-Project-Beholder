@@ -70,7 +70,6 @@ namespace CapstoneProject.Pages
             {
                 HttpContext.Session.SetString("LoggedIn", "true");
                 HttpContext.Session.SetString("Username", uname);
-
                 temp = RedirectToPage("/Profile");
             }
                 

@@ -1,3 +1,4 @@
+using CapstoneProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -5,42 +6,39 @@ namespace CapstoneProject.Pages
 {
     public class FriendsModel : PageModel
     {
-        public List<string> friends { get; set; }
-        public List<string> requests { get; set; }
+        private readonly UserAccessLayer _userAccess;
 
-        public void OnGet()
+        public FriendsModel(UserAccessLayer userAccess)
         {
-            friends = new List<string>
-            {
-                "Andrew",
-                "Kyle",
-                "Rob",
-                "Duncan"
-            };
-            requests = new List<string>
-            {
-                "user1",
-                "user2",
-                "user3",
-                "user1",
-                "user2",
-                "user3",
-                "user1",
-                "user2",
-                "user3",
-                "user1",
-                "user2",
-                "user3",
-                "user1",
-                "user2",
-                "user3",
-                "user1",
-                "user2",
-                "user3",
-                "user1",
-                "user2",
-                "user3"
-            };
+            _userAccess = userAccess;
         }
+
+        public UserModel CurrentUser { get; set; }
+        UserAccessLayer factory;
+        public List<UserModel> Users { get; set; }
+        public IActionResult OnGet()
+        {
+
+            var loggedIn = HttpContext.Session.GetString("LoggedIn");
+            var username = HttpContext.Session.GetString("Username");
+
+            if (loggedIn != "true")
+                return RedirectToPage("/Login");
+
+            CurrentUser = _userAccess.GetUserByUsername(username);
+
+            if (CurrentUser == null)
+                return RedirectToPage("/Login");
+
+
+            Users = factory.GetFriends().ToList();
+
+            return Page();
+
+
+
+            
+            
     }
+}
 }
