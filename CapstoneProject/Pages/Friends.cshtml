@@ -3,13 +3,118 @@
 @{
 	ViewData["Title"] = "Friends";
 }
+<head>
+	<link rel="stylesheet" href="~/css/friends.css" />
+</head>
+
+
 
 <div class="container">
 	<h1>Friends</h1>
-	<table>
-		<td>
-			
-		</td>
-	</table>
+	<div class="position-relative d-inline-block">
+		<button class="btn btn-primary me-md-2" id="addFriendBtn" type="button">Add Friend</button>
+		<button class="btn btn-primary me-md-2" id="requestBtn" type="button">Requests (<span class="badge badge-light">4</span>)</button>
+
+		<div id="addFriendDropdown" class="dropdown-content">
+			<input type="text" id="friendSearchInput" placeholder="Search username..." />
+			<div id="searchResults"></div>
+		</div>
+	
+	
+	<div id="RequestsDropdown" class="Requestdropdown-content">
+		@foreach (var req in Model.requests)
+		{
+		<div class="card">
+			<img src="~/Images/default.png" class="profile-pic" />
+			<h4>@req</h4>
+			<button class="btn-info">View Profile</button>
+			<button class="btn-success">Add</button>
+			<button class="btn-danger">Reject</button>
+		</div>
+		}
+		</div>
+	</div>
+
+	
+	<div class="friends-list">
+		@foreach (var friend in Model.friends)
+		{
+			<div class="card">
+				<img src="~/Images/default.png" class="profile-pic" />
+				<div class="friend-info">
+					<h4>@friend</h4>
+					<button class="btn btnview">View Profile</button>
+					<button class="btn removebtn">Remove friend</button>
+				</div>
+			</div>
+		}
+
+	</div>
 
 </div>
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+	//friend requests code
+
+	const reqbtn = document.getElementById("requestBtn");
+	const reqdropdown = document.getElementById("RequestsDropdown");
+
+	reqbtn.addEventListener("click", () => {
+		reqdropdown.style.display = 
+			reqdropdown.style.display === "block" ? "none" : "block";
+	});
+	
+
+
+	//add friend code
+	const btn = document.getElementById("addFriendBtn");
+	const dropdown = document.getElementById("addFriendDropdown");
+
+	btn.addEventListener("click", () => {
+		dropdown.style.display =
+			dropdown.style.display === "block" ? "none" : "block";
+	});
+
+
+	//search for friends to add
+	const searchInput = document.getElementById("friendSearchInput");
+	const resultsDiv = document.getElementById("searchResults");
+
+	const fakeUsers = [ 
+		"WizardDude",
+		"DragonSlayer",
+		"KnightKing",
+		"PotionMaster"
+	];
+
+	searchInput.addEventListener("input", () => {
+		const value = searchInput.value.toLowerCase();
+		resultsDiv.innerHTML = "";
+
+		if (value.length === 0) return;
+
+		const filtered = fakeUsers.filter(u =>
+			u.toLowerCase().includes(value)
+		);
+
+		filtered.forEach(user => {
+			const div = document.createElement("div");
+			div.classList.add("dropdown-user");
+
+			div.innerHTML = `
+				<span>${user}</span>
+				<button onclick="addFriend('${user}')" class="btn btn-sm btn-success">+</button>
+			`;
+
+			resultsDiv.appendChild(div);
+		});
+	});
+
+	function addFriend(username) {
+		alert("Friend request sent to " + username);
+	}
+
+	 });
+</script>

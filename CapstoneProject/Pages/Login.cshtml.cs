@@ -71,7 +71,7 @@ namespace CapstoneProject.Pages
                 HttpContext.Session.SetString("LoggedIn", "true");
                 HttpContext.Session.SetString("Username", uname);
 
-                temp = RedirectToPage("/Index");
+                temp = RedirectToPage("/Profile");
             }
                 
 
