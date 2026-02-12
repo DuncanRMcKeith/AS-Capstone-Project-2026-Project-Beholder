@@ -7,7 +7,6 @@ namespace CapstoneProject.Models
     public class UserModel
     {
         public int User_ID { get; set; }
-
         [EmailAddress]
         [Required(ErrorMessage = "Email is required.")]
         [Display(Name = "Email")]

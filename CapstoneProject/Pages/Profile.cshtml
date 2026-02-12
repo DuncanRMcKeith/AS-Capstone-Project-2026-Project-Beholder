@@ -12,20 +12,42 @@
 <div class="container">
 
 
-<div class="profile-top">
-	<img class="profile-pic" src="https://placehold.co/150x150" alt="Profile picture"/>
+	<div class="profile-top">
+		<img class="profile-pic" src="https://placehold.co/150x150" alt="Profile picture" />
 
-	<div class="profile-text">
+		<div class="profile-text">
 			<h1 class="text-center">@Model.CurrentUser.Username</h1>
 
-			<p class="text-center" id="User-Description">
-				@Model.CurrentUser.User_Description
-			</p>
+			@if (!Model.IsEditingBio)
+			{
+				<p class="text-center" id="User-Description">
+					@Model.CurrentUser.User_Description
+				</p>
+			}
+			else
+			{
+				<form method="post">
+					<textarea name="EditUser.User_Description" class="bio-editor">@Model.EditUser?.User_Description</textarea>
 
+					<button type="submit" asp-page-handler="SaveBio" class="save-profile">
+						Save
+					</button>
+				</form>
+			}
+		</div>
 	</div>
-</div>
+
 	<br />
-	<button class="edit-profile">Edit Profile <i class="fa-solid fa-wrench"></i></button>
+
+	@if (!Model.IsEditingBio)
+	{
+		<form method="post">
+			<button type="submit" asp-page-handler="EditBio" class="edit-profile">
+				Edit Profile <i class="fa-solid fa-wrench"></i>
+			</button>
+		</form>
+	}
+	<br />
 
 
 <div class="profile-characters">
