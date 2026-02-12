@@ -3,10 +3,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace CapstoneProject.Pages
 {
-    public class CharacterInput : CharacterModel
+    public class CharacterInput : PageModel
     {
         [BindProperty]
         public CharacterModel Character { get; set; }
@@ -25,7 +28,7 @@ namespace CapstoneProject.Pages
         public IActionResult OnPost()
         {
             CharacterAccessLayer factory = new CharacterAccessLayer(_configuration);
-            factory.Create(Character);
+            factory.create(Character);
             return Page();
         }
     }
