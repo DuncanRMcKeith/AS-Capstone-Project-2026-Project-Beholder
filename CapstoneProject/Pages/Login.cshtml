@@ -40,7 +40,7 @@
 
 @section scripts {
 	<script>
-	@if (TempData["Login"] != null)
+	@if (TempData["Login"] != null || !ModelState.IsValid)
 	{
 		<text>
 		Swal.fire({
@@ -54,5 +54,6 @@
 			});
 		</text>
 	}
+	
 </script>
 }

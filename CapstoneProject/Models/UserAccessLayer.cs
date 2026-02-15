@@ -1,6 +1,7 @@
 ﻿using CapstoneProject.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -96,16 +97,40 @@ namespace CapstoneProject.Models
             return user;
         }
 
-        public IEnumerable<UserModel> GetFriends()
+
+        public int? GetUserID(string username)
+        {
+            using var conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT User_ID FROM Users WHERE Username = @username";
+
+            using var cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@username", username);
+
+            var result = cmd.ExecuteScalar();
+            if (result == null || result == DBNull.Value)
+            {
+                return null;
+            }
+            return Convert.ToInt32(result);
+        }
+
+        public IEnumerable<UserModel> GetFriends(int userID)
         {
             List<UserModel> lstusers = new List<UserModel>();
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    string strsql = "SELECT * FROM Friends WHERE User1 = @user OR User2 = @user";
+                    string strsql = @"
+                    SELECT u.User_ID, u.Username, u.ProfilePicture
+                    FROM Users u
+                    INNER JOIN Friends f ON (f.User1 = @UserId AND u.User_ID = f.User2)
+                    OR (f.User2 = @UserId AND u.User_ID = f.User1)
+                    ";
                     SqlCommand Cmd = new SqlCommand(strsql, conn);
-                    Cmd.Parameters.AddWithValue("@user", );
+                    Cmd.Parameters.AddWithValue("@UserId", userID);
                     Cmd.CommandType = CommandType.Text;
 
                     conn.Open();
@@ -113,58 +138,22 @@ namespace CapstoneProject.Models
 
                     while (rdr.Read())
                     {
-                        UserModel user = new UserModel();
-                        user.User_ID = Convert.ToInt32(rdr["User_ID"]);
-                        user.Username = Convert.ToString(rdr["Username"]);
-                        user.Profilepic = Convert.ToString(rdr["ProfilePicture"]);
+                        lstusers.Add(new UserModel
+                        {
+                            User_ID = Convert.ToInt32(rdr["User_ID"]),
+                            Username = Convert.ToString(rdr["Username"]),
+                            Profilepic = Convert.ToString(rdr["ProfilePicture"])
+                        });
+                        
                     }
-
+                    conn.Close();
                 }
             }
             catch(Exception err)
             {
-
+            
             }
             return lstusers;
         }
-
-
-        //public IEnumerable<UserModel> GetActiveRecords()
-        //{
-        //    List<UserModel> lstusers = new List<UserModel>();
-
-        //    try
-        //    {
-        //        using (SqlConnection con = new SqlConnection(connectionString))
-        //        {
-        //            string strsql = "SELECT * FROM Friends ;";
-        //            SqlCommand cmd = new SqlCommand(strsql, con);
-        //            cmd.CommandType = CommandType.Text;
-
-        //            con.Open();
-        //            SqlDataReader rdr = cmd.ExecuteReader();
-
-        //            while (rdr.Read())
-        //            {
-        //                UserModel game = new UserModel();
-        //                game.Game_ID = Convert.ToInt32(rdr["Id"]);
-        //                game.Title = rdr["Title"].ToString();
-        //                game.Developer = rdr["Developer"].ToString();
-        //                game.Genre = rdr["Genre"].ToString();
-        //                game.Price = Convert.ToInt32(rdr["Price"]);
-        //                game.Hours = Convert.ToInt32(rdr["Hours"]);
-        //                game.Release_Date = DateTime.Parse(rdr["Release_Date"].ToString());
-
-        //                lstTix.Add(game);
-        //            }
-        //            con.Close();
-        //        }
-        //    }
-        //    catch (Exception err)
-        //    {
-
-        //    }
-        //    return lstTix;
-        //}
     }
 }

@@ -9,11 +9,14 @@ namespace CapstoneProject.Pages
     public class LoginModel : PageModel
     {
         private readonly string _connectionString;
+        private readonly UserAccessLayer _userAccessLayer;
 
-        public LoginModel(IConfiguration configuration)
+        public LoginModel(IConfiguration configuration, UserAccessLayer userAccessLayer)
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
+            _userAccessLayer = userAccessLayer;
         }
+
 
         [BindProperty]
         public string uname { get; set; }
@@ -42,14 +45,14 @@ namespace CapstoneProject.Pages
 
             var result = cmd.ExecuteScalar();
 
-            if (result == null)
+            if (result == null || result == DBNull.Value)
             {
                 ModelState.AddModelError("", "Username or password is incorrect");
-                temp = Page();
+                return Page();
             }
 
             string storedPassword = result.ToString();
-
+            
             var hasher = new PasswordHasher<UserModel>();
 
             var verificationResult = hasher.VerifyHashedPassword(
@@ -68,8 +71,11 @@ namespace CapstoneProject.Pages
 
             else
             {
+                int? id = _userAccessLayer.GetUserID(uname);
                 HttpContext.Session.SetString("LoggedIn", "true");
                 HttpContext.Session.SetString("Username", uname);
+                HttpContext.Session.SetInt32("UserID", id.Value);
+
                 temp = RedirectToPage("/Profile");
             }
                 

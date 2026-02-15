@@ -14,7 +14,6 @@ namespace CapstoneProject.Pages
         }
 
         public UserModel CurrentUser { get; set; }
-        UserAccessLayer factory;
         public List<UserModel> Users { get; set; }
         public IActionResult OnGet()
         {
@@ -22,8 +21,9 @@ namespace CapstoneProject.Pages
             var loggedIn = HttpContext.Session.GetString("LoggedIn");
             var username = HttpContext.Session.GetString("Username");
 
-            if (loggedIn != "true")
+            if (loggedIn != "true") { 
                 return RedirectToPage("/Login");
+                }
 
             CurrentUser = _userAccess.GetUserByUsername(username);
 
@@ -31,14 +31,9 @@ namespace CapstoneProject.Pages
                 return RedirectToPage("/Login");
 
 
-            Users = factory.GetFriends().ToList();
+            Users = _userAccess.GetFriends(HttpContext.Session.GetInt32("UserID").Value).ToList();
 
             return Page();
-
-
-
-            
-            
     }
 }
 }
