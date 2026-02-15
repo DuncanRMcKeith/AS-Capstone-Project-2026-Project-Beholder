@@ -71,29 +71,56 @@
         text-align:center;
     }
 
+    .badge {
+        background-color: #1c1c1c;
+        color: #DAA520;
+        border: 2px solid white;
+        font-weight: 600;
+        padding: 4px 8px;
+        border-radius: 6px;
+    }
+
 </style>
 
 <div class="header">Announcements</div>
 
 <div class="main">
-
-    <div class="topPosts">
-        Top Posts - to be linked to database
-    </div>
+    <!-- If no Posts -->
+    @if (!Model.Posts.Any())
+    {
+        <div>No announcements yet.</div>
+    }
+    <!-- Display for top 10 posts -->
+    @foreach (var post in Model.Posts)
+    {
+        <!-- Display post title and time -->
+        <div class="update-box">
+            <div class="update-title">
+                <h2>@post.Title</h2>
+                <span class="update-date">
+                    @post.Created_At.ToString("MMM dd, yyyy")
+                </span>
+            </div>
+            <!-- Display post text -->
+            <div class="update-text">
+                @post.Post_text
+            </div>
+        </div>
+    }
+</div>
 
     <div class="newContent">
-
         <!-- Latest update -->
-        <div class="update-box latest">
+        <div class="update-box">
             <div class="update-title">
-                <h2>Hotfix — v 0.1 <span class="badge">NEW</span></h2>
+                <h2>Hotfix — v 0.2 <span class="badge">NEW</span></h2>
                 <span class="update-date">Feb 10, 2026</span>
             </div>
 
             <ul class="update-list">
-                <li>Fixed login session timeout issue</li>
-                <li>Resolved mobile navigation overlap bug</li>
-                <li>Improved page loading performance</li>
-                <li>Corrected incorrect user avatar display</li>
+                <li>Fixed Character Creation</li>
+                <li>Resolved Navigation Issues</li>
+                <li>Improved Character Storage</li>
+                <li>Working Character Upload</li>
             </ul>
         </div>

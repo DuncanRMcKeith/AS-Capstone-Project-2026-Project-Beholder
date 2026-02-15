@@ -6,6 +6,7 @@
 
     dice.forEach(d => createFace(d));
 
+    // Roll button click event
     btn.addEventListener("click", () => {
         const interval = setInterval(() => {
             dice.forEach(d => setFace(d, roll()));
@@ -15,7 +16,7 @@
             clearInterval(interval);
 
             let values = [];
-
+            // Animate roll with staggered timing and show total number
             dice.forEach((d, i) => {
                 setTimeout(() => {
                     const value = roll();
@@ -34,9 +35,13 @@
         }, 700);
     })
 });
+
+// dice roll function (1-6)
 function roll() {
     return Math.floor(Math.random() * 6) + 1;
 }
+
+// Create dice face with 9 pips (3x3 grid)
 function createFace(die) {
     die.innerHTML = "";
     for (let i = 0; i < 9; i++) {
@@ -45,6 +50,8 @@ function createFace(die) {
         die.appendChild(dot);
     }
 }
+
+// set dice face based on value
 function setFace(die, value) {
     const map = {
         1: [4],

@@ -2,6 +2,8 @@
 {
     public class CharacterModel
     {
+        public int Character_ID { get; set; }      // Primary key
+        public string Creator_ID { get; set; } = ""; // Foreign key to user
         public string FName { get; set; } = "";
         public string LName { get; set; } = "";
         public string Title { get; set; } = "";
@@ -13,6 +15,8 @@
         public int Intelligence { get; set; } = 0;
         public int Wisdom { get; set; } = 0;
         public int Charisma { get; set; } = 0;
-        public string Notes { get; set; } = "";
+        public string? Notes { get; set; } // Notes can be null
+        public string Image_Path { get; set; } = ""; // path to image
     }
+
 }

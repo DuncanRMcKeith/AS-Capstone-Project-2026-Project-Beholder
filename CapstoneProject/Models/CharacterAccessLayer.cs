@@ -16,19 +16,21 @@ namespace CapstoneProject.Models
                 connectionString = _configuration.GetConnectionString("DefaultConnection");
             }
 
-            public void create(CharacterModel character)
+        // Create a new character in the database
+        public void create(CharacterModel character)
             {
 
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string sql = "INSERT INTO Characters ( FName, LName, Title, Level, Char_class, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, Notes) VALUES ( @FName, @LName, @Title, @Level, @Char_class, @Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma, @Notes)";
+                    string sql = "INSERT INTO Characters ( Creator_ID, FName, LName, Title, Level, Char_class, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, Notes, Image_Path) VALUES (@Creator_ID, @FName, @LName, @Title, @Level, @Char_class, @Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma, @Notes, @Image_Path)";
 
 
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.CommandType = CommandType.Text;
+                        command.Parameters.AddWithValue("@Creator_ID", character.Creator_ID ?? "");
                         command.Parameters.AddWithValue("@FName", character.FName ?? "");
                         command.Parameters.AddWithValue("@LName", character.LName ?? "");
                         command.Parameters.AddWithValue("@Title", character.Title ?? "");
@@ -41,9 +43,8 @@ namespace CapstoneProject.Models
                         command.Parameters.AddWithValue("@Wisdom", character.Wisdom);
                         command.Parameters.AddWithValue("@Charisma", character.Charisma);
                         command.Parameters.AddWithValue("@Notes", character.Notes ?? "");
-                        //command.Parameters.AddWithValue("@Image_Path", imagePath);
+                        command.Parameters.AddWithValue("@Image_Path", character.Image_Path ?? "");
 
-                        connection.Open();
                         command.ExecuteNonQuery();
                         connection.Close();
 
@@ -51,5 +52,19 @@ namespace CapstoneProject.Models
                 }
 
             }
+        // Count the number of characters created by a specific user
+        public int CountByCreatorId(string creatorId)
+        {
+            using SqlConnection conn = new SqlConnection(
+                _configuration.GetConnectionString("DefaultConnection"));
+
+            using SqlCommand cmd = new SqlCommand(
+                "SELECT COUNT(*) FROM Characters WHERE Creator_ID = @Creator_ID", conn);
+
+            cmd.Parameters.AddWithValue("@Creator_ID", creatorId);
+
+            conn.Open();
+            return (int)cmd.ExecuteScalar();
         }
+    }
 }
