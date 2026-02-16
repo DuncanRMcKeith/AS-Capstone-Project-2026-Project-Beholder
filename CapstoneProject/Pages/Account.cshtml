@@ -1,0 +1,70 @@
+﻿@page
+@model CapstoneProject.Pages.AccountModel
+@{
+	ViewData["Title"] = "___'s Profile";
+}
+
+<head>
+	<link href="./css/profile.css" rel="stylesheet" />
+
+</head>
+
+<div class="container">
+
+
+<div class="profile-top">
+	<img class="profile-pic" src="~/Images/@Model.User.Profilepic" alt="Profile picture"/>
+
+	<div class="profile-text">
+			<h1 class="text-center">@Model.User.Username</h1>
+
+			<p class="text-center" id="User-Description">
+				@Model.User.User_Description
+			</p>
+
+	</div>
+</div>
+	<br />
+	
+
+
+<div class="profile-characters">
+	<h2 class="text-center">Featured Character</h2>
+	
+
+	<div class="character-display">
+		<div class="character-text">
+			<h2>JOHN DND</h2>
+			<p>level 5 barbarian</p>
+			<p>Additional notes go here</p>
+		</div>
+
+		<div class="char-image">
+			<img src="https://placehold.co/250x250" />
+		</div>
+
+		<ul>
+			<li>STR: 5</li>
+			<li>DEX: 5</li>
+			<li>CON: 5</li>
+			<li>INT: 5</li>
+			<li>WIS: 5</li>
+			<li>CHA: 5</li>
+		</ul>
+	</div>
+
+
+
+</div>
+
+<div class="comms-badges">
+	<div class="comms text-center">
+		<p>Active Communities</p>
+	</div>
+
+	<div class="badges text-center">
+		<p>Badges</p>
+	</div>
+
+	</div>
+</div>

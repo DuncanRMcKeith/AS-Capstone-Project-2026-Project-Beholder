@@ -11,10 +11,12 @@
     background-color: #585858;
 }
 
-.btn{
-    background-color: #004D61;
-    transition: 250ms ease;
-    margin: 5px;
+.btn {
+    display: inline-block; 
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .btn:hover{

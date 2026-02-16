@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -116,6 +117,46 @@ namespace CapstoneProject.Models
             return Convert.ToInt32(result);
         }
 
+
+        public IEnumerable<UserModel> GetFriendRequests(int userID)
+        {
+            List<UserModel> lstreq = new List<UserModel>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string strsql = @"
+                    SELECT u.User_ID, u.Username, u.ProfilePicture
+                    FROM Users u
+                    INNER JOIN FriendRequests f ON u.User_ID = f.Sending_User_ID
+                    WHERE f.Receiving_User_ID = @UserId";
+                    SqlCommand Cmd = new SqlCommand(strsql, conn);
+                    Cmd.Parameters.AddWithValue("@UserId", userID);
+                    Cmd.CommandType = CommandType.Text;
+
+                    conn.Open();
+                    SqlDataReader rdr = Cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        lstreq.Add(new UserModel
+                        {
+                            User_ID = Convert.ToInt32(rdr["User_ID"]),
+                            Username = Convert.ToString(rdr["Username"]),
+                            Profilepic = Convert.ToString(rdr["ProfilePicture"])
+                        });
+
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception err)
+            {
+
+            }
+            return lstreq;
+        }
+
         public IEnumerable<UserModel> GetFriends(int userID)
         {
             List<UserModel> lstusers = new List<UserModel>();
@@ -152,6 +193,199 @@ namespace CapstoneProject.Models
             catch(Exception err)
             {
             
+            }
+            return lstusers;
+        }
+
+        public UserModel GetUserByID(int id)
+        {
+            UserModel user = null;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT * FROM Users WHERE User_ID= @id";
+                try
+                {
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.AddWithValue("@id", id);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                user = new UserModel();
+                                {
+                                    user.Username = reader["Username"].ToString();
+                                    user.Email = reader["Email"].ToString();
+                                    user.User_Description = reader["User_Description"].ToString();
+                                    user.Profilepic = reader["ProfilePicture"].ToString();
+                                }
+                                ;
+                            }
+                        }
+                        connection.Close();
+                    }
+                }
+                catch (Exception err)
+                {
+                    Console.WriteLine("ERROR: " + err.Message);
+                }
+            }
+            return user;
+        }
+
+        public void AddFriend(int userid, int friendid)
+        {
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //add friends to table
+
+                string sql = "INSERT INTO Friends (User1, User2) VALUES (@user1, @user2)";
+
+
+                //compare 2 IDs, store smallest one as user1. helps keep table organized
+                int user1;
+                int user2;
+
+                if (userid < friendid)
+                {
+                    user1 = userid;
+                    user2 = friendid;
+                }
+                else
+                {
+                    user1 = friendid;
+                    user2 = userid;
+                }
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@user1", user1);
+                    command.Parameters.AddWithValue("@user2", user2);
+
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+            }
+        }
+
+        public void RemoveRequest(int userid, int friendid)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+
+
+                //remove friend request from requests table
+
+                string sql = "DELETE FROM FriendRequests WHERE Sending_User_ID = @friend AND Receiving_User_ID = @user";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@friend", friendid);
+                    command.Parameters.AddWithValue("@user", userid);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+        }
+
+        public void RemoveFriend(int userid, int friendid)
+        {
+            //sort userid and friendid like we do when we create the friendship
+            int user1;
+            int user2;
+            if (userid < friendid)
+            {
+                user1 = userid;
+                user2 = friendid;
+            }
+            else
+            {
+                user1 = friendid;
+                user2 = userid;
+            }
+            using(SqlConnection connection = new SqlConnection(connectionString)) { 
+                string sql = "DELETE FROM Friends WHERE User1 = @user1 AND User2 = @user2";
+
+                using(SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@user1", user1);
+                    command.Parameters.AddWithValue("@user2", user2);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+                    
+            }
+        }
+
+        public void AddFriendRequest(int userid, int friendid)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string sql = "INSERT INTO FriendRequests (Sending_User_ID, Receiving_User_ID) VALUES (@currentuser, @friend)";
+
+
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@currentuser", userid);
+                    command.Parameters.AddWithValue("@friend", friendid);
+                    
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+            }
+        }
+
+        public IEnumerable<UserModel> SearchUsers(string search, int userid)
+        {
+            List<UserModel> lstusers = new List<UserModel>();
+            using(SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT Username, ProfilePicture, User_ID FROM Users WHERE Username LIKE @search AND User_ID != @currentuser AND NOT EXISTS (select 1 from Friends where(Friends.User1 = Users.User_ID AND Friends.User2 = @currentuser) OR (Friends.User2 = Users.User_ID AND Friends.User1 = @currentuser))";
+                try { 
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.CommandType= CommandType.Text;
+                    command.Parameters.AddWithValue("@search",'%'+ search + '%');
+                    command.Parameters.AddWithValue("@currentuser", userid);
+                        connection.Open();
+                    SqlDataReader rdr = command.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        lstusers.Add(new UserModel
+                        {
+                            User_ID = Convert.ToInt32(rdr["User_ID"]),
+                            Username = Convert.ToString(rdr["Username"]),
+                            Profilepic = Convert.ToString(rdr["ProfilePicture"])
+                        });
+
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception err)
+            {
+
+            }
             }
             return lstusers;
         }
