@@ -1,0 +1,89 @@
+﻿body {
+}
+
+.card {
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #585858;
+}
+
+.btn {
+    display: inline-block; 
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover{
+    opacity: 75%;
+    color: #F0F0F0;
+}
+
+.btnview {
+    color: #F0F0F0;
+}
+
+.removebtn {
+    background-color: #FF4500;
+}
+
+.profile-pic {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+.add-friend-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    width: 250px;
+    background: #585858;
+    position: absolute; 
+    top: 100%; 
+    right: 0; 
+    z-index: 1000; 
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+}
+
+    .dropdown-content input {
+        width: 100%;
+        padding: 6px;
+        margin-bottom: 10px;
+    }
+
+
+.Requestdropdown-content {
+    display: none;
+    width: 100%;
+    background: #585858;
+    position: absolute; 
+    top: 100%; 
+    right: 0;
+    z-index: 1000; 
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
