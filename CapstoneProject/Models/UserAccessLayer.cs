@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Azure.Core.Pipeline;
 
 namespace CapstoneProject.Models
 {
@@ -59,6 +60,33 @@ namespace CapstoneProject.Models
 
         }
 
+        public UserModel UpdateBio(UserModel user)
+        {
+            UserModel updatedUser = null;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string sql = "UPDATE Users SET User_Description = @description WHERE Username = @username";
+                try
+                {
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.AddWithValue("@description", user.User_Description);
+                        command.Parameters.AddWithValue("@username", user.Username);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                        // Return the updated user
+                        updatedUser = GetUserByUsername(user.Username);
+                    }
+                }
+                catch (Exception err)
+                {
+                    Console.WriteLine("ERROR: " + err.Message);
+                }
+            }
+            return updatedUser;
+        }
 
         public UserModel GetUserByUsername(string username)
         {

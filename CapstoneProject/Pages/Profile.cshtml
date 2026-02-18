@@ -12,62 +12,110 @@
 <div class="container">
 
 
-<div class="profile-top">
-	<img class="profile-pic" src="https://placehold.co/150x150" alt="Profile picture"/>
+	<div class="profile-top">
+		<img class="profile-pic" src="https://placehold.co/150x150" alt="Profile picture" />
 
-	<div class="profile-text">
+		<div class="profile-text">
 			<h1 class="text-center">@Model.CurrentUser.Username</h1>
 
-			<p class="text-center" id="User-Description">
-				@Model.CurrentUser.User_Description
-			</p>
+			@if (!Model.IsEditingBio)
+			{
+				<p class="text-center" id="User-Description">
+					@Model.CurrentUser.User_Description
+				</p>
+			}
+			else
+			{
+				<form method="post">
+					<textarea name="NewDescription" class="bio-editor">
+                    @Model.NewDescription
+                </textarea>
 
+					<button type="submit" asp-page-handler="SaveBio" class="save-profile">
+						Save
+					</button>
+				</form>
+			}
+		</div>
 	</div>
-</div>
 	<br />
-	<button class="edit-profile">Edit Profile <i class="fa-solid fa-wrench"></i></button>
+
+	@if (!Model.IsEditingBio)
+	{
+		<form method="post">
+			<button type="submit" asp-page-handler="EditBio" class="edit-profile">
+				Edit Profile <i class="fa-solid fa-wrench"></i>
+			</button>
+		</form>
+	}
+	<br />
 
 
 <div class="profile-characters">
 	<h2 class="text-center">Characters</h2>
-	<nav class="border-bottom box-shadow mb-3">
-		<ul>
-			<li class="nav-item">
-				<a class="nav-link" asp-area="" asp-page="#">1</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" asp-area="" asp-page="#">2</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" asp-area="" asp-page="#">3</a>
-			</li>
-			<li class="nav-item active">
-				<a class="nav-link" asp-area="" asp-page="#">4</a>
-			</li>
-		</ul>
-	</nav>
+		<nav class="border-bottom box-shadow mb-3">
+			<ul>
+				<li class="nav-item">
+					<a class="nav-link" asp-page="./Profile" asp-route-slot="1">1</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" asp-page="./Profile" asp-route-slot="2">2</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" asp-page="./Profile" asp-route-slot="3">3</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" asp-page="./Profile" asp-route-slot="4">4</a>
+				</li>
+			</ul>
+		</nav>
 
-	<div class="character-display">
-		<div class="character-text">
-			<h2>JOHN DND</h2>
-			<p>level 5 barbarian</p>
-			<p>Additional notes go here</p>
-			<button class="edit-profile">Edit Character</button>
+
+		<div class="character-display">
+
+			<div class="character-text">
+				<h2>
+					@(
+										Model.CurrentCharacter != null
+										? $"{Model.CurrentCharacter.FName} {Model.CurrentCharacter.LName}"
+										: "No Character in this Slot"
+										)
+				</h2>
+
+				@if (Model.CurrentCharacter != null)
+				{
+					<p>Level @Model.CurrentCharacter.Level @Model.CurrentCharacter.CharacterClass</p>
+					<p>@Model.CurrentCharacter.Notes</p>
+
+					<button class="edit-profile">Edit Character</button>
+				}
+				else
+				{
+					<p>This slot is empty.</p>
+					<a class="edit-profile"
+					   asp-page="./Character"
+					   asp-route-slot="@Request.Query["slot"]">
+						Create Character
+					</a>
+				}
+			</div>
+
+			<div class="char-image">
+				<img src="@(Model.CurrentCharacter?.Image_Path ?? "https://placehold.co/250x250")" />
+			</div>
+
+			@if (Model.CurrentCharacter != null)
+			{
+				<ul>
+					<li>STR: @Model.CurrentCharacter.Strength</li>
+					<li>DEX: @Model.CurrentCharacter.Dexterity</li>
+					<li>CON: @Model.CurrentCharacter.Constitution</li>
+					<li>INT: @Model.CurrentCharacter.Intelligence</li>
+					<li>WIS: @Model.CurrentCharacter.Wisdom</li>
+					<li>CHA: @Model.CurrentCharacter.Charisma</li>
+				</ul>
+			}
 		</div>
-
-		<div class="char-image">
-			<img src="https://placehold.co/250x250" />
-		</div>
-
-		<ul>
-			<li>STR: 5</li>
-			<li>DEX: 5</li>
-			<li>CON: 5</li>
-			<li>INT: 5</li>
-			<li>WIS: 5</li>
-			<li>CHA: 5</li>
-		</ul>
-	</div>
 
 
 
