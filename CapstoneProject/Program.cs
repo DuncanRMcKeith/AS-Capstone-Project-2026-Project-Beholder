@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddScoped<UserAccessLayer>();
+builder.Services.AddSingleton<CharacterAccessLayer>();
+
 
 builder.Services.AddSession(options =>
 {
