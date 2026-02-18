@@ -27,30 +27,39 @@ namespace CapstoneProject.Pages
             _env = env;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            var loggedIn = HttpContext.Session.GetString("LoggedIn");
+            if (loggedIn != "true")
+            {
+                return RedirectToPage("/Login");
+            }
+            else
+            {
+                return Page();
+            }
         }
 
         public IActionResult OnPost()
 
         {
-            var userId = HttpContext.Session.GetString("Username"); 
+            int? userId = HttpContext.Session.GetInt32("UserID");
 
-            if (string.IsNullOrEmpty(userId))
-            {
-                // Not logged in 
-                ModelState.AddModelError("", "You must be logged in.");
-                return Page();
-            }
+            //if (string.IsNullOrEmpty(userId))
+            //{
+            //    // Not logged in 
+            //    ModelState.AddModelError("", "You must be logged in.");
+            //    return Page();
+            //}
 
             // Assign character to userId
-            Character.Creator_ID = userId;
+            Character.Creator_ID = userId.Value;
             // Character.Creator_ID = "38"; test line to set character to userId that is registered
 
             CharacterAccessLayer factory = new CharacterAccessLayer(_configuration);
 
             // Check if user already has 4 characters
-            if (factory.CountByCreatorId(userId) >= 4)
+            if (factory.CountByCreatorId(userId.Value) >= 4)
             {
                 ModelState.AddModelError("", "You already have 4 characters.");
                 return Page();

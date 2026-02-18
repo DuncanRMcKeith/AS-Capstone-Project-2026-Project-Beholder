@@ -3,7 +3,7 @@
     public class CharacterModel
     {
         public int Character_ID { get; set; }      // Primary key
-        public string Creator_ID { get; set; } = ""; // Foreign key to user
+        public int Creator_ID { get; set; } // Foreign key to user
         public string FName { get; set; } = "";
         public string LName { get; set; } = "";
         public string Title { get; set; } = "";

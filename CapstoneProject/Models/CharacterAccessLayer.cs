@@ -13,7 +13,7 @@ namespace CapstoneProject.Models
             public CharacterAccessLayer(IConfiguration configuration)
             {
                 _configuration = configuration;
-                connectionString = _configuration.GetConnectionString("DefaultConnection");
+                connectionString = _configuration.GetConnectionString("DefaultConnection") ?? string.Empty;
             }
 
         // Create a new character in the database
@@ -38,7 +38,7 @@ namespace CapstoneProject.Models
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.CommandType = CommandType.Text;
-                    command.Parameters.AddWithValue("@Creator_ID", character.Creator_ID ?? "");
+                    command.Parameters.AddWithValue("@Creator_ID", character.Creator_ID);
                     command.Parameters.AddWithValue("@FName", character.FName ?? "");
                     command.Parameters.AddWithValue("@LName", character.LName ?? "");
                     command.Parameters.AddWithValue("@Title", character.Title ?? "");
@@ -51,7 +51,7 @@ namespace CapstoneProject.Models
                     command.Parameters.AddWithValue("@Wisdom", character.Wisdom);
                     command.Parameters.AddWithValue("@Charisma", character.Charisma);
                     command.Parameters.AddWithValue("@Notes", character.Notes ?? "");
-                    command.Parameters.AddWithValue("@Image_Path", character.Image_Path ?? "");
+                    command.Parameters.AddWithValue("@Image_Path", character.Image_Path ?? null);
                     command.Parameters.AddWithValue("@Slots", character.Slots);
 
                     command.ExecuteNonQuery();
@@ -60,7 +60,7 @@ namespace CapstoneProject.Models
             }
         }
         // Count the number of characters created by a specific user
-        public int CountByCreatorId(string creatorId)
+        public int CountByCreatorId(int creatorId)
         {
 
             using SqlConnection conn = new SqlConnection(
@@ -93,7 +93,7 @@ namespace CapstoneProject.Models
                 character = new CharacterModel
                 {
                     Character_ID = (int)reader["Character_ID"],
-                    Creator_ID = reader["Creator_ID"].ToString(),
+                    Creator_ID = (int)reader["Creator_ID"],
                     FName = reader["FName"].ToString(),
                     LName = reader["LName"].ToString(),
                     Title = reader["Title"].ToString(),
