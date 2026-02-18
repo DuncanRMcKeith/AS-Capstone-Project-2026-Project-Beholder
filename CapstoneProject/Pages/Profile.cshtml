@@ -53,26 +53,23 @@
 
 <div class="profile-characters">
 	<h2 class="text-center">Characters</h2>
-	<nav class="border-bottom box-shadow mb-3">
-		<ul>
-			<li class="nav-item">
-					<<a asp-page="./Index1" asp-route-slot="1">1</a>
+		<nav class="border-bottom box-shadow mb-3">
+			<ul>
+				<li class="nav-item">
+					<a class="nav-link" asp-page="./Index1" asp-route-slot="1">1</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" asp-page="./Index1" asp-route-slot="2">2</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" asp-page="./Index1" asp-route-slot="3">3</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" asp-page="./Index1" asp-route-slot="4">4</a>
+				</li>
+			</ul>
+		</nav>
 
-			</li>
-			<li class="nav-item">
-					<a asp-page="./Index1" asp-route-slot="2">2</a>
-	
-			</li>
-			<li class="nav-item">
-					<a asp-page="./Index1" asp-route-slot="3">3</a>
-
-			</li>
-			<li class="nav-item active">
-					<a asp-page="./Index1" asp-route-slot="4">4</a>
-
-			</li>
-		</ul>
-	</nav>
 
 		<div class="character-display">
 
@@ -95,7 +92,9 @@
 				else
 				{
 					<p>This slot is empty.</p>
-					<a class="edit-profile" asp-page="/CreateCharacter" asp-route-slot="@Request.Query["slot"]">
+					<a class="edit-profile"
+					   asp-page="/Character"
+					   asp-route-slot="@Request.Query["slot"]">
 						Create Character
 					</a>
 				}
