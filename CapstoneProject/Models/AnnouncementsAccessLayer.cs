@@ -26,7 +26,7 @@ namespace CapstoneProject.Models
                 
                 string sql = @"
                 SELECT TOP (10)
-                    Post_ID, Title, Post_text, Creator_ID, Comm_ID, Created_At
+                    Post_ID, Title, Content, Creator_ID, Comm_ID, Created_At
                 FROM Posts
                 ORDER BY Created_At DESC;";
 
@@ -43,7 +43,7 @@ namespace CapstoneProject.Models
                             {
                                 Post_ID = reader.GetInt32(reader.GetOrdinal("Post_ID")),
                                 Title = reader["Title"] as string ?? "",
-                                Post_text = reader["Post_text"] as string ?? "",
+                                Content = reader["Content"] as string ?? "",
                                 Creator_ID = Convert.ToInt32(reader["Creator_ID"]),  
                                 Comm_ID = reader["Comm_ID"] == DBNull.Value ? (int?)null : Convert.ToInt32(reader["Comm_ID"]),
                                 Created_At = Convert.ToDateTime(reader["Created_At"])

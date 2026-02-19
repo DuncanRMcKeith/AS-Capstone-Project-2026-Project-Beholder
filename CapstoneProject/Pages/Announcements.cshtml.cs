@@ -14,6 +14,7 @@ namespace CapstoneProject.Pages
             _configuration = configuration;
         }
 
+
         public List<PostsModel> Posts { get; set; } = new();
 
         public void OnGet()

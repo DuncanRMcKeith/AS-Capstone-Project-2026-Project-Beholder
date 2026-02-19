@@ -96,15 +96,17 @@
         <!-- Display post title and time -->
         <div class="update-box">
             <div class="update-title">
-                <h2>@post.Title</h2>
-                <span class="update-date">
-                    @post.Created_At.ToString("MMM dd, yyyy")
-                </span>
+                <h2>@post.Creator_ID</h2>
             </div>
+            <br />
             <!-- Display post text -->
             <div class="update-text">
-                @post.Post_text
+                @post.Content
             </div>
+            <br />
+            <span class="update-date">
+                @post.Created_At.ToString("MMM dd, yyyy")
+            </span>
         </div>
     }
 </div>
