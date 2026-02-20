@@ -74,7 +74,9 @@
     }
 
     .update-list {
-        text-align:center;
+        width: fit-content;
+        margin: 0 auto;
+        text-align: left;
     }
 
     .badge {
@@ -89,7 +91,7 @@
 </style>
 
 <div class="header">Announcements</div>
-
+<br />
 <div class="main">
     <!-- Display top 10 posts -->
     @foreach (var post in Model.Posts)
@@ -123,7 +125,8 @@
         </div>
     }
 </div>
-
+<br />
+<br />
     <div class="newContent">
         <!-- Latest update -->
         <div class="update-box">
