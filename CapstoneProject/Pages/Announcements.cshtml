@@ -61,10 +61,16 @@
     }
 
     .update-box {
-        width: 100%;
+        width: 80%;
+        margin: 0 auto 20px;
+        padding: 16px;
         box-sizing: border-box;
-        text-align: center;
         display: flex;
+        flex-direction: column;
+        background-color: #1c1c1c;
+        border-radius: 10px;
+        border: 5px solid #DAA520;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
     }
 
     .update-list {
@@ -85,21 +91,28 @@
 <div class="header">Announcements</div>
 
 <div class="main">
-    <!-- If no Posts -->
-    @if (!Model.Posts.Any())
-    {
-        <div>No announcements yet.</div>
-    }
-    <!-- Display for top 10 posts -->
+    <!-- Display top 10 posts -->
     @foreach (var post in Model.Posts)
     {
-        <!-- Display post title and time -->
+        <!-- Display username who made the post -->
         <div class="update-box">
             <div class="update-title">
-                <h2>@post.Creator_ID</h2>
+                <h2>
+                    @{
+                        string username = "Unknown";
+                        foreach (var user in Model.User_ID)
+                        {
+                            if (user.User_ID == post.Creator_ID)
+                            {
+                                username = user.Username;
+                            }
+                        }
+                    }
+                    @username
+                </h2>
             </div>
             <br />
-            <!-- Display post text -->
+            <!-- Display post and time created -->
             <div class="update-text">
                 @post.Content
             </div>
@@ -118,7 +131,7 @@
                 <h2>Hotfix — v 0.2 <span class="badge">NEW</span></h2>
                 <span class="update-date">Feb 10, 2026</span>
             </div>
-
+            <!-- List of current fixes -->
             <ul class="update-list">
                 <li>Fixed Character Creation</li>
                 <li>Resolved Navigation Issues</li>

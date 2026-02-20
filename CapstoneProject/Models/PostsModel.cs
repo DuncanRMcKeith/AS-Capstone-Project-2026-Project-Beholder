@@ -1,6 +1,6 @@
 ﻿namespace CapstoneProject.Models
 {
-    public class PostsModel 
+    public class PostsModel
     {
         public int Post_ID { get; set; }
         public string? Title { get; set; }

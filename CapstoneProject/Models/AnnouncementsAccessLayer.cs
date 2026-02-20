@@ -1,6 +1,7 @@
 ﻿using CapstoneProject.Pages;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Hosting;
 using System.Data;
 
 namespace CapstoneProject.Models
@@ -52,8 +53,38 @@ namespace CapstoneProject.Models
                     }
                 }
             }
-
             return posts;
+        }
+        // Link User_ID to UserName
+        public List<UserModel> GetUsersID()
+        {
+            var users = new List<UserModel>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+
+                string sql = @"
+                SELECT User_ID, Username FROM Users;";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.CommandType = CommandType.Text;
+
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            users.Add(new UserModel
+                            {
+                                User_ID = reader.GetInt32("User_ID"),
+                                Username = reader.GetString("Username")
+                            });
+                        }
+                    }
+                }
+            }
+            return users;
         }
     }
 }
