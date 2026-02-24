@@ -55,6 +55,7 @@ namespace CapstoneProject.Models
             }
             return posts;
         }
+
         // Link User_ID to UserName
         public List<UserModel> GetUsersID()
         {
@@ -62,7 +63,6 @@ namespace CapstoneProject.Models
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-
                 string sql = @"
                 SELECT User_ID, Username FROM Users;";
 

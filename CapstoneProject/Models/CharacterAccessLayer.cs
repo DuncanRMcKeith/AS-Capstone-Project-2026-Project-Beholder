@@ -106,7 +106,6 @@ namespace CapstoneProject.Models
                     Slots = (int)reader["Slots"]
                 };
             }
-
             return character;
         }
     }

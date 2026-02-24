@@ -14,7 +14,6 @@ namespace CapstoneProject.Pages
             _configuration = configuration;
         }
 
-
         public List<PostsModel> Posts { get; set; } = new();
         public List<UserModel> User_ID { get; set; } = new();
 
