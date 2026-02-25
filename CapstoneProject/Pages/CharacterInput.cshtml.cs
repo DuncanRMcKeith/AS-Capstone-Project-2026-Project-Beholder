@@ -34,7 +34,8 @@ namespace CapstoneProject.Pages
 
         public IActionResult OnPost()
         {
-            var userId = HttpContext.Session.GetInt32("UserID").ToString();
+            var userId = HttpContext.Session.GetInt32("UserID");
+            string username = HttpContext.Session.GetString("Username");
 
             if (string.IsNullOrEmpty(username))
             {
@@ -51,14 +52,14 @@ namespace CapstoneProject.Pages
             }
 
             // Assign character to userId
-            Character.Creator_ID = int.Parse(userId);
+            Character.Creator_ID = userId ?? 0;
 
             // Character.Creator_ID = "38"; test line to set character to userId that is registered
 
             CharacterAccessLayer factory = new CharacterAccessLayer(_configuration);
 
             // Check if user already has 4 characters
-            if (factory.CountByCreatorId(int.Parse(userId)) >= 4)
+            if (factory.CountByCreatorId(userId ?? 0) >= 4)
             {
                 ModelState.AddModelError("", "You already have 4 characters.");
                 return Page();
