@@ -1,4 +1,4 @@
-html {
+﻿html {
     font-size: 14px;
     background-color: #1c1c1c; /* global background */
     color: #DAA520; /* global text color */
@@ -91,6 +91,29 @@ body {
 body, html {
     font-family: "DragonHunter", sans-serif;
 }
+html {
+    background-image: url('/Images/DungeonBackground.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; /* optional */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: transparent; /* ensure body doesn't override it */
+}
+/* Navbar: deep near‑black grey */
+.custom-navbar {
+    background-color: #1a1a1a !important;
+}
+
+/* Footer: slightly lighter dungeon grey */
+.footer {
+    background-color: #1a1a1a !important;
+}
+
 
 
 /*Chat Room CSS Starts Here*/
