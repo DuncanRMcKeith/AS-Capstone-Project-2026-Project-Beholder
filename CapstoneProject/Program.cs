@@ -1,4 +1,5 @@
 ﻿using CapstoneProject.Models;
+using CapstoneProject.NewFolder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,9 @@ builder.Services.AddScoped<UserAccessLayer>();
 builder.Services.AddSingleton<CharacterAccessLayer>();
 builder.Services.AddScoped<PostAccessLayer>();
 
+//SignalR Code
+builder.Services.AddSignalR();
+
 
 builder.Services.AddSession(options =>
 {
@@ -16,9 +20,10 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
 var app = builder.Build();
 
-app.UseSession();        // ← required
+app.UseSession();
 app.UseRouting();
 app.UseAuthorization();
 
@@ -41,5 +46,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapHub<ChatHub>("/chatHub");
 
 app.Run();

@@ -62,8 +62,57 @@
         </div>
     </footer>
 
+    <!-- The Chat Starts Here -->
+    <div id="chat-widget" class="chat-closed">
+
+        <div id="chat-header" onclick="toggleChat()">
+            💬 Chat
+        </div>
+
+        <div id="chat-body">
+
+            <!--  -->
+            <div id="chatHome">
+                <button onclick="showView('communityDM')">Community</button>
+                <button onclick="showView('friendsDM')">Friends</button>
+            </div>
+
+            <div id="communityDM" style="display:none;">
+                <button onclick="goHome()">Back</button>
+                <div id="communityContainer"></div>
+            </div>
+
+            <div id="friendsDM" style="display:none;">
+                <button onclick="goHome()">Back</button>
+                <div id="friendsContainer"></div>
+            </div>
+
+            <!--<div class="chat-messages" id="chat-messages">
+                <p><strong>Bot:</strong> Hey! How can I help?</p>
+            </div>-->
+
+            <div id="conversationView" style="display:none;">
+
+                <button onclick="closeConversation()">Back</button>
+
+                <div id="chat-messages"></div>
+
+                <div id="inputBox">
+                    <input type="text"
+                           id="chat-input"
+                           placeholder="Type a message..."
+                           onkeydown="handleKeyPress(event)" />
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
