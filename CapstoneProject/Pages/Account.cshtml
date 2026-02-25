@@ -13,7 +13,7 @@
 
 
 <div class="profile-top">
-	<img class="profile-pic" src="~/Images/@Model.User.Profilepic" alt="Profile picture"/>
+	<img class="profile-pic" src="@(Model.User.Profilepic ?? "Images/default.png")" alt="Profile picture"/>
 
 	<div class="profile-text">
 			<h1 class="text-center">@Model.User.Username</h1>
@@ -48,7 +48,7 @@
 					<p>Level @Model.CurrentCharacter.Level @Model.CurrentCharacter.CharacterClass</p>
 					<p>@Model.CurrentCharacter.Notes</p>
 
-					<button class="edit-profile">Edit Character</button>
+					
 				}
 				else
 				{

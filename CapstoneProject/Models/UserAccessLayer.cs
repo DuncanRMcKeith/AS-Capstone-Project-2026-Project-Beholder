@@ -40,7 +40,7 @@ namespace CapstoneProject.Models
             
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string sql = "INSERT INTO Users (Username, Email, Password, ProfilePicture, Created_Date) VALUES (@user, @email, @password, 'default.png', GETDATE())";
+                string sql = "INSERT INTO Users (Username, Email, Password, Profilepic, Created_Date) VALUES (@user, @email, @password, 'images/default.png', GETDATE())";
 
 
                 
@@ -155,7 +155,7 @@ namespace CapstoneProject.Models
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     string strsql = @"
-                    SELECT u.User_ID, u.Username, u.ProfilePicture
+                    SELECT u.User_ID, u.Username, u.Profilepic
                     FROM Users u
                     INNER JOIN FriendRequests f ON u.User_ID = f.Sending_User_ID
                     WHERE f.Receiving_User_ID = @UserId";
@@ -172,7 +172,7 @@ namespace CapstoneProject.Models
                         {
                             User_ID = Convert.ToInt32(rdr["User_ID"]),
                             Username = Convert.ToString(rdr["Username"]),
-                            Profilepic = Convert.ToString(rdr["ProfilePicture"])
+                            Profilepic = Convert.ToString(rdr["Profilepic"])
                         });
 
                     }
@@ -194,7 +194,7 @@ namespace CapstoneProject.Models
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     string strsql = @"
-                    SELECT u.User_ID, u.Username, u.ProfilePicture
+                    SELECT u.User_ID, u.Username, u.Profilepic
                     FROM Users u
                     INNER JOIN Friends f ON (f.User1 = @UserId AND u.User_ID = f.User2)
                     OR (f.User2 = @UserId AND u.User_ID = f.User1)
@@ -212,7 +212,7 @@ namespace CapstoneProject.Models
                         {
                             User_ID = Convert.ToInt32(rdr["User_ID"]),
                             Username = Convert.ToString(rdr["Username"]),
-                            Profilepic = Convert.ToString(rdr["ProfilePicture"])
+                            Profilepic = Convert.ToString(rdr["Profilepic"])
                         });
                         
                     }
@@ -249,7 +249,7 @@ namespace CapstoneProject.Models
                                     user.Username = reader["Username"].ToString();
                                     user.Email = reader["Email"].ToString();
                                     user.User_Description = reader["User_Description"].ToString();
-                                    user.Profilepic = reader["ProfilePicture"].ToString();
+                                    user.Profilepic = reader["Profilepic"].ToString();
                                 }
                                 ;
                             }
@@ -388,7 +388,7 @@ namespace CapstoneProject.Models
             List<UserModel> lstusers = new List<UserModel>();
             using(SqlConnection connection = new SqlConnection(connectionString))
             {
-                string sql = "SELECT Username, ProfilePicture, User_ID FROM Users WHERE Username LIKE @search AND User_ID != @currentuser AND NOT EXISTS (select 1 from Friends where(Friends.User1 = Users.User_ID AND Friends.User2 = @currentuser) OR (Friends.User2 = Users.User_ID AND Friends.User1 = @currentuser))";
+                string sql = "SELECT Username, Profilepic, User_ID FROM Users WHERE Username LIKE @search AND User_ID != @currentuser AND NOT EXISTS (select 1 from Friends where(Friends.User1 = Users.User_ID AND Friends.User2 = @currentuser) OR (Friends.User2 = Users.User_ID AND Friends.User1 = @currentuser))";
                 try { 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
@@ -404,7 +404,7 @@ namespace CapstoneProject.Models
                         {
                             User_ID = Convert.ToInt32(rdr["User_ID"]),
                             Username = Convert.ToString(rdr["Username"]),
-                            Profilepic = Convert.ToString(rdr["ProfilePicture"])
+                            Profilepic = Convert.ToString(rdr["Profilepic"])
                         });
 
                     }

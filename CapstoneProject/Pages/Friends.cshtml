@@ -29,7 +29,7 @@
 		@foreach (var req in Model.Requests)
 		{
 		<div class="card">
-			<img src="~/Images/@req.Profilepic" class="profile-pic" />
+			<img src="@req.Profilepic" class="profile-pic" />
 			<h4>@req.Username</h4>
 			<a class="btn-info btn btnview" asp-page="/Account" asp-route-id="@req.User_ID">View Profile</a>
             <form method="post" asp-page-handler="Accept">
@@ -58,7 +58,7 @@
 				@foreach (var friend in Model.Users)
 				{
 					<div class="card">
-						<img src="~/Images/@friend.Profilepic" class="profile-pic" />
+						<img src="@friend.Profilepic" class="profile-pic" />
 						<div class="friend-info">
 							<h4>@friend.Username</h4>
                             <a class="btn-info btn btnview" asp-page="/Account" asp-route-id="@friend.User_ID">View Profile</a>
