@@ -82,3 +82,12 @@ body {
     max-width: 120  0px; /* set your allotted width */
     text-align: center;
 }
+@font-face {
+    font-family: "DragonHunter";
+    src: url("/fonts/DragonHunter-9Ynxj.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+body, html {
+    font-family: "DragonHunter", sans-serif;
+}
