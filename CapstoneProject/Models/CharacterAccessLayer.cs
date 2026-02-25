@@ -38,12 +38,12 @@ namespace CapstoneProject.Models
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.CommandType = CommandType.Text;
-                    command.Parameters.AddWithValue("@Creator_ID", character.Creator_ID ?? "");
-                    command.Parameters.AddWithValue("@FName", character.FName ?? "");
-                    command.Parameters.AddWithValue("@LName", character.LName ?? "");
-                    command.Parameters.AddWithValue("@Title", character.Title ?? "");
+                    command.Parameters.AddWithValue("@Creator_ID", character.Creator_ID);
+                    command.Parameters.AddWithValue("@FName", character.FName);
+                    command.Parameters.AddWithValue("@LName", character.LName);
+                    command.Parameters.AddWithValue("@Title", character.Title);
                     command.Parameters.AddWithValue("@Level", character.Level);
-                    command.Parameters.AddWithValue("@Char_class", character.CharacterClass ?? "");
+                    command.Parameters.AddWithValue("@Char_class", character.CharacterClass);
                     command.Parameters.AddWithValue("@Strength", character.Strength);
                     command.Parameters.AddWithValue("@Dexterity", character.Dexterity);
                     command.Parameters.AddWithValue("@Constitution", character.Constitution);
@@ -60,17 +60,13 @@ namespace CapstoneProject.Models
             }
         }
         // Count the number of characters created by a specific user
-        public int CountByCreatorId(string creatorId)
+        public int CountByCreatorId(int creatorId)
         {
-
             using SqlConnection conn = new SqlConnection(
                 _configuration.GetConnectionString("DefaultConnection"));
-
             using SqlCommand cmd = new SqlCommand(
                 "SELECT COUNT(*) FROM Characters WHERE Creator_ID = @Creator_ID", conn);
-
             cmd.Parameters.AddWithValue("@Creator_ID", creatorId);
-
             conn.Open();
             return (int)cmd.ExecuteScalar();
         }
@@ -93,7 +89,7 @@ namespace CapstoneProject.Models
                 character = new CharacterModel
                 {
                     Character_ID = (int)reader["Character_ID"],
-                    Creator_ID = reader["Creator_ID"].ToString(),
+                    Creator_ID = (int)reader["Creator_ID"],
                     FName = reader["FName"].ToString(),
                     LName = reader["LName"].ToString(),
                     Title = reader["Title"].ToString(),
@@ -110,7 +106,6 @@ namespace CapstoneProject.Models
                     Slots = (int)reader["Slots"]
                 };
             }
-
             return character;
         }
         public void DeleteCharacter(int userId, int slot)

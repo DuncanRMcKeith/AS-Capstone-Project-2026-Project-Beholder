@@ -1,12 +1,12 @@
 using CapstoneProject.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Hosting;
-
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace CapstoneProject.Pages
 {
@@ -16,6 +16,7 @@ namespace CapstoneProject.Pages
         public CharacterModel Character { get; set; }
 
         [BindProperty]
+        [ValidateNever]
         public IFormFile CharacterImage { get; set; }
 
         private readonly IConfiguration _configuration;
@@ -33,7 +34,7 @@ namespace CapstoneProject.Pages
 
         public IActionResult OnPost()
         {
-            var username = HttpContext.Session.GetString("Username");
+            var userId = HttpContext.Session.GetInt32("UserID").ToString();
 
             if (string.IsNullOrEmpty(username))
             {
@@ -41,26 +42,29 @@ namespace CapstoneProject.Pages
                 return Page();
             }
 
-            // Load the actual user so we can get User_ID (int)
-            var userAccess = new UserAccessLayer(_configuration);
-            var user = userAccess.GetUserByUsername(username);
+            // Remove error if image is not uploaded 
+            ModelState.Remove("CharacterImage");
 
-            int userId = user.User_ID;
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
 
-            // Assign character to correct user ID
-            Character.Creator_ID = userId.ToString();
+            // Assign character to userId
+            Character.Creator_ID = int.Parse(userId);
+
+            // Character.Creator_ID = "38"; test line to set character to userId that is registered
 
             CharacterAccessLayer factory = new CharacterAccessLayer(_configuration);
 
             // Check if user already has 4 characters
-            if (factory.CountByCreatorId(userId.ToString()) >= 4)
+            if (factory.CountByCreatorId(int.Parse(userId)) >= 4)
             {
                 ModelState.AddModelError("", "You already have 4 characters.");
                 return Page();
             }
 
-            // Handle file upload
-            // Save character image to wwwroot/images/characters
+            // Handle file upload allowed null
             if (CharacterImage != null)
             {
                 string folder = Path.Combine(_env.WebRootPath, "images", "characters");

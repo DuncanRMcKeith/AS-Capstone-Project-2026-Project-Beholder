@@ -15,11 +15,13 @@ namespace CapstoneProject.Pages
         }
 
         public List<PostsModel> Posts { get; set; } = new();
+        public List<UserModel> User_ID { get; set; } = new();
 
         public void OnGet()
         {
             var factory = new AnnouncementsAccessLayer(_configuration);
             Posts = factory.GetTop10Posts();
+            User_ID = factory.GetUsersID();
         }
     }
 }

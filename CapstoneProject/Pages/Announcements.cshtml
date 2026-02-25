@@ -61,14 +61,22 @@
     }
 
     .update-box {
-        width: 100%;
+        width: 80%;
+        margin: 0 auto 20px;
+        padding: 16px;
         box-sizing: border-box;
-        text-align: center;
         display: flex;
+        flex-direction: column;
+        background-color: #1c1c1c;
+        border-radius: 10px;
+        border: 5px solid #DAA520;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
     }
 
     .update-list {
-        text-align:center;
+        width: fit-content;
+        margin: 0 auto;
+        text-align: left;
     }
 
     .badge {
@@ -83,44 +91,54 @@
 </style>
 
 <div class="header">Announcements</div>
-
+<br />
 <div class="main">
-    <!-- If no Posts -->
-    @if (!Model.Posts.Any())
-    {
-        <div>No announcements yet.</div>
-    }
-    <!-- Display for top 10 posts -->
+    <!-- Display top 10 posts -->
     @foreach (var post in Model.Posts)
     {
-        <!-- Display post title and time -->
+        <!-- Display username who made the post -->
         <div class="update-box">
             <div class="update-title">
-                <h2>@post.Title</h2>
-                <span class="update-date">
-                    @post.Created_At.ToString("MMM dd, yyyy")
-                </span>
+                <h2>
+                    @{
+                        string username = "Unknown";
+                        foreach (var user in Model.User_ID)
+                        {
+                            if (user.User_ID == post.Creator_ID)
+                            {
+                                username = user.Username;
+                            }
+                        }
+                    }
+                    @username
+                </h2>
             </div>
-            <!-- Display post text -->
+            <br />
+            <!-- Display post and time created -->
             <div class="update-text">
-                @post.Post_text
+                @post.Content
             </div>
+            <br />
+            <span class="update-date">
+                @post.Created_At.ToString("MMM dd, yyyy")
+            </span>
         </div>
     }
 </div>
-
+<br />
+<br />
     <div class="newContent">
         <!-- Latest update -->
         <div class="update-box">
             <div class="update-title">
-                <h2>Hotfix — v 0.2 <span class="badge">NEW</span></h2>
-                <span class="update-date">Feb 10, 2026</span>
+                <h2>Hotfix — v 0.4 <span class="badge">NEW</span></h2>
+                <span class="update-date">Feb 23, 2026</span>
             </div>
-
+            <!-- List of current fixes -->
             <ul class="update-list">
-                <li>Fixed Character Creation</li>
+                <li>Fixed Character Limit</li>
                 <li>Resolved Navigation Issues</li>
-                <li>Improved Character Storage</li>
-                <li>Working Character Upload</li>
+                <li>Fixed Top 10 Posts Display</li>
+                <li>Allowed To Delete Character From Profile Page</li>
             </ul>
         </div>
