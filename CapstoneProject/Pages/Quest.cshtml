@@ -76,7 +76,27 @@
     background-color: #155ad1;
 }
 
+    .comments-section {
+        border-top: 1px solid #dee2e6;
+        margin-top: 10px;
+        padding-top: 10px;
+    }
+
+    .comment {
+        display: flex;
+        gap: 8px;
+        align-items: baseline;
+        padding: 4px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+        .comment small {
+            margin-left: auto;
+        }
 </style>
+<head>
+    <script src="https://kit.fontawesome.com/9a2eb0f57a.js" crossorigin="anonymous"></script>
+</head>
     <div class="container">
         <h2>Quests</h2>
 
@@ -89,7 +109,7 @@
         Create Post
     </div>
 
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" asp-page-handler="AddPost">
 
         <input type="text" class="title-input" placeholder="Enter title..." asp-for="Post.Title"/> 
 
@@ -115,12 +135,92 @@
             @foreach(var post in Model.Posts)
             {
                 <div class="card">
+
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <a asp-page="Account" asp-route-id="@post.Creator_ID" style="color:inherit; text-decoration:none;">
+                        <img src="@(post.CreatorProfilepic ?? "images/default.png")"
+                             style="width:40px; height:40px; border-radius:50%; object-fit:cover;" />
+							<strong>@post.CreatorUsername</strong>
+						</a>
+                        <small class="text-muted">@post.Created_At.ToString("MMM dd, yyyy")</small>
+                    </div>
+			        <h4>@post.Title</h4>
 			
-			<h4>@post.Title</h4>
-            <h10>@post.Created_At</h10>
-			
-            <p>@post.Content</p>
-		</div>
+                    <p>@post.Content</p>
+                    <div style="display:flex; align-items: center; gap: 10px;">
+                        <a href="#" class="comment-icon" onclick="toggleComments('@post.Post_ID'); return false;">
+                            <i class="fa-regular fa-comment-dots" style="color: rgb(138, 169, 160);"></i>
+                        </a>
+                        <button onclick="toggleLike(@post.Post_ID, this)"
+                                style="background:none; border:none; padding:0; margin:0; cursor:pointer; color:inherit; font:inherit;"
+                                data-liked="@post.IsLikedByCurrentUser.ToString().ToLower()">
+                            <i class="fa-@(post.IsLikedByCurrentUser ? "solid" : "regular") fa-thumbs-up"
+                                style="color: rgb(138, 169, 160);"></i>
+                            <span id="like-count-@post.Post_ID">@post.Likes</span>
+                        </button>
+                    @if (post.Creator_ID == Model.userId)
+                    {   <form method="post" asp-page-handler="RemovePost">
+                        <input type="hidden" name="postid" value="@post.Post_ID" />
+                            <button type="submit" style ="background:none; border:none; padding:0; margin:0; cursor:pointer; color:inherit; font:inherit;"><i class="fa-solid fa-trash-can" onclick="" style="color: rgb(138, 169, 160); cursor:pointer;"></i></button>
+						</form>
+                    }
+                    </div>
+
+
+                    <div id="comments-@post.Post_ID" class="comments-section" style="display:none;">
+						<!-- add comment form -->
+                        @if(Model.LoggedIn == "true")
+                        {
+                            <form method="post" asp-page="/Quest" asp-page-handler="AddComment">
+							<input type="hidden" name="CommentPostId" value="@post.Post_ID" />
+							<div class="d-flex gap-2 mt-2">
+								<input type="text" name="CommentContent" class="form-control form-control-sm" placeholder="Write a comment..." />
+								<button type="submit" class="btn btn-sm btn-primary">Post</button>
+							</div>
+                            </form>
+                        }
+                        else
+                        {
+							<p><a asp-page="login">Log In</a> to commment on this post!</p>
+                        }
+
+                        <hr />
+                        <!-- existing comments -->
+                        @foreach (var comment in post.Comments)
+                        {
+                            <div class="comment">
+                                <a asp-page="Account" asp-route-id="@comment.User_ID" style="color:inherit; text-decoration:none;">
+                                <img src="@(comment.Profilepic ?? "images/default.png")"
+                                     style="width:30px; height:30px; border-radius:50%; object-fit:cover;" />
+									<strong>@comment.Username</strong>
+								</a>
+                                <span>@comment.Content</span>
+                                <small class="text-muted">@comment.Created_At.ToString("MMM dd, yyyy")</small>
+                                @if (comment.User_ID == Model.userId)
+                                {
+                                    <form method="post" asp-page-handler="RemoveComment">
+                                        <input type="hidden" name="commentid" value="@comment.Comment_ID" />
+                                        <button type="submit" style="background:none; border:none; padding:0; margin:0; cursor:pointer; color:inherit; font:inherit;"><i class="fa-solid fa-trash-can" onclick="" style="color: rgb(138, 169, 160); cursor:pointer;"></i></button>
+                                    </form>
+                                }
+                            </div>
+                        }
+
+                        
+                    </div>
+                </div>
+            }
+            @if (Model.TotalPages > 1)
+            {
+                <div class="d-flex justify-content-center gap-2 mt-3">
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <a asp-page="/Quest" asp-route-currentPage="@i"
+                           class="btn btn-sm @(i == Model.CurrentPage ? "btn-primary" : "btn-secondary")">
+                            @i
+                        </a>
+                    }
+                </div>
             }
         }
         </div>
@@ -136,6 +236,31 @@
     if (createbtn && addDropdown) {
         createbtn.addEventListener("click", () => {
             addDropdown.style.display = addDropdown.style.display === "block" ? "none" : "block";
+        });
+    }
+        function toggleComments(postId) {
+        const section = document.getElementById('comments-' + postId);
+        section.style.display = section.style.display === 'none' ? 'block' : 'none';
+    }
+
+        function toggleLike(postId, btn) {
+        const formData = new FormData();
+        formData.append('postId', postId);
+        formData.append('__RequestVerificationToken', document.querySelector('input[name="__RequestVerificationToken"]').value);
+
+        fetch('?handler=ToggleLike', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                const icon = btn.querySelector('i');
+                const count = document.getElementById('like-count-' + postId);
+                count.textContent = data.likes;
+                icon.className = data.isLiked ? 'fa-solid fa-thumbs-up' : 'fa-regular fa-thumbs-up';
+                btn.dataset.liked = data.isLiked;
+            }
         });
     }
 </script>

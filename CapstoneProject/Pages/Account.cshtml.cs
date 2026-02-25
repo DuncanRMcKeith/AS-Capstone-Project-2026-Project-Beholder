@@ -22,6 +22,14 @@ namespace CapstoneProject.Pages
         public IActionResult OnGet(int id)
         {
             IActionResult temp = Page();
+            if(HttpContext.Session.GetString("LoggedIn") == "true")
+            {
+                if(id == HttpContext.Session.GetInt32("UserID"))
+                {
+                    temp = RedirectToPage("Profile");
+                }
+            }
+            
             User = _userAccess.GetUserByID(id);   
 
             if (User == null)
