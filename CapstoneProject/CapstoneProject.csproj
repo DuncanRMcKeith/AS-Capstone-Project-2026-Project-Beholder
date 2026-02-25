@@ -14,4 +14,9 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\Characters\" />
+    <Folder Include="wwwroot\Images\Users\" />
+  </ItemGroup>
+
 </Project>

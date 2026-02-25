@@ -12,62 +12,156 @@
 <div class="container">
 
 
-<div class="profile-top">
-	<img class="profile-pic" src="https://placehold.co/150x150" alt="Profile picture"/>
+	<div class="profile-top">
+		@if (!Model.IsEditingBio)
+		{
+			<!-- Normal display mode -->
+			<img class="profile-pic"
+				 src="@(Model.CurrentUser.Profilepic ?? "/images/placeholder.png")"
+				 alt="Profile picture" />
 
-	<div class="profile-text">
-			<h1 class="text-center">@Model.CurrentUser.Username</h1>
+			<div class="profile-text">
+				<h1 class="text-center">@Model.CurrentUser.Username</h1>
+				<p class="text-center" id="User-Description">
+					@Model.CurrentUser.User_Description
+				</p>
+			</div>
+		}
+		else
+		{
+			<!-- Editing mode: ONE unified form -->
+			<form method="post" enctype="multipart/form-data" class="profile-top">
 
-			<p class="text-center" id="User-Description">
-				@Model.CurrentUser.User_Description
-			</p>
+				<!-- Image stays in place -->
+				<img class="profile-pic"
+					 src="@(Model.CurrentUser.Profilepic ?? "/images/placeholder.png")"
+					 alt="Profile picture"
+					 id="profilePicPreview" />
 
+				<!-- Hidden file input -->
+				<input type="file" name="ProfileImage" id="profilePicInput" style="display:none;" />
+
+				<div class="profile-text">
+					<h1 class="text-center">@Model.CurrentUser.Username</h1>
+
+					<textarea name="NewDescription"
+						  class="bio-editor"
+						  style="width:700px; height:140px">
+                @Model.NewDescription
+            </textarea>
+
+					<button type="submit" asp-page-handler="SaveAll" class="save-profile">
+						Save
+					</button>
+				</div>
+			</form>
+
+			<script>
+				// Clicking the image opens the file picker
+				document.getElementById("profilePicPreview").onclick = function () {
+					document.getElementById("profilePicInput").click();
+				};
+
+				// Live preview
+				document.getElementById("profilePicInput").onchange = function (e) {
+					const file = e.target.files[0];
+					if (file) {
+						document.getElementById("profilePicPreview").src = URL.createObjectURL(file);
+					}
+				};
+			</script>
+		}
+		</div>
 	</div>
-</div>
 	<br />
-	<button class="edit-profile">Edit Profile <i class="fa-solid fa-wrench"></i></button>
+
+	@if (!Model.IsEditingBio)
+	{
+		<form method="post">
+			<button type="submit" asp-page-handler="EditBio" class="edit-profile">
+				Edit Profile <i class="fa-solid fa-wrench"></i>
+			</button>
+		</form>
+	}
+	<br />
 
 
 <div class="profile-characters">
 	<h2 class="text-center">Characters</h2>
-	<nav class="border-bottom box-shadow mb-3">
-		<ul>
-			<li class="nav-item">
-				<a class="nav-link" asp-area="" asp-page="#">1</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" asp-area="" asp-page="#">2</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" asp-area="" asp-page="#">3</a>
-			</li>
-			<li class="nav-item active">
-				<a class="nav-link" asp-area="" asp-page="#">4</a>
-			</li>
-		</ul>
-	</nav>
+		<nav class="border-bottom box-shadow mb-3">
+			<ul>
+				<li class="nav-item">
+					<a class="nav-link" asp-page="./Profile" asp-route-slot="1">1</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" asp-page="./Profile" asp-route-slot="2">2</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" asp-page="./Profile" asp-route-slot="3">3</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" asp-page="./Profile" asp-route-slot="4">4</a>
+				</li>
+			</ul>
+		</nav>
 
-	<div class="character-display">
+
+		<div class="character-display">
+
 		<div class="character-text">
-			<h2>JOHN DND</h2>
-			<p>level 5 barbarian</p>
-			<p>Additional notes go here</p>
-			<button class="edit-profile">Edit Character</button>
+			<h2>
+				@(
+								Model.CurrentCharacter != null
+								? $"{Model.CurrentCharacter.FName} {Model.CurrentCharacter.LName}"
+								: "No Character in this Slot"
+								)
+			</h2>
+
+			@if (Model.CurrentCharacter != null)
+			{
+				<p>Level @Model.CurrentCharacter.Level @Model.CurrentCharacter.CharacterClass</p>
+				<p>@Model.CurrentCharacter.Notes</p>
+
+				<!-- DELETE CHARACTER BUTTON -->
+				<form method="post">
+					<button type="submit"
+							asp-page-handler="DeleteCharacter"
+							asp-route-slot="@Request.Query["slot"]"
+							class="delete-character">
+						Delete Character
+					</button>
+				</form>
+			}
+			else
+			{
+				<p>This slot is empty.</p>
+
+				<!-- CREATE CHARACTER BUTTON -->
+				<a class="edit-profile"
+				   asp-page="/CharacterInput"
+				   asp-route-slot="@(Request.Query["slot"])">
+					Create Character
+				</a>
+			}
 		</div>
 
-		<div class="char-image">
-			<img src="https://placehold.co/250x250" />
-		</div>
+			<div class="char-image">
+			<img style="height:250px; width:250px"
+				 src="@(Model.CurrentCharacter?.Image_Path ?? "https://placehold.co/250x250")" />
+			</div>
 
-		<ul>
-			<li>STR: 5</li>
-			<li>DEX: 5</li>
-			<li>CON: 5</li>
-			<li>INT: 5</li>
-			<li>WIS: 5</li>
-			<li>CHA: 5</li>
-		</ul>
-	</div>
+			@if (Model.CurrentCharacter != null)
+			{
+				<ul>
+					<li>STR: @Model.CurrentCharacter.Strength</li>
+					<li>DEX: @Model.CurrentCharacter.Dexterity</li>
+					<li>CON: @Model.CurrentCharacter.Constitution</li>
+					<li>INT: @Model.CurrentCharacter.Intelligence</li>
+					<li>WIS: @Model.CurrentCharacter.Wisdom</li>
+					<li>CHA: @Model.CurrentCharacter.Charisma</li>
+				</ul>
+			}
+		</div>
 
 
 

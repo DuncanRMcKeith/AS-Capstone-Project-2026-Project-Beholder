@@ -1,0 +1,21 @@
+﻿
+@model List<CapstoneProject.Models.UserModel>
+
+@if (Model != null && Model.Any())
+{
+    foreach (var result in Model)
+    {
+        <div class="dropdown-user">
+            <img src="~/Images/@result.Profilepic" class="profile-pic" />
+			<span><a class="btn-info btn btnview" asp-page="/Account" asp-route-id="@result.User_ID">@result.Username</a></span>
+            <form method="post" asp-page-handler="AddFriendRequest">
+                <input type="hidden" name="friendid" value="@result.User_ID" />
+                <button class="btn btn-sm btn-success btnaddFriend" id="addFriend">+</button>
+            </form>
+        </div>
+    }
+}
+else
+{
+    <p>no results.</p>
+}

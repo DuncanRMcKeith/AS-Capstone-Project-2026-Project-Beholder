@@ -1,0 +1,93 @@
+﻿@page
+@model CapstoneProject.Pages.AccountModel
+@{
+	ViewData["Title"] = @Model.User.Username + "'s Profile";
+}
+
+<head>
+	<link href="./css/profile.css" rel="stylesheet" />
+
+</head>
+
+<div class="container">
+
+
+<div class="profile-top">
+	<img class="profile-pic" src="~/Images/@Model.User.Profilepic" alt="Profile picture"/>
+
+	<div class="profile-text">
+			<h1 class="text-center">@Model.User.Username</h1>
+
+			<p class="text-center" id="User-Description">
+				@Model.User.User_Description
+			</p>
+
+	</div>
+</div>
+	<br />
+	
+
+
+<div class="profile-characters">
+	<h2 class="text-center">Featured Character</h2>
+	
+
+	<div class="character-display">
+
+			<div class="character-text">
+				<h2>
+					@(
+										Model.CurrentCharacter != null
+										? $"{Model.CurrentCharacter.FName} {Model.CurrentCharacter.LName}"
+										: "No Saved Characters"
+										)
+				</h2>
+
+				@if (Model.CurrentCharacter != null)
+				{
+					<p>Level @Model.CurrentCharacter.Level @Model.CurrentCharacter.CharacterClass</p>
+					<p>@Model.CurrentCharacter.Notes</p>
+
+					<button class="edit-profile">Edit Character</button>
+				}
+				else
+				{
+					<p>@Model.User.Username has no saved characters.</p>
+					
+				}
+			</div>
+
+			
+
+			@if (Model.CurrentCharacter != null)
+			{
+				<div class="char-image">
+					<img src="@(Model.CurrentCharacter?.Image_Path ?? "https://placehold.co/250x250")" />
+				</div>
+
+				<ul>
+					<li>STR: @Model.CurrentCharacter.Strength</li>
+					<li>DEX: @Model.CurrentCharacter.Dexterity</li>
+					<li>CON: @Model.CurrentCharacter.Constitution</li>
+					<li>INT: @Model.CurrentCharacter.Intelligence</li>
+					<li>WIS: @Model.CurrentCharacter.Wisdom</li>
+					<li>CHA: @Model.CurrentCharacter.Charisma</li>
+				</ul>
+			}
+		</div>
+
+
+
+</div>
+
+<div class="comms-badges">
+	<div class="comms text-center">
+		<p>Active Communities</p>
+	</div>
+
+	<div class="badges text-center">
+		<p>Badges</p>
+	</div>
+
+	</div>
+</div>

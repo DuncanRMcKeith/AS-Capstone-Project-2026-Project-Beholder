@@ -1,0 +1,192 @@
+﻿@page
+@model CapstoneProject.Pages.FriendsModel
+@{
+	ViewData["Title"] = "Friends";
+}
+<head>
+	<link rel="stylesheet" href="~/css/friends.css" />
+    <script src="https://kit.fontawesome.com/9a2eb0f57a.js" crossorigin="anonymous"></script>
+
+</head>
+
+
+
+<div class="container">
+	<h1>Friends</h1>
+	<div class="position-relative d-inline-block">
+		<button class="btn btn-primary me-md-2" id="addFriendBtn" type="button">Add Friend</button>
+		<button class="btn btn-primary me-md-2" id="requestBtn" type="button">Requests (<span class="badge badge-light">@Model.Requests.Count()</span>)</button>
+
+		<div id="addFriendDropdown" class="dropdown-content">
+			<input type="text" id="friendSearchInput" placeholder="Search username..." />
+            
+			<div id="searchResults"></div>
+		</div>
+	
+	
+	<div id="RequestsDropdown" class="Requestdropdown-content">
+         @if (Model.Requests.Any()) {
+		@foreach (var req in Model.Requests)
+		{
+		<div class="card">
+			<img src="~/Images/@req.Profilepic" class="profile-pic" />
+			<h4>@req.Username</h4>
+			<a class="btn-info btn btnview" asp-page="/Account" asp-route-id="@req.User_ID">View Profile</a>
+            <form method="post" asp-page-handler="Accept">
+                <input type="hidden" name="reqID" value="@req.User_ID" />
+				<button class="btn-success btnadd" onclick="">Add</button>
+			</form>
+            <form method="post" asp-page-handler="Reject">
+                <input type="hidden" name="reqID" value="@req.User_ID" />
+				<button class="btn-danger btnreject">Reject</button>
+			</form>
+		</div>
+                }
+            }
+            else
+            {
+                <p>No pending friend requests.</p>
+            } 
+
+		</div>
+	</div>
+
+	</div>
+	<div class="friends-list">
+			@if (Model.Users.Any())
+			{
+				@foreach (var friend in Model.Users)
+				{
+					<div class="card">
+						<img src="~/Images/@friend.Profilepic" class="profile-pic" />
+						<div class="friend-info">
+							<h4>@friend.Username</h4>
+                            <a class="btn-info btn btnview" asp-page="/Account" asp-route-id="@friend.User_ID">View Profile</a>
+							<button class="btn removebtn" data-username = "@friend.Username" data-userid="@friend.User_ID">Remove friend</button>
+						</div>
+					</div>
+				}
+			}
+			else {
+				<p>You have no friends. Click "Add Friend" to find some!</p>
+			}
+	</div>
+
+
+
+</div>
+
+@*needed for the remove friend sweetalert stuff*@
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+<input type="hidden" name="__RequestVerificationToken" value="@Antiforgery.GetAndStoreTokens(HttpContext).RequestToken" />
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@*script for dropdown functionality*@
+<script>
+        // Requests dropdown
+    const reqBtn = document.getElementById("requestBtn");
+    const reqDropdown = document.getElementById("RequestsDropdown");
+    if (reqBtn && reqDropdown) {
+        reqBtn.addEventListener("click", () => {
+            reqDropdown.style.display = reqDropdown.style.display === "block" ? "none" : "block";
+        });
+    }
+
+    // Add friend dropdown
+    const addBtn = document.getElementById("addFriendBtn");
+    const addDropdown = document.getElementById("addFriendDropdown");
+    if (addBtn && addDropdown) {
+        addBtn.addEventListener("click", () => {
+            addDropdown.style.display = addDropdown.style.display === "block" ? "none" : "block";
+        });
+    }
+</script> 
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // Remove friend buttons
+            const removeBtns = document.querySelectorAll(".removebtn");
+
+        removeBtns.forEach(btn => {
+            btn.addEventListener("click", async () => {
+                const friendid = btn.getAttribute("data-userid");
+                const uname = btn.getAttribute("data-username");
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    background: '#663e3e',
+                    text: `Are you sure you want to remove ${uname} from your friends list?`,
+                    icon: "warning",
+                    color: "#F0F0F0",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes"
+                }).then(async (result) => {
+                    if (result.isConfirmed) {
+
+                        const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+                        const formData = new FormData();
+                        formData.append("friendid", friendid);
+                        formData.append("__RequestVerificationToken", token)
+
+                        const response = await fetch(`?handler=RemoveFriend`, {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        const data = await response.json();
+
+                        if (data.success) {
+                            Swal.fire({
+                                color: "#F0F0F0",
+                                background: '#663e3e',
+                                title: "Deleted!",
+                                text: `You are no longer friends with ${uname}`,
+                                icon: "success"
+                            });
+                             btn.closest('.card').remove();
+                        }
+                    }
+                });
+            });
+        });
+
+
+        const input = document.getElementById("friendSearchInput")
+        const resultsDiv = document.getElementById("searchResults")
+
+        let debounceTimer;
+
+        input.addEventListener("input", () => {
+            clearTimeout(debounceTimer);
+
+            debounceTimer = setTimeout(async () =>{
+                const term = input.value;
+
+                if (term.length < 2) {
+                    resultsDiv.innerHTML = ""
+                    return;
+                }
+
+                const response = await fetch(`?handler=Search&term=${encodeURIComponent(term)}`)
+                const html = await response.text();
+
+                resultsDiv.innerHTML = html;
+            }, 300)
+        })
+
+        //remove + button once its pressed and request is sent
+
+        const addbtns = document.querySelectorAll('.btnaddFriend');
+        addbtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const container = btn.closest('.dropdown-user'); 
+                if (container) container.remove();
+            });
+        });
+    });
+</script>
