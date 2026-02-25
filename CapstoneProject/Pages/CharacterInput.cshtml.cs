@@ -32,40 +32,38 @@ namespace CapstoneProject.Pages
         }
 
         public IActionResult OnPost()
-
         {
-            var userId = HttpContext.Session.GetString("Username"); 
+            var username = HttpContext.Session.GetString("Username");
 
-            if (string.IsNullOrEmpty(userId))
+            if (string.IsNullOrEmpty(username))
             {
-                // Not logged in 
                 ModelState.AddModelError("", "You must be logged in.");
                 return Page();
             }
 
-            // Assign character to userId
-            Character.Creator_ID = userId;
-            // Character.Creator_ID = "38"; test line to set character to userId that is registered
+            // Load the actual user so we can get User_ID (int)
+            var userAccess = new UserAccessLayer(_configuration);
+            var user = userAccess.GetUserByUsername(username);
+
+            int userId = user.User_ID;
+
+            // Assign character to correct user ID
+            Character.Creator_ID = userId.ToString();
 
             CharacterAccessLayer factory = new CharacterAccessLayer(_configuration);
 
             // Check if user already has 4 characters
-            if (factory.CountByCreatorId(userId) >= 4)
+            if (factory.CountByCreatorId(userId.ToString()) >= 4)
             {
                 ModelState.AddModelError("", "You already have 4 characters.");
                 return Page();
             }
 
-            /*if (factory.CountByCreatorId(Character.Creator_ID) >= 4)
-            {
-                ModelState.AddModelError("", "You already have 4 characters.");
-                return Page();
-            }*/ // test line used to see if connection to database was succesful, should be removed when userId is implemented
-
-            // Handle file upload allowed null
+            // Handle file upload
+            // Save character image to wwwroot/images/characters
             if (CharacterImage != null)
             {
-                string folder = Path.Combine(_env.WebRootPath, "uploads");
+                string folder = Path.Combine(_env.WebRootPath, "images", "characters");
                 Directory.CreateDirectory(folder);
 
                 string file = Guid.NewGuid().ToString() + Path.GetExtension(CharacterImage.FileName);
@@ -76,10 +74,13 @@ namespace CapstoneProject.Pages
                     CharacterImage.CopyTo(stream);
                 }
 
-                Character.Image_Path = "/uploads/" + file;
+                // Store relative path for SQL + Razor
+                Character.Image_Path = $"/images/characters/{file}";
             }
+
             factory.create(Character);
-            return Page();
+
+            return RedirectToPage("/Profile", new { slot = Character.Slots });
         }
     }
 }
