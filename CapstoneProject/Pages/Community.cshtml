@@ -1,194 +1,87 @@
 ﻿@page
 @model CapstoneProject.Pages.CommunityModel
 @{
+    ViewData["Title"] = "Communities";
 }
-<head>
-    <link href="~/css/" rel="stylesheet" />
-    <style>
-        .community-layout {
-            display: flex;
-            gap: 20px;
-        }
 
-        .community-posts {
-            flex: 3;
-        }
+<style>
+    .card-banner {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+    }
 
-        .community-sidebar {
-            flex: 1;
-        }
+    .card-banner-placeholder {
+        width: 100%;
+        height: 160px;
+        background-color: #e9ecef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #adb5bd;
+        font-size: 2rem;
+    }
 
-        .post-card,
-        .sidebar-box {
-            height: 60px;
-            background: #000;
-            margin-bottom: 15px;
-        }
+    .community-card {
+        height: 100%;
+    }
+</style>
 
-        .community-chat {
-            display: flex;
-            gap: 20px;
-            margin-top: 30px;
-        }
+<h1 class="mb-4">Communities</h1>
 
-        .chatroom {
-            flex: 3;
-            height: 150px;
-            background: #dcdcdc;
-        }
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
-        .friends-list {
-            flex: 1;
-        }
+    @if (Model.Communities != null && Model.Communities.Any())
+    {
+        @foreach (var community in Model.Communities)
+        {
+            <div class="col">
+                <div class="card community-card">
 
-        .card {
-            display: block;
-            width: 100%;
-            max-width: 150rem;
-            background-color: #363636;
-        }
+                    @if (!string.IsNullOrEmpty(community.ImageURL))
+                    {
+                        <img class="card-banner" src="@community.ImageURL" alt="@community.Name" />
+                    }
+                    else
+                    {
+                        <div class="card-banner-placeholder">⚔</div>
+                    }
 
-        img {
-            width: 100%;
-            height: auto;
-        }
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title mb-0">@community.Name</h5>
+                            @if (!string.IsNullOrEmpty(community.CampaignVersion))
+                            {
+                                <span class="badge bg-secondary ms-2">@community.CampaignVersion</span>
+                            }
+                        </div>
 
-        .innerLeft {
-            display: inline-block;
-            margin-right: -4px;
-            vertical-align: top;
-            width: 30%;
-            text-align: center;
-            padding: 5px;
-            padding-bottom: 0rem;
-        }
+                        <p class="card-text text-muted">@community.Description</p>
+                    </div>
 
-        .innerRight {
-            display: inline-block;
-            vertical-align: top;
-            width: 70%;
-            text-align: left;
-            padding: 5px;
-        }
-
-        .card-text {
-            display: inline-block;
-        }
-
-
-    </style>
-</head>
-
-<h1 class="page-title">Communities</h1>
-<br /> 
-<br />
-<div>
-
-    <!-- This is the community "card" -->
-    <div class="card">
-        <div class="row">
-            <div class="innerLeft">
-                <img src="http://via.placeholder.com/200x100" />
-            </div>
-            <div class="innerRight">
-                <div class="horizontal-card-footer">
-                    <h4 class="card-title">Name of Community</h4>
-                    <span class="card-text">What versions we play</span><br />
-                    <span class="card-text">Little Tid Bit About What We Do Weeeeee</span>
-                    
-                </div>
-            </div>
-        </div>
-        <br />
-        <div class="row">
-            <div class="innerLeft">
-                <p>Image Title</p>
-            </div>
-            <div class="innerRight">
-                <a class="card-text status">Join</a>
-                <span class="card-text">The 1728372383721 members</span>
-
-            </div>
-            
-            <div class="innerLeft"></div>
-            <div class="innerRight">
-                <p class="badge bg-primary">New Player Friendly</p>
-            </div>
-          
-        </div>
-
-    </div>
-    <br />
-
-    <div class="card">
-        <div class="row">
-            <div class="innerLeft">
-                <img src="http://via.placeholder.com/200x100" />
-            </div>
-            <div class="innerRight">
-                <div class="horizontal-card-footer">
-                    <h4 class="card-title">Name of Community</h4>
-                    <span class="card-text">What versions we play</span><br />
-                    <span class="card-text">Little Tid Bit About What We Do Weeeeee</span>
+                    <div class="card-footer d-flex justify-content-between align-items-center flex-wrap gap-2">
+                        <div>
+                            @if (!string.IsNullOrEmpty(community.Badges))
+                            {
+                                @foreach (var badge in community.Badges.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                                {
+                                    <span class="badge bg-primary me-1">@badge.Trim()</span>
+                                }
+                            }
+                            <small class="text-muted d-block mt-1">@community.MemberCount members</small>
+                        </div>
+                        <a class="btn btn-sm btn-outline-primary">Join</a>
+                    </div>
 
                 </div>
             </div>
+        }
+    }
+    else
+    {
+        <div class="col">
+            <p class="text-muted fst-italic">No communities found.</p>
         </div>
-        <br />
-        <div class="row">
-            <div class="innerLeft">
-                <p>Image Title</p>
-            </div>
-            <div class="innerRight">
-                <a class="card-text status">Join</a>
-                <span class="card-text">The 1728372383721 members</span>
+    }
 
-            </div>
-
-            <div class="innerLeft"></div>
-            <div class="innerRight">
-                <p class="badge bg-primary">New Player Friendly</p>
-            </div>
-
-        </div>
-
-    </div>
-
-    <!--
-    <div class="community-sidebar">
-        <div class="sidebar-box"></div>
-        <div class="sidebar-box"></div>
-        <div class="sidebar-box"></div>
-        <div class="sidebar-box"></div>
-        <div class="sidebar-box"></div>
-    </div>
-
-    -->
-<!-- Page Body Ends Here -->
 </div>
-
-<!--
-<div class="community-chat">
-
-    <div class="chatroom">
-        Chatroom
-        <input type="text" placeholder="Response..." />
-    </div>
-
-    <div class="chat-input">
-        
-    </div>
-    
-     On the fence if we should keep a friends page here. -->
-    <!-- I think it would be better to save this list for the profile.
-    <div class="friends-list">
-        <h4>Friends List</h4>
-
-        <div class="friend"></div>
-        <div class="friend"></div>
-        <div class="friend"></div>
-    </div>
-    
-</div>
-     -->
-
