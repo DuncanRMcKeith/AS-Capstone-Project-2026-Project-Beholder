@@ -24,8 +24,9 @@ namespace CapstoneProject.Pages
 
         public void OnGet()
         {
-            //Need to figure out this shi 
-            Communities = factory.GetAll().ToList();
+            //Need to figure out this shi
+            ////It's fucking broken
+            //Communities = factory.GetAll().ToList();
         }
     }
 }
