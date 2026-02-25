@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // SIGNALR CONNECTION
     const connection = new signalR.HubConnectionBuilder()
-        .withUrl("/chatHub")
+        .withUrl("/chatHub?username=" + currentUser)
         .build();
 
     connection.start()
@@ -193,10 +193,9 @@ document.addEventListener("DOMContentLoaded", function () {
     window.sendMessage = function (conversationId) {
         const input = document.getElementById("chat-input")
         const message = input.value.trim();
-
         if (!message) return;
 
-        connection.invoke("SendMessage", conversationId, "You", message)
+        connection.invoke("SendMessage", conversationId, message)
             .catch(err => console.error(err.toString()))
 
         input.value = ""
