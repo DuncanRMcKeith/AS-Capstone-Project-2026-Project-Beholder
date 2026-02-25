@@ -33,25 +33,48 @@
 	
 
 	<div class="character-display">
-		<div class="character-text">
-			<h2>JOHN DND</h2>
-			<p>level 5 barbarian</p>
-			<p>Additional notes go here</p>
-		</div>
 
-		<div class="char-image">
-			<img src="https://placehold.co/250x250" />
-		</div>
+			<div class="character-text">
+				<h2>
+					@(
+										Model.CurrentCharacter != null
+										? $"{Model.CurrentCharacter.FName} {Model.CurrentCharacter.LName}"
+										: "No Saved Characters"
+										)
+				</h2>
 
-		<ul>
-			<li>STR: 5</li>
-			<li>DEX: 5</li>
-			<li>CON: 5</li>
-			<li>INT: 5</li>
-			<li>WIS: 5</li>
-			<li>CHA: 5</li>
-		</ul>
-	</div>
+				@if (Model.CurrentCharacter != null)
+				{
+					<p>Level @Model.CurrentCharacter.Level @Model.CurrentCharacter.CharacterClass</p>
+					<p>@Model.CurrentCharacter.Notes</p>
+
+					<button class="edit-profile">Edit Character</button>
+				}
+				else
+				{
+					<p>@Model.User.Username has no saved characters.</p>
+					
+				}
+			</div>
+
+			
+
+			@if (Model.CurrentCharacter != null)
+			{
+				<div class="char-image">
+					<img src="@(Model.CurrentCharacter?.Image_Path ?? "https://placehold.co/250x250")" />
+				</div>
+
+				<ul>
+					<li>STR: @Model.CurrentCharacter.Strength</li>
+					<li>DEX: @Model.CurrentCharacter.Dexterity</li>
+					<li>CON: @Model.CurrentCharacter.Constitution</li>
+					<li>INT: @Model.CurrentCharacter.Intelligence</li>
+					<li>WIS: @Model.CurrentCharacter.Wisdom</li>
+					<li>CHA: @Model.CurrentCharacter.Charisma</li>
+				</ul>
+			}
+		</div>
 
 
 

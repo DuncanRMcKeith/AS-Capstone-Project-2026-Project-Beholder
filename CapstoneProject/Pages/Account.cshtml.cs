@@ -8,10 +8,15 @@ namespace CapstoneProject.Pages
     public class AccountModel : PageModel
     {
         private readonly UserAccessLayer _userAccess;
-        public AccountModel(UserAccessLayer userAccess)
+        private readonly CharacterAccessLayer _characterAccess;
+
+        public AccountModel(UserAccessLayer userAccess, CharacterAccessLayer characterAccess)
         {
             _userAccess = userAccess;
+            _characterAccess = characterAccess;
         }
+        public CharacterModel CurrentCharacter { get; set; }
+
         public UserModel User { get; set; }
 
         public IActionResult OnGet(int id)
@@ -23,6 +28,9 @@ namespace CapstoneProject.Pages
             {
                 temp = RedirectToPage("/Index");
             }
+
+            CurrentCharacter = _characterAccess.GetCharacterBySlot(id.ToString(), 1);
+
             return temp; 
         }
     }
