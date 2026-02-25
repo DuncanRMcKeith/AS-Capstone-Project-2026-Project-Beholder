@@ -179,7 +179,6 @@ namespace CapstoneProject.Models
                                 User_ID = Convert.ToInt32(rdr["User_ID"]),
                                 Username = Convert.ToString(rdr["Username"]),
                                 Content = Convert.ToString(rdr["Content"]),
-                                Created_At = Convert.ToDateTime(rdr["Created_At"]),
                                 Profilepic = rdr["Profilepic"] == DBNull.Value ? null : rdr["Profilepic"].ToString()
                             });
                         }
@@ -229,23 +228,7 @@ namespace CapstoneProject.Models
         }
         public void DeletePost(int postId)
         {
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string sql = "DELETE FROM Comments WHERE Post_ID = @id";
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.CommandType = CommandType.Text;
-                    command.Parameters.AddWithValue("@id", postId);
-
-
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
-
-            }
+            
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string sql = "DELETE FROM Posts WHERE Post_ID = @id";
