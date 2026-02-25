@@ -13,29 +13,64 @@
 
 
 	<div class="profile-top">
-		<img class="profile-pic" src="https://placehold.co/150x150" alt="Profile picture" />
+		@if (!Model.IsEditingBio)
+		{
+			<!-- Normal display mode -->
+			<img class="profile-pic"
+				 src="@(Model.CurrentUser.Profilepic ?? "/images/placeholder.png")"
+				 alt="Profile picture" />
 
-		<div class="profile-text">
-			<h1 class="text-center">@Model.CurrentUser.Username</h1>
-
-			@if (!Model.IsEditingBio)
-			{
+			<div class="profile-text">
+				<h1 class="text-center">@Model.CurrentUser.Username</h1>
 				<p class="text-center" id="User-Description">
 					@Model.CurrentUser.User_Description
 				</p>
-			}
-			else
-			{
-				<form method="post">
-					<textarea name="NewDescription" class="bio-editor">
-                    @Model.NewDescription
-                </textarea>
+			</div>
+		}
+		else
+		{
+			<!-- Editing mode: ONE unified form -->
+			<form method="post" enctype="multipart/form-data" class="profile-top">
 
-					<button type="submit" asp-page-handler="SaveBio" class="save-profile">
+				<!-- Image stays in place -->
+				<img class="profile-pic"
+					 src="@(Model.CurrentUser.Profilepic ?? "/images/placeholder.png")"
+					 alt="Profile picture"
+					 id="profilePicPreview" />
+
+				<!-- Hidden file input -->
+				<input type="file" name="ProfileImage" id="profilePicInput" style="display:none;" />
+
+				<div class="profile-text">
+					<h1 class="text-center">@Model.CurrentUser.Username</h1>
+
+					<textarea name="NewDescription"
+						  class="bio-editor"
+						  style="width:700px; height:140px">
+                @Model.NewDescription
+            </textarea>
+
+					<button type="submit" asp-page-handler="SaveAll" class="save-profile">
 						Save
 					</button>
-				</form>
-			}
+				</div>
+			</form>
+
+			<script>
+				// Clicking the image opens the file picker
+				document.getElementById("profilePicPreview").onclick = function () {
+					document.getElementById("profilePicInput").click();
+				};
+
+				// Live preview
+				document.getElementById("profilePicInput").onchange = function (e) {
+					const file = e.target.files[0];
+					if (file) {
+						document.getElementById("profilePicPreview").src = URL.createObjectURL(file);
+					}
+				};
+			</script>
+		}
 		</div>
 	</div>
 	<br />
@@ -73,32 +108,42 @@
 
 		<div class="character-display">
 
-			<div class="character-text">
-				<h2>
-					@(
-										Model.CurrentCharacter != null
-										? $"{Model.CurrentCharacter.FName} {Model.CurrentCharacter.LName}"
-										: "No Character in this Slot"
-										)
-				</h2>
+		<div class="character-text">
+			<h2>
+				@(
+								Model.CurrentCharacter != null
+								? $"{Model.CurrentCharacter.FName} {Model.CurrentCharacter.LName}"
+								: "No Character in this Slot"
+								)
+			</h2>
 
-				@if (Model.CurrentCharacter != null)
-				{
-					<p>Level @Model.CurrentCharacter.Level @Model.CurrentCharacter.CharacterClass</p>
-					<p>@Model.CurrentCharacter.Notes</p>
+			@if (Model.CurrentCharacter != null)
+			{
+				<p>Level @Model.CurrentCharacter.Level @Model.CurrentCharacter.CharacterClass</p>
+				<p>@Model.CurrentCharacter.Notes</p>
 
-					<button class="edit-profile">Edit Character</button>
-				}
-				else
-				{
-					<p>This slot is empty.</p>
-					<a class="edit-profile"
-					   asp-page="./Character"
-					   asp-route-slot="@Request.Query["slot"]">
-						Create Character
-					</a>
-				}
-			</div>
+				<!-- DELETE CHARACTER BUTTON -->
+				<form method="post">
+					<button type="submit"
+							asp-page-handler="DeleteCharacter"
+							asp-route-slot="@Request.Query["slot"]"
+							class="delete-character">
+						Delete Character
+					</button>
+				</form>
+			}
+			else
+			{
+				<p>This slot is empty.</p>
+
+				<!-- CREATE CHARACTER BUTTON -->
+				<a class="edit-profile"
+				   asp-page="/Character"
+				   asp-route-slot="@(Request.Query["slot"])">
+					Create Character
+				</a>
+			}
+		</div>
 
 			<div class="char-image">
 				<img src="@(Model.CurrentCharacter?.Image_Path ?? "https://placehold.co/250x250")" />

@@ -112,6 +112,7 @@ namespace CapstoneProject.Models
                                     user.Username = reader["Username"].ToString();
                                     user.Email = reader["Email"].ToString();
                                     user.User_Description = reader["User_Description"].ToString();
+                                    user.Profilepic = reader["Profilepic"].ToString();
                                 };
                             }
                         }
@@ -416,6 +417,23 @@ namespace CapstoneProject.Models
             }
             }
             return lstusers;
+        }
+        public void UpdateUserImage(UserModel user)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string sql = "UPDATE Users SET Profilepic = @pic WHERE User_ID = @id";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@pic", user.Profilepic);
+                    cmd.Parameters.AddWithValue("@id", user.User_ID);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

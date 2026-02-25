@@ -113,5 +113,21 @@ namespace CapstoneProject.Models
 
             return character;
         }
+        public void DeleteCharacter(int userId, int slot)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string sql = "DELETE FROM Characters WHERE Creator_ID = @id AND Slots = @slot";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", userId);
+                    cmd.Parameters.AddWithValue("@slot", slot);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
