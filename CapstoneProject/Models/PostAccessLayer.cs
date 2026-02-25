@@ -179,6 +179,7 @@ namespace CapstoneProject.Models
                                 User_ID = Convert.ToInt32(rdr["User_ID"]),
                                 Username = Convert.ToString(rdr["Username"]),
                                 Content = Convert.ToString(rdr["Content"]),
+                                Created_At = Convert.ToDateTime(rdr["Created_At"]),
                                 Profilepic = rdr["Profilepic"] == DBNull.Value ? null : rdr["Profilepic"].ToString()
                             });
                         }
@@ -196,7 +197,7 @@ namespace CapstoneProject.Models
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string sql = "INSERT INTO Comments (Post_ID, User_ID, Content) VALUES (@postId, @userId, @content)";
+                string sql = "INSERT INTO Comments (Post_ID, User_ID, Content, Created_At) VALUES (@postId, @userId, @content, GETDATE())";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@postId", postId);
