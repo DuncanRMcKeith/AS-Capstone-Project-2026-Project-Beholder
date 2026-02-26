@@ -9,9 +9,11 @@
         font-size: 16px;
     }
 }
+
 a {
     color: #DAA520; /* link color */
 }
+
 /* Focus states (updated to highlight color) */
 .btn:focus,
 .btn:active:focus,
@@ -28,10 +30,11 @@ html {
 }
 
 body {
-    margin-bottom: 60px;
+    /* margin-bottom: 60px;  <-- THIS caused the gap under the footer */
     background-color: #1c1c1c; /* ensure body matches html */
     color: #DAA520; /* ensure text inherits correctly */
 }
+
 .custom-navbar .nav-link:visited {
     color: #DAA520 !important;
 }
@@ -45,6 +48,7 @@ body {
 .custom-navbar .nav-link.active {
     color: #F0F0F0 !important;
 }
+
 /* Force nav link text to gold */
 .custom-navbar .nav-link,
 .custom-navbar .nav-link:visited {
@@ -55,13 +59,16 @@ body {
     .custom-navbar .nav-link:hover {
         color: #F0F0F0 !important;
     }
+
 .custom-navbar .navbar-brand:hover {
     color: #F0F0F0 !important;
 }
-    /* Active link */
+
+/* Active link */
 .custom-navbar .nav-link.active {
     color: #F0F0F0 !important;
 }
+
 .OwnerImages {
     display: flex;
     flex-direction: row;
@@ -69,30 +76,35 @@ body {
     align-items: center;
     gap: 20px; /* space between images */
 }
-.OwnerImages img {
+
+    .OwnerImages img {
         width: 150px; /* adjust as needed */
         height: auto;
-        object-fit: cover;}
+        object-fit: cover;
+    }
+
 .mission-text {
     display: -webkit-box;
     -webkit-line-clamp: 3; /* limit to 3 lines */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis; /* adds "..." at the end */
-    max-width: 120  0px; /* set your allotted width */
+    max-width: 1200px; /* fixed typo: 120  0px */
     text-align: center;
 }
+
 @font-face {
     font-family: "DragonHunter";
     src: url("/fonts/DragonHunter-9Ynxj.otf") format("opentype");
     font-weight: normal;
     font-style: normal;
 }
+
 body, html {
     font-family: "DragonHunter", sans-serif;
 }
-/* Reset ALL spacing so navbar/footer sit flush */
-/* Full-page background */
+
+/* Full-page background (keep this, but don't override layout) */
 html {
     height: 100%;
     margin: 0;
@@ -104,19 +116,12 @@ html {
     background-attachment: fixed; /* optional */
 }
 
-/* Flex layout to push footer to bottom */
+/* Keep body simple, no flex, no margin-bottom */
 body {
-    height: 100%;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    background: transparent !important;
-}
-
-/* Main content should expand to fill space */
-main {
-    flex: 1 0 auto;
+    background-color: transparent; /* let html background show */
+    color: #DAA520;
 }
 
 /* Navbar: solid dark */
@@ -124,19 +129,16 @@ main {
     background-color: #1a1a1a !important;
 }
 
-/* Footer: at bottom, solid dark, no extra gap */
+/* Footer: solid dark, no extra gap */
 footer,
 .footer {
-    flex-shrink: 0;
     margin: 0;
     background-color: #1a1a1a !important;
-    padding: 0; /* adjust if you want tighter/looser */
-    ;
-    position: relative;
+    padding: 0.5rem 0; /* you can tweak this */
+    position: inherit;
 }
 
-
-/*Chat Room CSS Starts Here*/
+/* Chat Room CSS Starts Here */
 #chat-widget {
     position: fixed;
     bottom: 0;
@@ -146,7 +148,6 @@ footer,
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
-
 #chat-header {
     background-color: #343a40;
     color: white;
@@ -155,7 +156,6 @@ footer,
     text-align: center;
 }
 
-
 #chat-body {
     display: flex;
     flex-direction: column;
@@ -163,13 +163,11 @@ footer,
     background-color: white;
 }
 
-
 .chat-messages {
     flex: 1;
     padding: 10px;
     overflow-y: auto;
 }
-
 
 #chat-body input {
     border: none;
