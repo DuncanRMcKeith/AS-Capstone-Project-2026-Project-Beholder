@@ -1,0 +1,91 @@
+﻿@page
+@model CapstoneProject.Pages.CreateCommunityModel
+@{
+    ViewData["Title"] = "Create Community";
+}
+
+<style>
+    .create-community-form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .form-card {
+        background-color: #1A1A1A;
+        border-color: #333;
+        padding: 30px;
+        border-radius: 8px;
+    }
+
+    .form-label {
+        color: #f0f0f0;
+    }
+
+    .form-control, .form-select {
+        background-color: #2a2a2a;
+        border-color: #444;
+        color: #f0f0f0;
+    }
+
+        .form-control:focus, .form-select:focus {
+            background-color: #2a2a2a;
+            border-color: #666;
+            color: #f0f0f0;
+            box-shadow: none;
+        }
+
+        .form-control::placeholder {
+            color: #666;
+        }
+
+    .form-text {
+        color: #777 !important;
+    }
+</style>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Create Community</h1>
+    <a asp-page="/Community" class="btn btn-outline-secondary">Back to Communities</a>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">@Model.ErrorMessage</div>
+}
+
+<div class="create-community-form">
+    <div class="form-card">
+        <form method="post" enctype="multipart/form-data">
+
+            <div class="mb-3">
+                <label class="form-label">Community Name *</label>
+                <input type="text" class="form-control" name="name" placeholder="Enter community name" required maxlength="50" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Description *</label>
+                <textarea class="form-control" name="description" rows="3" placeholder="What is your community about?" required maxlength="255"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Campaign Version</label>
+                <input type="text" class="form-control" name="campaignVersion" placeholder="e.g. D&D 5e, Pathfinder" maxlength="50" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Badges</label>
+                <input type="text" class="form-control" name="badges" placeholder="e.g. Beginner Friendly, Lore Heavy (comma separated)" maxlength="255" />
+                <div class="form-text">Separate multiple badges with commas</div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Community Image</label>
+                <input type="file" class="form-control" name="imageFile" accept="image/*" />
+                <div class="form-text">Accepted formats: PNG, JPG, WEBP</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Create Community</button>
+
+        </form>
+    </div>
+</div>

@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Communities";
 }
-
 <style>
     .card-banner {
         width: 100%;
@@ -14,20 +13,46 @@
     .card-banner-placeholder {
         width: 100%;
         height: 160px;
-        background-color: #e9ecef;
+        background-color: #2a2a2a;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #adb5bd;
+        color: #555;
         font-size: 2rem;
     }
 
     .community-card {
         height: 100%;
+        background-color: #1A1A1A;
+        border-color: #333;
     }
+
+        .community-card .card-body {
+            background-color: #1A1A1A;
+        }
+
+        .community-card .card-footer {
+            background-color: #1A1A1A;
+            border-top-color: #333;
+        }
+
+        .community-card .card-title {
+            color: #f0f0f0;
+        }
+
+        .community-card .card-text {
+            color: #aaa !important;
+        }
+
+        .community-card small {
+            color: #777 !important;
+        }
 </style>
 
-<h1 class="mb-4">Communities</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Communities</h1>
+    <a asp-page="/CreateCommunity" class="btn btn-primary">+ Add Community</a>
+</div>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
@@ -55,7 +80,6 @@
                                 <span class="badge bg-secondary ms-2">@community.CampaignVersion</span>
                             }
                         </div>
-
                         <p class="card-text text-muted">@community.Description</p>
                     </div>
 
@@ -70,15 +94,30 @@
                             }
                             <small class="text-muted d-block mt-1">@community.MemberCount members</small>
                         </div>
-                        <a class="btn btn-sm btn-outline-primary">Join</a>
-                    </div>
 
+                        @if (Model.JoinedCommunityIds.Contains(community.CommunityID))
+                        {
+                            <form method="post">
+                                <input type="hidden" name="communityId" value="@community.CommunityID" />
+                                <button type="submit" asp-page-handler="Leave" class="btn btn-sm btn-outline-danger">Leave</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form method="post">
+                                <input type="hidden" name="communityId" value="@community.CommunityID" />
+                                <button type="submit" asp-page-handler="Join" class="btn btn-sm btn-outline-primary">Join</button>
+                            </form>
+                        }
+
+                    </div>
                 </div>
             </div>
         }
     }
     else
     {
+        <!-- IF IT PULLS ABSOLUTELY NOTHING -->
         <div class="col">
             <p class="text-muted fst-italic">No communities found.</p>
         </div>

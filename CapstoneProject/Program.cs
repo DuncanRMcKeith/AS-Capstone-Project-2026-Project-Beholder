@@ -1,5 +1,5 @@
 ﻿using CapstoneProject.Models;
-using CapstoneProject.NewFolder;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +8,9 @@ builder.Services.AddDistributedMemoryCache();
 builder.Services.AddScoped<UserAccessLayer>();
 builder.Services.AddSingleton<CharacterAccessLayer>();
 builder.Services.AddScoped<PostAccessLayer>();
+builder.Services.AddScoped<CommunityDataAccessLayer>();
+builder.Services.AddScoped<MessagesAccessLayer>();
+builder.Services.AddScoped<UserAccessLayer>();
 builder.Services.AddSignalR();
 builder.Services.AddSession(options =>
 {
@@ -30,6 +33,6 @@ app.UseRouting();
 app.UseSession();
 app.UseAuthorization();
 app.MapRazorPages();
-app.MapHub<ChatHub>("/chatHub");
+
 
 app.Run();

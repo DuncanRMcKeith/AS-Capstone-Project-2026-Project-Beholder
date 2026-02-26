@@ -1,25 +1,5 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-
-//CHATROOM CODE STARTS HERE
+﻿// CHATROOM CODE STARTS HERE
 document.addEventListener("DOMContentLoaded", function () {
-
-    const friends = [
-        { id: 1, name: "John Doe" },
-        { id: 2, name: "Jane Smith" },
-        { id: 3, name: "Bob Johnson" }
-    ]
-
-    const communities = [
-        { id: 101, name: "Entry Level Players" },
-        { id: 102, name: "Advanced Campaigns" }
-    ]
 
     const conversations = {}
 
@@ -164,6 +144,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const listContainer = document.getElementById("friendsContainer")
         listContainer.innerHTML = ""
 
+        if (!friends || friends.length === 0) {
+            listContainer.innerHTML = "<p>No friends found.</p>"
+            return
+        }
+
         friends.forEach(friend => {
             const btn = document.createElement("button")
             btn.textContent = friend.name
@@ -175,8 +160,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     window.renderCommunities = function () {
+
+        console.log(communities)
         const listContainer = document.getElementById("communityContainer")
         listContainer.innerHTML = ""
+
+        if (!communities || communities.length === 0) {
+            listContainer.innerHTML = "<p>No communities found.</p>"
+            return
+        }
 
         communities.forEach(comm => {
             const btn = document.createElement("button")
