@@ -1,6 +1,4 @@
-﻿@inject CapstoneProject.Models.UserAccessLayer UserDAL
-@inject CapstoneProject.Models.CommunityDataAccessLayer CommunityDAL
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -46,6 +44,7 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/login">Log In</a>
                         </li>
+
                     </ul>
                 </div>
             </div>
@@ -72,9 +71,10 @@
 
         <div id="chat-body">
 
+            <!-- Buttons  -->
             <div id="chatHome">
-                <button onclick="showView('communityDM')">Community</button>
-                <button onclick="showView('friendsDM')">Friends</button>
+                <button id="communityTabBtn" onclick="showView('communityDM')">Community</button>
+                <button id="friendsTabBtn" onclick="showView('friendsDM')">Friends</button>
             </div>
 
             <div id="communityDM" style="display:none;">
@@ -87,15 +87,24 @@
                 <div id="friendsContainer"></div>
             </div>
 
+            <!--<div class="chat-messages" id="chat-messages">
+                <p><strong>Bot:</strong> Hey! How can I help?</p>
+            </div>-->
+
             <div id="conversationView" style="display:none;">
+
                 <button onclick="closeConversation()">Back</button>
+
                 <div id="chat-messages"></div>
+
                 <div id="inputBox">
                     <input type="text"
                            id="chat-input"
-                           placeholder="Type a message..." />
+                           placeholder="Type a message..."
+                           onkeydown="handleKeyPress(event)" />
                     <button onclick="sendMessage()">Send</button>
                 </div>
+
             </div>
 
         </div>
@@ -104,38 +113,10 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
-
-    @{
-        var username = Context.Session.GetString("Username");
-        var userIdFromSession = Context.Session.GetInt32("UserID");
-        var friendsList = new List<object>();
-        var communitiesList = new List<object>();
-
-        if (userIdFromSession.HasValue)
-        {
-            try
-            {
-                friendsList = UserDAL.GetFriends(userIdFromSession.Value)
-                .Select(f => (object)new { id = ((CapstoneProject.Models.UserModel)f).User_ID, name = ((CapstoneProject.Models.UserModel)f).Username })
-                .ToList();
-
-                communitiesList = CommunityDAL.GetUserCommunities(userIdFromSession.Value)
-                .Select(c => (object)new { id = ((CapstoneProject.Models.CommunityModel)c).CommunityID, name = ((CapstoneProject.Models.CommunityModel)c).Name })
-                .ToList();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Layout data error: " + ex.Message);
-            }
-        }
-    }
-
     <script>
-        const currentUser = "@username";
-        const friends = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(friendsList));
-        const communities = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(communitiesList));
+        const currentUser = "@Context.Session.GetString("Username")";
+        const currentUserId = @Context.Session.GetInt32("UserID");
     </script>
-
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)

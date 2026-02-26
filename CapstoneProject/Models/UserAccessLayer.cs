@@ -435,5 +435,68 @@ namespace CapstoneProject.Models
                 }
             }
         }
+        public void SaveMessage(int sendingUser, int receivingUser, string content, int? commId = null)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string sql = @"INSERT INTO Messages (Sending_User, Receiving_User, Content, Sent_At, Comm_ID) 
+                       VALUES (@sending, @receiving, @content, GETDATE(), @commId)";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@sending", sendingUser);
+                    command.Parameters.AddWithValue("@receiving", receivingUser);
+                    command.Parameters.AddWithValue("@content", content);
+                    command.Parameters.AddWithValue("@commId", commId.HasValue ? (object)commId.Value : DBNull.Value);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+        }
+
+        public IEnumerable<MessageModel> GetMessages(int user1, int user2)
+        {
+            List<MessageModel> messages = new List<MessageModel>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string sql = @"
+                SELECT m.Message_ID, m.Sending_User, m.Receiving_User, m.Content, m.Sent_At, u.Username
+                FROM Messages m
+                JOIN Users u ON m.Sending_User = u.User_ID
+                WHERE (m.Sending_User = @user1 AND m.Receiving_User = @user2)
+                   OR (m.Sending_User = @user2 AND m.Receiving_User = @user1)
+                ORDER BY m.Sent_At ASC";
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.AddWithValue("@user1", user1);
+                        command.Parameters.AddWithValue("@user2", user2);
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            messages.Add(new MessageModel
+                            {
+                                Message_ID = Convert.ToInt32(reader["Message_ID"]),
+                                Sending_User = Convert.ToInt32(reader["Sending_User"]),
+                                Receiving_User = Convert.ToInt32(reader["Receiving_User"]),
+                                Content = reader["Content"].ToString(),
+                                Sent_At = Convert.ToDateTime(reader["Sent_At"]),
+                                SenderUsername = reader["Username"].ToString()
+                            });
+                        }
+                        connection.Close();
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine("ERROR: " + err.Message);
+            }
+            return messages;
+        }
     }
 }
