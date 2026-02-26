@@ -91,7 +91,12 @@ body {
 body, html {
     font-family: "DragonHunter", sans-serif;
 }
+/* Reset ALL spacing so navbar/footer sit flush */
+/* Full-page background */
 html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     background-image: url('/Images/DungeonBackground.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -99,21 +104,36 @@ html {
     background-attachment: fixed; /* optional */
 }
 
+/* Flex layout to push footer to bottom */
 body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    background: transparent; /* ensure body doesn't override it */
+    display: flex;
+    flex-direction: column;
+    background: transparent !important;
 }
-/* Navbar: deep near‑black grey */
+
+/* Main content should expand to fill space */
+main {
+    flex: 1 0 auto;
+}
+
+/* Navbar: solid dark */
 .custom-navbar {
     background-color: #1a1a1a !important;
 }
 
-/* Footer: slightly lighter dungeon grey */
+/* Footer: at bottom, solid dark, no extra gap */
+footer,
 .footer {
+    flex-shrink: 0;
+    margin: 0;
     background-color: #1a1a1a !important;
+    padding: 0; /* adjust if you want tighter/looser */
+    ;
+    position: relative;
 }
-
 
 
 /*Chat Room CSS Starts Here*/

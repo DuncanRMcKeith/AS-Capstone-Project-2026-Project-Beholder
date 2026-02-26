@@ -121,3 +121,43 @@
     list-style: none;
     overflow: hidden;
 }
+/* Full-page background */
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url('/Images/DungeonBackground.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; /* optional */
+}
+
+/* Flex layout to push footer to bottom */
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background: transparent !important;
+}
+
+/* Main content should expand to fill space */
+main {
+    flex: 1 0 auto;
+}
+
+/* Navbar: solid dark */
+.custom-navbar {
+    background-color: #1a1a1a !important;
+}
+
+/* Footer: at bottom, solid dark, no extra gap */
+footer,
+.footer {
+    flex-shrink: 0;
+    margin: 0;
+    background-color: #1a1a1a !important;
+    padding: 0.5rem 0; /* adjust if you want tighter/looser */
+}
