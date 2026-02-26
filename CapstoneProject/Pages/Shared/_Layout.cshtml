@@ -71,10 +71,10 @@
 
         <div id="chat-body">
 
-            <!--  -->
+            <!-- Buttons  -->
             <div id="chatHome">
-                <button onclick="showView('communityDM')">Community</button>
-                <button onclick="showView('friendsDM')">Friends</button>
+                <button id="communityTabBtn" onclick="showView('communityDM')">Community</button>
+                <button id="friendsTabBtn" onclick="showView('friendsDM')">Friends</button>
             </div>
 
             <div id="communityDM" style="display:none;">
@@ -115,6 +115,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
     <script>
         const currentUser = "@Context.Session.GetString("Username")";
+        const currentUserId = @Context.Session.GetInt32("UserID");
     </script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
