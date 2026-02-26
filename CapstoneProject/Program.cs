@@ -33,6 +33,7 @@ app.UseRouting();
 app.UseSession();
 app.UseAuthorization();
 app.MapRazorPages();
+app.MapHub<CapstoneProject.NewFolder.ChatHub>("/chatHub");
 
 
 app.Run();

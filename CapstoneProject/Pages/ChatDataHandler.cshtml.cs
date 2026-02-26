@@ -67,7 +67,7 @@ namespace CapstoneProject.Pages
             {
                 sender = m.SenderUsername,
                 text = m.Content,
-                sentAt = m.Sent_At
+                sentAt = m.Timestamp
             }));
         }
     }

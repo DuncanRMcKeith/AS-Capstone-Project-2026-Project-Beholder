@@ -435,17 +435,17 @@ namespace CapstoneProject.Models
                 }
             }
         }
-        public void SaveMessage(int sendingUser, int receivingUser, string content, int? commId = null)
+        public void SaveMessage(int sendingUser, int? receivingUser, string content, int? commId = null)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string sql = @"INSERT INTO Messages (Sending_User, Receiving_User, Content, Sent_At, Comm_ID) 
-                       VALUES (@sending, @receiving, @content, GETDATE(), @commId)";
+               VALUES (@sending, @receiving, @content, GETDATE(), @commId)";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.CommandType = CommandType.Text;
                     command.Parameters.AddWithValue("@sending", sendingUser);
-                    command.Parameters.AddWithValue("@receiving", receivingUser);
+                    command.Parameters.AddWithValue("@receiving", receivingUser.HasValue ? (object)receivingUser.Value : DBNull.Value);
                     command.Parameters.AddWithValue("@content", content);
                     command.Parameters.AddWithValue("@commId", commId.HasValue ? (object)commId.Value : DBNull.Value);
                     connection.Open();
@@ -484,7 +484,7 @@ namespace CapstoneProject.Models
                                 Sending_User = Convert.ToInt32(reader["Sending_User"]),
                                 Receiving_User = Convert.ToInt32(reader["Receiving_User"]),
                                 Content = reader["Content"].ToString(),
-                                Sent_At = Convert.ToDateTime(reader["Sent_At"]),
+                                Timestamp = Convert.ToDateTime(reader["Sent_At"]),
                                 SenderUsername = reader["Username"].ToString()
                             });
                         }
