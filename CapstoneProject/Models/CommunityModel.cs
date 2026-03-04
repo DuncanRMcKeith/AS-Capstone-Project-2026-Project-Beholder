@@ -18,5 +18,6 @@
         public int MemberCount { get; set; }
 
         public string ImageURL { get; set; }
+
     }
 }

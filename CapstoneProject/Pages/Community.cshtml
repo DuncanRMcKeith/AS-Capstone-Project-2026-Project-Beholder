@@ -93,6 +93,26 @@
                                 }
                             }
                             <small class="text-muted d-block mt-1">@community.MemberCount members</small>
+
+                            <!-- Add this below it -->
+                            <button class="btn btn-sm btn-outline-secondary mt-1" type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#members-@community.CommunityID">
+                                View Members
+                            </button>
+
+                            <div class="collapse mt-2" id="members-@community.CommunityID">
+                                @if (Model.CommunityMembers.ContainsKey(community.CommunityID))
+                                {
+                                    @foreach (var member in Model.CommunityMembers[community.CommunityID])
+                                    {
+                                        <div class="d-flex justify-content-between">
+                                            <small class="text-light">@member.Username</small>
+                                            <small class="text-muted">@member.Role</small>
+                                        </div>
+                                    }
+                                }
+                            </div>
                         </div>
 
                         @if (Model.JoinedCommunityIds.Contains(community.CommunityID))
