@@ -42,7 +42,17 @@
                             <a class="nav-link" asp-area="" asp-page="/Friends">Friends</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/login">Log In</a>
+                            @if(Context.Session.GetString("LoggedIn") != null){
+                               <form method="post" asp-page="/Logout" asp-page-handler="Logout">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="nav-link" style="background: none; border: none;">Log Out</button>
+                               </form>
+                            }
+                            else
+                            {
+                                <a class="nav-link" asp-area="" asp-page="/login">Log In</a>
+                            }
+                            
                         </li>
 
                     </ul>
@@ -109,6 +119,17 @@
 
         </div>
     </div>
+    <!-- Toast container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="logoutToast" class="toast align-items-center text-bg-success border-0" role="alert">
+            <div class="d-flex">
+                <div class="toast-body">
+                    You have been logged out successfully.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+           </div>
+        </div>
+    </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -120,5 +141,15 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
+
+    @if (TempData["ShowLogoutToast"] != null)
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var toast = new bootstrap.Toast(document.getElementById("logoutToast"));
+            toast.show();
+        });
+    </script>
+}
 </body>
 </html>
