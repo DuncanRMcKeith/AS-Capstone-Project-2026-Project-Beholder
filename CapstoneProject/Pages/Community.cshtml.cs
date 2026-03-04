@@ -18,11 +18,19 @@ namespace CapstoneProject.Pages
             factory = new CommunityDataAccessLayer(configuration);
         }
 
+        //Creates a dictionary to hold the members of each community, where the key is the CommunityID and the value is a list of MemberModel objects representing the members of that community.
+        public Dictionary<int, List<MemberModel>> CommunityMembers { get; set; } = new();
+
         public void OnGet()
         {
             Communities = factory.GetAll().ToList();
 
-            // Get the communities the user has already joined
+            // Populate members for each community
+            CommunityMembers = Communities.ToDictionary(
+                c => c.CommunityID,
+                c => factory.GetCommunityMembers(c.CommunityID)
+            );
+
             var userIdFromSession = HttpContext.Session.GetInt32("UserID");
             if (userIdFromSession.HasValue)
             {

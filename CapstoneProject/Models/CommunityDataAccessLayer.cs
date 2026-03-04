@@ -211,5 +211,40 @@ namespace CapstoneProject.Models
                 Console.WriteLine("LeaveCommunity error: " + err.Message);
             }
         }
+
+        //Code for accessing the members of a community, including their username and role
+        public List<MemberModel> GetCommunityMembers(int communityID)
+        {
+            List<MemberModel> members = new List<MemberModel>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string sql = @"SELECT u.Username, m.Role
+                           FROM Members m
+                           INNER JOIN Users u ON m.User_ID = u.User_ID
+                           WHERE m.Comm_ID = @communityId";
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@communityId", communityID);
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        members.Add(new MemberModel
+                        {
+                            Username = reader["Username"].ToString(),
+                            Role = reader["Role"].ToString()
+                        });
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine("GetCommunityMembers error: " + err.Message);
+            }
+            return members;
+        }
     }
 }
