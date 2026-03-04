@@ -8,14 +8,17 @@ namespace CapstoneProject.Pages
     {
         private readonly UserAccessLayer _userAccess;
         private readonly CharacterAccessLayer _characterAccess;
+        private readonly CommunityDataAccessLayer _communityAccess;
 
-        public Index1Model(UserAccessLayer userAccess, CharacterAccessLayer characterAccess)
+        public Index1Model(UserAccessLayer userAccess, CharacterAccessLayer characterAccess, IConfiguration configuration)
         {
             _userAccess = userAccess;
             _characterAccess = characterAccess;
+            _communityAccess = new CommunityDataAccessLayer(configuration);
         }
 
         public UserModel CurrentUser { get; set; }
+        public List<CapstoneProject.Models.CommunityModel> UserCommunities { get; set; } = new();
 
         // The currently selected character (slot 1–4)
         public CapstoneProject.Models.CharacterModel CurrentCharacter { get; set; }
@@ -37,6 +40,7 @@ namespace CapstoneProject.Pages
         {
             var loggedIn = HttpContext.Session.GetString("LoggedIn");
             var username = HttpContext.Session.GetString("Username");
+            
 
             if (loggedIn != "true")
                 return RedirectToPage("/Index");
@@ -46,6 +50,7 @@ namespace CapstoneProject.Pages
             if (CurrentUser == null)
                 return RedirectToPage("/Index");
 
+            UserCommunities = _communityAccess.GetUserCommunities(CurrentUser.User_ID).ToList();
             CurrentCharacter = _characterAccess.GetCharacterBySlot(CurrentUser.User_ID.ToString(), slot);
 
             return Page();

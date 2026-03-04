@@ -167,9 +167,22 @@
 
 </div>
 
-<div class="comms-badges">
-	<div class="comms text-center" style="height:400px; width:800px">
-		<p>Active Communities</p>
-	</div>
-
+<div class="comms text-center">
+	<p>Active Communities</p>
+	@if (Model.UserCommunities.Any())
+	{
+		<ul class="list-unstyled">
+			@foreach (var community in Model.UserCommunities)
+			{
+				<li class="mb-2">
+					<strong class="text-light">@community.Name</strong>
+					<small class="text-muted ms-2">@community.CampaignVersion</small>
+				</li>
+			}
+		</ul>
+	}
+	else
+	{
+		<p class="text-muted fst-italic">You haven't joined any communities yet.</p>
+	}
 </div>
