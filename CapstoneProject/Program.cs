@@ -2,15 +2,12 @@
 
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddScoped<UserAccessLayer>();
 builder.Services.AddSingleton<CharacterAccessLayer>();
 builder.Services.AddScoped<PostAccessLayer>();
 builder.Services.AddScoped<CommunityDataAccessLayer>();
-builder.Services.AddScoped<MessagesAccessLayer>();
-builder.Services.AddScoped<UserAccessLayer>();
 builder.Services.AddSignalR();
 builder.Services.AddSession(options =>
 {
@@ -27,6 +24,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
@@ -34,6 +32,4 @@ app.UseSession();
 app.UseAuthorization();
 app.MapRazorPages();
 app.MapHub<CapstoneProject.NewFolder.ChatHub>("/chatHub");
-
-
 app.Run();

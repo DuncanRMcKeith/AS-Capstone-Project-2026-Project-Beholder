@@ -7,12 +7,10 @@ namespace CapstoneProject.Pages
     public class ChatDataHandlerModel : PageModel
     {
         private readonly UserAccessLayer _userDAL;
-        private readonly CommunityDataAccessLayer _communityDAL;
 
-        public ChatDataHandlerModel(UserAccessLayer userDAL, IConfiguration configuration)
+        public ChatDataHandlerModel(UserAccessLayer userDAL)
         {
             _userDAL = userDAL;
-            _communityDAL = new CommunityDataAccessLayer(configuration);
         }
 
         // GET /ChatDataHandler?handler=Friends
@@ -32,21 +30,7 @@ namespace CapstoneProject.Pages
             return new JsonResult(friends);
         }
 
-        // GET /ChatDataHandler?handler=Communities
-        public IActionResult OnGetCommunities()
-        {
-            var username = HttpContext.Session.GetString("Username");
-            if (string.IsNullOrEmpty(username))
-                return new JsonResult(new List<object>());
-
-            int? userID = _userDAL.GetUserID(username);
-            if (!userID.HasValue)
-                return new JsonResult(new List<object>());
-
-            var communities = _communityDAL.GetUserCommunities(userID.Value).ToList();
-
-            return new JsonResult(communities.Select(c => new { id = c.CommunityID, name = c.Name }));
-        }
+        // GET /ChatDataHandler?handler=Messages
         public IActionResult OnGetMessages(string roomId)
         {
             var username = HttpContext.Session.GetString("Username");
@@ -57,7 +41,6 @@ namespace CapstoneProject.Pages
             if (!currentUserId.HasValue)
                 return new JsonResult(new List<object>());
 
-            // roomId is "smallerID_largerID" e.g. "3_7"
             var parts = roomId.Split('_');
             if (parts.Length != 2 || !int.TryParse(parts[0], out int id1) || !int.TryParse(parts[1], out int id2))
                 return new JsonResult(new List<object>());

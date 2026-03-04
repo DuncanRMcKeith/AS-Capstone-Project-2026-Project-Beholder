@@ -42,7 +42,17 @@
                             <a class="nav-link" asp-area="" asp-page="/Friends">Friends</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/login">Log In</a>
+                            @if(Context.Session.GetString("LoggedIn") != null){
+                               <form method="post" asp-page="/Logout" asp-page-handler="Logout">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="nav-link" style="background: none; border: none;">Log Out</button>
+                               </form>
+                            }
+                            else
+                            {
+                                <a class="nav-link" asp-area="" asp-page="/login">Log In</a>
+                            }
+                            
                         </li>
 
                     </ul>
@@ -55,58 +65,75 @@
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="container" style="display:flex; align-items:center; justify-content:space-between;">
             &copy; 2026 - CapstoneProject - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            @if (Context.Session.GetString("LoggedIn") == "true")
+            {
+                <button id="friendsTabBtn" class="chat-btn" onclick="toggleChat()" style="background:#DAA520; border:none; padding:6px 14px; border-radius:6px; cursor:pointer; font-weight:bold; width:auto;">
+                    💬 Chat
+                </button>
+            }
         </div>
     </footer>
 
+    <!-- Chat popup sits above footer -->
+    @if (Context.Session.GetString("LoggedIn") == "true")
+    {
+        <div id="chat-widget">
+            <div id="chat-body" style="display:none;">
+                <div id="chatHome">
+                    <button onclick="showFriends()">Friends</button>
+                </div>
+                <div id="friendsDM" style="display:none;">
+                    <button onclick="goHome()">Back</button>
+                    <div id="friendsContainer"></div>
+                </div>
+                <div id="conversationView" style="display:none;">
+                    <button onclick="closeConversation()">Back</button>
+                    <div id="chat-messages"></div>
+                    <div id="inputBox" style="display:none;">
+                        <input type="text"
+                               id="chat-input"
+                               placeholder="Type a message..." />
+                        <button onclick="sendMessage(currentConversationId)">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
     <!-- The Chat Starts Here -->
     <div id="chat-widget" class="chat-closed">
-
-        <div id="chat-header" onclick="toggleChat()">
-            💬 Chat
-        </div>
-
-        <div id="chat-body">
-
-            <!-- Buttons  -->
+        <div id="chat-body" style="display:none;">
             <div id="chatHome">
-                <button id="communityTabBtn" onclick="showView('communityDM')">Community</button>
-                <button id="friendsTabBtn" onclick="showView('friendsDM')">Friends</button>
+                <button id="friendsTabBtn" onclick="showFriends()">Friends</button>
             </div>
-
-            <div id="communityDM" style="display:none;">
-                <button onclick="goHome()">Back</button>
-                <div id="communityContainer"></div>
-            </div>
-
             <div id="friendsDM" style="display:none;">
                 <button onclick="goHome()">Back</button>
                 <div id="friendsContainer"></div>
             </div>
-
-            <!--<div class="chat-messages" id="chat-messages">
-                <p><strong>Bot:</strong> Hey! How can I help?</p>
-            </div>-->
-
             <div id="conversationView" style="display:none;">
-
                 <button onclick="closeConversation()">Back</button>
-
                 <div id="chat-messages"></div>
-
-                <div id="inputBox">
+                <div id="inputBox" style="display:none;">
                     <input type="text"
                            id="chat-input"
-                           placeholder="Type a message..."
-                           onkeydown="handleKeyPress(event)" />
-                    <button onclick="sendMessage()">Send</button>
+                           placeholder="Type a message..." />
+                    <button onclick="sendMessage(currentConversationId)">Send</button>
                 </div>
-
             </div>
-
+        </div>
+    </div>
+    <!-- Toast container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="logoutToast" class="toast align-items-center text-bg-success border-0" role="alert">
+            <div class="d-flex">
+                <div class="toast-body">
+                    You have been logged out successfully.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+           </div>
         </div>
     </div>
 
@@ -120,5 +147,15 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
+
+    @if (TempData["ShowLogoutToast"] != null)
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var toast = new bootstrap.Toast(document.getElementById("logoutToast"));
+            toast.show();
+        });
+    </script>
+}
 </body>
 </html>
