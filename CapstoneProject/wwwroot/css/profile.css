@@ -1,5 +1,7 @@
 ﻿div.container {
-    width:100%;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .profile-top {
@@ -85,15 +87,15 @@
 
 .comms-badges {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
 }
 
-.comms, .badges{
+.comms, .badges {
     border: 1px solid #DAA520;
-    width: 400px;
-    height: 250px;
-    margin: 20px;
-
+    width: 800px;
+    height: 400px;
+    margin: 20px auto;
 }
 
 .character-display {
