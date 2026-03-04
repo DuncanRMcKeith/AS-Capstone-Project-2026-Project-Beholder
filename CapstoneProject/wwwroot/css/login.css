@@ -16,7 +16,7 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for all buttons */
-button {
+button:not(.submit_btn):not(.cancelbtn) {
     background-color: #004D61;
     color: white;
     padding: 14px 20px;
@@ -27,16 +27,32 @@ button {
     border-radius: 10px;
 }
 
+
     /* Add a hover effect for buttons */
     button:hover {
         opacity: 0.8;
     }
+
+a:hover {
+    color: #F0F0F0 !important;
+}
 
 /* Extra style for the cancel button (red) */
 .cancelbtn {
     width: auto;
     padding: 10px 18px;
     background-color: #DAA520;
+}
+
+.submit_btn {
+    background-color: #DAA520;
+    color: #1c1c1c;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
 }
 
 /* Center the avatar image inside this container */
@@ -115,7 +131,15 @@ footer,
     flex-shrink: 0;
     margin: 0;
     background-color: #1a1a1a !important;
-    padding: 0.5rem 0; /* adjust if you want tighter/looser */
-    position: absolute !important;
+    padding: 0.5rem 0;
+    position: fixed !important;
     bottom: 0 !important;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+#friendsTabBtn {
+    width: auto !important;
+    padding: 6px 14px !important;
 }

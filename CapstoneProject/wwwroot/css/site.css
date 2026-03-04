@@ -1,7 +1,7 @@
 ﻿html {
     font-size: 14px;
-    background-color: #1c1c1c; /* global background */
-    color: #DAA520; /* global text color */
+    background-color: #1c1c1c;
+    color: #DAA520;
 }
 
 @media (min-width: 768px) {
@@ -11,17 +11,15 @@
 }
 
 a {
-    color: #DAA520; /* link color */
+    color: #DAA520;
 }
 
-/* Focus states (updated to highlight color) */
 .btn:focus,
 .btn:active:focus,
 .btn-link.nav-link:focus,
 .form-control:focus,
 .form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem #F0F0F0, /* highlight inner ring */
-    0 0 0 0.25rem #DAA520; /* gold outer ring for visibility */
+    box-shadow: 0 0 0 0.1rem #F0F0F0, 0 0 0 0.25rem #DAA520;
 }
 
 html {
@@ -30,32 +28,27 @@ html {
 }
 
 body {
-    /* margin-bottom: 60px;  <-- THIS caused the gap under the footer */
-    background-color: #1c1c1c; /* ensure body matches html */
-    color: #DAA520; /* ensure text inherits correctly */
+    background-color: #1c1c1c;
+    color: #DAA520;
 }
 
 .custom-navbar .nav-link:visited {
     color: #DAA520 !important;
 }
 
-/* Hover state */
 .custom-navbar .nav-link:hover {
     color: #F0F0F0 !important;
 }
 
-/* Active link */
 .custom-navbar .nav-link.active {
     color: #F0F0F0 !important;
 }
 
-/* Force nav link text to gold */
 .custom-navbar .nav-link,
 .custom-navbar .nav-link:visited {
     color: #DAA520 !important;
 }
 
-    /* Hover state */
     .custom-navbar .nav-link:hover {
         color: #F0F0F0 !important;
     }
@@ -64,7 +57,6 @@ body {
     color: #F0F0F0 !important;
 }
 
-/* Active link */
 .custom-navbar .nav-link.active {
     color: #F0F0F0 !important;
 }
@@ -72,24 +64,24 @@ body {
 .OwnerImages {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; /* spreads them across the line */
+    justify-content: space-between;
     align-items: center;
-    gap: 20px; /* space between images */
+    gap: 20px;
 }
 
     .OwnerImages img {
-        width: 150px; /* adjust as needed */
+        width: 150px;
         height: auto;
         object-fit: cover;
     }
 
 .mission-text {
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* limit to 3 lines */
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis; /* adds "..." at the end */
-    max-width: 1200px; /* fixed typo: 120  0px */
+    text-overflow: ellipsis;
+    max-width: 1200px;
     text-align: center;
 }
 
@@ -104,7 +96,6 @@ body, html {
     font-family: "DragonHunter", sans-serif;
 }
 
-/* Full-page background (keep this, but don't override layout) */
 html {
     height: 100%;
     margin: 0;
@@ -113,68 +104,132 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed; /* optional */
+    background-attachment: fixed;
 }
 
-/* Keep body simple, no flex, no margin-bottom */
 body {
     margin: 0;
     padding: 0;
-    background-color: transparent; /* let html background show */
+    background-color: transparent;
     color: #DAA520;
 }
 
-/* Navbar: solid dark */
 .custom-navbar {
     background-color: #1a1a1a !important;
 }
 
-/* Footer: solid dark, no extra gap */
 footer,
 .footer {
     margin: 0;
     background-color: #1a1a1a !important;
-    padding: 0.5rem 0; /* you can tweak this */
-    position: inherit;
+    padding: 0.5rem 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
 }
 
 /* Chat Room CSS Starts Here */
 #chat-widget {
     position: fixed;
-    bottom: 0;
+    bottom: 50px;
     right: 20px;
     width: 300px;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    font-family: "DragonHunter", sans-serif;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 300;
+    background: #1c1c1c;
+    border-radius: 8px;
+    border: 1px solid #DAA520;
 }
 
-#chat-header {
-    background-color: #343a40;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    text-align: center;
+.chat-btn {
+    width: auto !important;
+    margin: 0 !important;
+    line-height: normal !important;
 }
 
 #chat-body {
     display: flex;
     flex-direction: column;
-    height: 300px;
-    background-color: white;
+    height: 350px;
+    background-color: #1c1c1c;
+    border-radius: 0 0 8px 8px;
 }
 
-.chat-messages {
-    flex: 1;
+#chatHome {
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+    #chatHome button {
+        background-color: #DAA520;
+        color: #1c1c1c;
+        border: none;
+        padding: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: "DragonHunter", sans-serif;
+        font-weight: bold;
+        width: 100%;
+    }
+
+        #chatHome button:hover {
+            background-color: #F0F0F0;
+        }
+
+#friendsDM {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 8px;
+}
+
+    #friendsDM button {
+        background-color: #DAA520;
+        color: #1c1c1c;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: "DragonHunter", sans-serif;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+        #friendsDM button:hover {
+            background-color: #F0F0F0;
+        }
+
+#friendsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     overflow-y: auto;
 }
 
-#chat-body input {
-    border: none;
-    border-top: 1px solid #ccc;
-    padding: 8px;
-    width: 100%;
-}
+    #friendsContainer button {
+        background-color: #2a2a2a;
+        color: #DAA520;
+        border: 1px solid #DAA520;
+        padding: 8px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: "DragonHunter", sans-serif;
+        text-align: left;
+        width: 100%;
+    }
+
+        #friendsContainer button:hover {
+            background-color: #DAA520;
+            color: #1c1c1c;
+        }
 
 #conversationView {
     display: flex;
@@ -182,28 +237,56 @@ footer,
     height: 100%;
 }
 
+    #conversationView > button {
+        background-color: #DAA520;
+        color: #1c1c1c;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: "DragonHunter", sans-serif;
+        font-weight: bold;
+        margin: 8px;
+        width: auto;
+    }
+
+        #conversationView > button:hover {
+            background-color: #F0F0F0;
+        }
+
 #chat-messages {
     flex: 1;
     overflow-y: auto;
     padding: 10px;
-    background: #f0f0f0;
+    background: #2a2a2a;
+    color: #DAA520;
+    font-family: "DragonHunter", sans-serif;
 }
 
 #conversationView #inputBox {
     display: flex;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #DAA520;
 }
 
 #conversationView input {
     flex: 1;
     padding: 8px;
     border: none;
+    background: #1c1c1c;
+    color: #DAA520;
+    font-family: "DragonHunter", sans-serif;
 }
 
-#conversationView button {
+#conversationView #inputBox button {
     border: none;
     padding: 8px 12px;
-    background: #258cfb;
-    color: white;
+    background: #DAA520;
+    color: #1c1c1c;
     cursor: pointer;
+    font-family: "DragonHunter", sans-serif;
+    font-weight: bold;
 }
+
+    #conversationView #inputBox button:hover {
+        background: #F0F0F0;
+    }
