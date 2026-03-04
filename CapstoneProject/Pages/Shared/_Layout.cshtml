@@ -65,58 +65,64 @@
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="container" style="display:flex; align-items:center; justify-content:space-between;">
             &copy; 2026 - CapstoneProject - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            @if (Context.Session.GetString("LoggedIn") == "true")
+            {
+                <button id="friendsTabBtn" class="chat-btn" onclick="toggleChat()" style="background:#DAA520; border:none; padding:6px 14px; border-radius:6px; cursor:pointer; font-weight:bold; width:auto;">
+                    💬 Chat
+                </button>
+            }
         </div>
     </footer>
 
+    <!-- Chat popup sits above footer -->
+    @if (Context.Session.GetString("LoggedIn") == "true")
+    {
+        <div id="chat-widget">
+            <div id="chat-body" style="display:none;">
+                <div id="chatHome">
+                    <button onclick="showFriends()">Friends</button>
+                </div>
+                <div id="friendsDM" style="display:none;">
+                    <button onclick="goHome()">Back</button>
+                    <div id="friendsContainer"></div>
+                </div>
+                <div id="conversationView" style="display:none;">
+                    <button onclick="closeConversation()">Back</button>
+                    <div id="chat-messages"></div>
+                    <div id="inputBox" style="display:none;">
+                        <input type="text"
+                               id="chat-input"
+                               placeholder="Type a message..." />
+                        <button onclick="sendMessage(currentConversationId)">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
     <!-- The Chat Starts Here -->
     <div id="chat-widget" class="chat-closed">
-
-        <div id="chat-header" onclick="toggleChat()">
-            💬 Chat
-        </div>
-
-        <div id="chat-body">
-
-            <!-- Buttons  -->
+        <div id="chat-body" style="display:none;">
             <div id="chatHome">
-                <button id="communityTabBtn" onclick="showView('communityDM')">Community</button>
-                <button id="friendsTabBtn" onclick="showView('friendsDM')">Friends</button>
+                <button id="friendsTabBtn" onclick="showFriends()">Friends</button>
             </div>
-
-            <div id="communityDM" style="display:none;">
-                <button onclick="goHome()">Back</button>
-                <div id="communityContainer"></div>
-            </div>
-
             <div id="friendsDM" style="display:none;">
                 <button onclick="goHome()">Back</button>
                 <div id="friendsContainer"></div>
             </div>
-
-            <!--<div class="chat-messages" id="chat-messages">
-                <p><strong>Bot:</strong> Hey! How can I help?</p>
-            </div>-->
-
             <div id="conversationView" style="display:none;">
-
                 <button onclick="closeConversation()">Back</button>
-
                 <div id="chat-messages"></div>
-
-                <div id="inputBox">
+                <div id="inputBox" style="display:none;">
                     <input type="text"
                            id="chat-input"
-                           placeholder="Type a message..."
-                           onkeydown="handleKeyPress(event)" />
-                    <button onclick="sendMessage()">Send</button>
+                           placeholder="Type a message..." />
+                    <button onclick="sendMessage(currentConversationId)">Send</button>
                 </div>
-
             </div>
-
         </div>
     </div>
     <!-- Toast container -->

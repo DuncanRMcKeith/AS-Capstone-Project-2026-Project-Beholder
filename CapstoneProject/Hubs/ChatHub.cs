@@ -6,12 +6,10 @@ namespace CapstoneProject.NewFolder
     public class ChatHub : Hub
     {
         private readonly UserAccessLayer _userDAL;
-        private readonly MessagesAccessLayer _messagesDAL;
 
-        public ChatHub(UserAccessLayer userDAL, MessagesAccessLayer messagesDAL)
+        public ChatHub(UserAccessLayer userDAL)
         {
             _userDAL = userDAL;
-            _messagesDAL = messagesDAL;
         }
 
         private string GetUsername()
@@ -37,17 +35,11 @@ namespace CapstoneProject.NewFolder
             if (senderId.HasValue)
             {
                 var parts = conversationId.Split('_');
-
                 if (parts.Length == 2 && int.TryParse(parts[0], out int id1) && int.TryParse(parts[1], out int id2))
                 {
                     // Friend DM
                     int receiverId = senderId.Value == id1 ? id2 : id1;
                     _userDAL.SaveMessage(senderId.Value, receiverId, message);
-                }
-                else if (int.TryParse(conversationId, out int commId))
-                {
-                    // Community message
-                    _messagesDAL.SaveMessage(senderId.Value, message, null, commId);
                 }
             }
 
