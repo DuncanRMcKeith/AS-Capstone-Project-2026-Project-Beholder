@@ -270,6 +270,7 @@ footer,
 
 #conversationView input {
     flex: 1;
+    min-width: 0;
     padding: 8px;
     border: none;
     background: #1c1c1c;
