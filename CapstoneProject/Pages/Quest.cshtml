@@ -130,6 +130,18 @@
 
         <hr />
         <div class="Quests-feed">
+            @if (Model.TotalPages > 1)
+            {
+                <div class="d-flex justify-content-center gap-2 mt-3">
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <a asp-page="/Quest" asp-route-currentPage="@i"
+                           class="btn btn-sm @(i == Model.CurrentPage ? "btn-primary" : "btn-secondary")">
+                            @i
+                        </a>
+                    }
+                </div>
+            }
         @if (Model.Posts.Any())
         {
             @foreach(var post in Model.Posts)
@@ -210,18 +222,7 @@
                     </div>
                 </div>
             }
-            @if (Model.TotalPages > 1)
-            {
-                <div class="d-flex justify-content-center gap-2 mt-3">
-                    @for (int i = 1; i <= Model.TotalPages; i++)
-                    {
-                        <a asp-page="/Quest" asp-route-currentPage="@i"
-                           class="btn btn-sm @(i == Model.CurrentPage ? "btn-primary" : "btn-secondary")">
-                            @i
-                        </a>
-                    }
-                </div>
-            }
+            
         }
         </div>
 
